@@ -10,6 +10,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/forgotpassword.component';
+import { CommonButtonComponent } from './components/common-button/common-button.component';
+import { CodeInputModule } from 'angular-code-input';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     ProfileComponent,
     InputFieldComponent,
+    ForgotPasswordComponent,
+    CommonButtonComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    CodeInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

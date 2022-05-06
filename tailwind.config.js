@@ -8,16 +8,23 @@ module.exports = {
       xl: "1366px",
       xxl: "1920px",
     },
-    colors: {
-      "primary-color": "#9146ff",
-      "secondary-color": "#f0f0ff",
-      "secondary-color-25": "#f0f0ff40",
-      "black-40": "#00000066",
-      "gray-color": "#707070",
+    fontSize: {
+      sm: "9px",
+      md: "12px",
+      xl: "18px",
+      h1: "24px",
+      h2: "36px",
     },
     extend: {
       spacing: {
         container: "44px",
+      },
+      colors: {
+        "primary-color": "#9146ff",
+        "secondary-color": "#f0f0ff",
+        "secondary-color-25": "#f0f0ff40",
+        "black-40": "#00000066",
+        "gray-color": "#707070",
       },
     },
   },

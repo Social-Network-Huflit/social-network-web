@@ -20,6 +20,9 @@ export class InputFieldComponent implements OnInit {
   }
   private _placeholder = '';
 
+  @Input()
+  public icon: string;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,27 +1,21 @@
 <div class="login flex items-center ">
     <div class="loginLeft">
-        <img src="../../../assets/t7HWomG - Imgur.png" alt="">
+        <img src="../../../assets/images/t7HWomG - Imgur.png" alt="">
     </div>
     <div class="loginRight">
-        
+
         <h1 class=" w-full text-[40px] text-primary-color font-medium color">Đăng nhập</h1>
         <div class="w-full px-container flex flex-col  ">
-            <div class="loginInput">
-                <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
-                <input-field  name="usernameOrEmail" placeholder="Username or email">
-                </input-field>
-            </div>
-            <div class="loginInput">
-                <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
-                <input-field name="password" placeholder="Mật khẩu"></input-field>
-                
-            </div>
+            <input-field class="loginInput" name="usernameOrEmail" placeholder="Username or email" icon="person">
+            </input-field>
+            <input-field class="loginInput" name="password" placeholder="Mật khẩu" icon="lock"></input-field>
+
             <button class="buttonLogin">Đăng nhập</button>
-            <a href="#" class="forgotPass">Quên mật khẩu</a>
-            <label for="#"> 
-                 Không có tài khoản?</label>
+            <a routerLink="/forgot-password" class="forgotPass">Quên mật khẩu</a>
+            <label for="#">
+                Không có tài khoản?</label>
             <a routerLink="/register" class="register">Đăng Ký</a>
         </div>
     </div>
-    
+
 </div>
