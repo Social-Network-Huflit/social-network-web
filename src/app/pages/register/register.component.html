@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="register flex items-center">
+    <div class="registerLeft">
+        <h1 class=" w-full text-[40px] text-primary-color font-medium color">Đăng Ký</h1>
+        <div class="w-full px-container flex flex-col  ">
+            <input-field class="registerInput" name="usernameOrEmail" icon="info" placeholder="Họ và tên">
+            </input-field>
+            <input-field class="registerInput" name="password" icon="person" placeholder="Username"></input-field>
+
+            <input-field class="registerInput" name="password" icon="mail" placeholder="Email"></input-field>
+
+            <input-field class="registerInput" name="password" icon="phone" placeholder="Số điện thoại"></input-field>
+
+            <input-field class="registerInput" name="password" icon="lock" placeholder="Mật khẩu"></input-field>
+
+            <input-field class="registerInput" name="password" placeholder="Xác nhận mật khẩu" icon="lock">
+            </input-field>
+
+            <button class="buttonRegister">Đăng Ký</button>
+
+            <label for="#">
+                Đã có tài khoản?</label>
+            <a routerLink="/login" class="register">Đăng Nhập</a>
+        </div>
+    </div>
+    <div class="registerRight">
+        <img src="../../../assets/images/user-login-4268415-3551762.png" alt="">
+
+    </div>
+</div>

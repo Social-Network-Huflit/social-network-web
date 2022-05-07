@@ -1,6 +1,21 @@
-<div class="login flex items-center flex-col pt-[100px]">
-    <h1 class="text-[30px] text-primary-color font-medium">Đăng nhập</h1>
-    <div class="px-container">
-        <input-field name="usernameOrEmail" placeholder="Username or email"></input-field>
+<div class="login flex items-center ">
+    <div class="loginLeft">
+        <img src="../../../assets/images/t7HWomG - Imgur.png" alt="">
     </div>
+    <div class="loginRight">
+
+        <h1 class=" w-full text-[40px] text-primary-color font-medium color">Đăng nhập</h1>
+        <div class="w-full px-container flex flex-col  ">
+            <input-field class="loginInput" name="usernameOrEmail" placeholder="Username or email" icon="person">
+            </input-field>
+            <input-field class="loginInput" name="password" placeholder="Mật khẩu" icon="lock"></input-field>
+
+            <button class="buttonLogin">Đăng nhập</button>
+            <a routerLink="/forgot-password" class="forgotPass">Quên mật khẩu</a>
+            <label for="#">
+                Không có tài khoản?</label>
+            <a routerLink="/register" class="register">Đăng Ký</a>
+        </div>
+    </div>
+
 </div>
