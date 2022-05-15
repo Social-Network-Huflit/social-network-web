@@ -13,6 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/forgotpassword.component';
 import { CommonButtonComponent } from './components/common-button/common-button.component';
 import { CodeInputModule } from 'angular-code-input';
+import { HeaderComponent } from './components/header/header.component';
+import { NavbarLeftComponent } from './components/navbar-left/navbar-left.component';
+import { PostCreatorComponent } from './components/post-creator/post-creator.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,16 @@ import { CodeInputModule } from 'angular-code-input';
     InputFieldComponent,
     ForgotPasswordComponent,
     CommonButtonComponent,
+    HeaderComponent,
+    NavbarLeftComponent,
+    PostCreatorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    CodeInputModule
+    CodeInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

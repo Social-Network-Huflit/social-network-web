@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px #ccc solid;
+  height: 100vh;
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 12px;
+    padding: 10px;
+    width: 80%;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    img {
+      max-height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    a {
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .item {
+      width: 200px;
+      margin: 12px auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      mat-icon {
+        width: 24px;
+        font-size: 28px;
+        margin-right: 8px;
+      }
+      label {
+        width: 100%;
+        font-size: 22px;
+      }
+    }
+  }
+}

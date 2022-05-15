@@ -1,0 +1,29 @@
+.container {
+  .top {
+    display: flex;
+    .avatar {
+      max-height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .content {
+    }
+  }
+  .bottom {
+    display: flex;
+
+    .item {
+      .tag {
+        color: #587df6;
+      }
+      .images {
+        color: #52d134;
+      }
+      .express {
+        background-color: #f3f337;
+        color: #fff;
+        border-radius: 50%;
+      }
+    }
+  }
+}
