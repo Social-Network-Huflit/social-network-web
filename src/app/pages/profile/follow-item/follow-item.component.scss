@@ -1,0 +1,59 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+
+.follow-item-container {
+  font-family: "Quicksand", sans-serif;
+  background-color: #fff;
+  height: resize(115);
+  margin-bottom: resize(13);
+  border-radius: resize(8);
+  padding: 0 resize(40);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: resize(20);
+
+    img {
+      width: resize(80);
+      height: resize(80);
+      border-radius: 100%;
+    }
+
+    .info {
+      .name {
+        font-size: resize(32);
+        margin-bottom: resize(10);
+      }
+
+      .sub {
+        font-size: resize(24);
+        color: $gray-color;
+      }
+    }
+  }
+
+  .right {
+    min-width: resize(210);
+    background-color: $primary-color;
+    color: #fff;
+    padding: resize(15);
+    border-radius: resize(40);
+    cursor: pointer;
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .right.followed {
+    background-color: #fff;
+    border-width: resize(1);
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+}

@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       spacing: {
-        container: "44px",
+        container: "427.5px",
       },
       colors: {
         "primary-color": "#9146ff",

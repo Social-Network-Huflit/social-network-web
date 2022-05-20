@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/forgotpassword.component';
 import { CommonButtonComponent } from './components/common-button/common-button.component';
 import { CodeInputModule } from 'angular-code-input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FollowItemComponent } from './pages/profile/follow-item/follow-item.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { CodeInputModule } from 'angular-code-input';
     InputFieldComponent,
     ForgotPasswordComponent,
     CommonButtonComponent,
+    FollowItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    CodeInputModule
+    CodeInputModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
