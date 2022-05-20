@@ -1,0 +1,50 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
+.title {
+  font-size: resize(24);
+}
+
+.suggest-list {
+  display: flex;
+  flex-direction: column;
+  gap: resize(13);
+
+  .item {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: resize(5) resize(10);
+    border-radius: resize(8);
+
+    .flex {
+      gap: resize(10);
+
+      img {
+        width: resize(40);
+        height: resize(40);
+        border-radius: 100%;
+      }
+
+      .name-container {
+        .name {
+          font-size: resize(24);
+          color: black;
+        }
+        .username {
+          font-size: resize(16);
+          color: $gray-color;
+        }
+      }
+    }
+
+    button{
+      padding: resize(5) resize(20);
+      text-align: center;
+      border-radius: resize(25);
+      color: white;
+      font-size: resize(16);
+    }
+  }
+}

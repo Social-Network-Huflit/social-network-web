@@ -1,0 +1,72 @@
+@import "../../../../../styles.scss";
+@import '../../../../../assets/variables.scss';
+
+.profile-container {
+  // padding: 0 resize(570);
+  background-color: $secondary-color !important;
+  min-height: 100vh;
+
+  .avatar-background {
+    position: relative;
+
+    .background {
+      height: resize(250);
+    }
+
+    .avatar {
+      $size: resize(100);
+
+      width: $size;
+      height: $size;
+      position: absolute;
+      bottom: - calc($size / 2);
+      left: resize(40);
+      border-radius: 100%;
+
+      border-width: 2px;
+      border-color: white;
+    }
+  }
+  .edit-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+    button {
+      padding: calc(22.5px / 2) 20px;
+      border-radius: 20px;
+    }
+  }
+
+  .information {
+    .sub {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: 5px;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .mat-tab-label-container {
+  .mat-tab-labels {
+    justify-content: space-between;
+
+    .mat-tab-label-active {
+      font-weight: bold;
+      color: black;
+    }
+
+    .mat-tab-label-content {
+      font-family: "Quicksand", sans-serif;
+    }
+  }
+
+  .mat-ink-bar {
+    background-color: $primary-color;
+  }
+}

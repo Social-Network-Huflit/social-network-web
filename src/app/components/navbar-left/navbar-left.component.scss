@@ -1,47 +1,40 @@
-.container {
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
+.navbar-left-container {
   display: flex;
   flex-direction: column;
-  border-right: 0.5px #ccc solid;
   height: 100vh;
-  .profile {
+
+  .nav-item {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto 12px;
-    padding: 10px;
-    width: 80%;
-    background-color: #f1f1f1;
-    border-radius: 5px;
+    padding: resize(10) resize(25);
+    border-radius: resize(8);
+    height: resize(50);
+    gap: resize(10);
+    transition: all 0.3s;
+    margin-bottom: resize(13);
+    cursor: pointer;
+
     img {
-      max-height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
+      width: resize(30);
+      height: resize(30);
+      border-radius: 100%;
     }
-    a {
-      font-size: 28px;
-      font-weight: 600;
+
+    p {
+      font-size: resize(24);
+      color: black;
+      font-weight: 450;
+    }
+
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.05);
     }
   }
-  .nav-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .item {
-      width: 200px;
-      margin: 12px auto;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      mat-icon {
-        width: 24px;
-        font-size: 28px;
-        margin-right: 8px;
-      }
-      label {
-        width: 100%;
-        font-size: 22px;
-      }
-    }
+
+  .nav-item.active {
+    background-color: rgba($color: #000000, $alpha: 0.05);
   }
 }

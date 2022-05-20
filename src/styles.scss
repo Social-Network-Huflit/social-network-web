@@ -15,9 +15,11 @@ html {
     label {
       font-family: "Quicksand", sans-serif !important;
     }
-
-    
   }
+}
+
+@function resize($dp) {
+  @return calc($dp * 0.75px);
 }
 
 code-input {
@@ -32,4 +34,3 @@ code-input {
   --item-shadow-focused: none !important;
   --item-border-radius: 0px !important;
 }
-

@@ -1,50 +1,72 @@
-$PrimaryColor: #9146ff;
+@import "../../../assets/variables.scss";
+@import "../../../styles.scss";
 
 .color {
-  color: $PrimaryColor;
+  color: $primary-color;
 }
 .login {
   justify-content: space-between;
   height: 100vh;
+  background: #fff;
   .loginLeft {
-    background-color: #9146ff;
+    background-color: $primary-color;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     flex: 1;
+
     img {
-      margin-top: 130px;
-      max-height: 400px;
-      margin: 130px auto;
+      width: resize(1048);
+      height: resize(734);
     }
   }
   .loginRight {
     flex: 1;
-    text-align: center;
-    .loginInput {
-      margin: auto;
-    }
-    .buttonLogin {
-      background-color: #9146ff;
-      padding: 12px 16px;
-      color: #fff;
-      width: 200px;
-      margin: 10px auto;
-      border-radius: 5px;
-      font-size: 20px;
-    }
-    .forgotPass {
-      color: #9146ff;
-      margin: 5px auto;
-    }
-    label {
-      color: #707070;
-      font-size: 24px;
-      font-weight: 600;
-      margin: 15px auto;
-    }
-    .register {
-      color: #9146ff;
-      margin: 5px auto;
-      font-size: 24px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wrapper {
+      width: resize(400);
+      // align-items: center;
+
+      h1 {
+        font-size: resize(48);
+        margin-bottom: resize(35);
+        text-align: center;
+      }
+
+      .buttonLogin {
+        background-color: $primary-color;
+        color: #fff;
+        margin: 0 resize(85);
+        margin-top: resize(60);
+        margin-bottom: resize(30);
+        border-radius: resize(8);
+        font-size: resize(28);
+        width: resize(229);
+        height: resize(70);
+      }
+
+      .forgotPass {
+        color: $primary-color;
+        text-align: center;
+        font-size: resize(24);
+      }
+
+      label {
+        color: #707070;
+        font-size: resize(36);
+        margin: 15px auto;
+      }
+
+      .register {
+        color: $primary-color;
+        margin: 5px auto;
+        font-size: resize(48);
+      }
     }
   }
 }

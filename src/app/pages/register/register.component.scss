@@ -1,31 +1,49 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
 .register {
+  background: #fff;
+
   .registerLeft {
     flex: 1;
+    display: flex;
     text-align: center;
     justify-content: center;
-    .registerInput {
-      margin: auto;
-    }
-    .buttonRegister {
-      background-color: #9146ff;
-      padding: 12px 16px;
-      color: #fff;
-      width: 200px;
-      margin: 10px auto;
-      border-radius: 5px;
-      font-size: 20px;
-    }
-    label {
-      color: #707070;
-      font-size: 24px;
-      font-weight: 500;
-      margin: 15px auto;
-    }
-    a {
-      color: #9146ff;
-      margin: 5px auto;
-      font-size: 20px;
-      font-weight: 300;
+
+    .wrapper {
+      width: resize(400);
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        font-size: resize(48);
+        margin-bottom: resize(30);
+      }
+
+      .registerInput {
+        margin-top: resize(13);
+      }
+
+      .buttonRegister {
+        background-color: #9146ff;
+        color: #fff;
+        border-radius: resize(8);
+        font-size: resize(32);
+        width: resize(250);
+        height: resize(65);
+        margin: resize(50) auto;
+      }
+
+      label {
+        color: #707070;
+        font-size: 24px;
+        margin: 15px auto;
+      }
+      a {
+        color: #9146ff;
+        margin: 5px auto;
+        font-size: resize(32);
+      }
     }
   }
   .registerRight {

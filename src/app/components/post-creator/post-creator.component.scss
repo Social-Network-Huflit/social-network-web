@@ -1,18 +1,45 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
 .container {
+  background: #fff;
+  padding: resize(20) resize(40);
+  border-radius: 10px;
+  margin-bottom: resize(13);
+  // max-width: resize(780);
+
   .top {
     display: flex;
+    justify-content: center;
+    align-items: center;
     .avatar {
       max-height: 50px;
       border-radius: 50%;
       margin-right: 10px;
     }
     .content {
+      width: 500px;
+      margin-bottom: -10px;
     }
   }
   .bottom {
     display: flex;
+    justify-content: space-between;
 
     .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 7px auto;
+      padding: 10px;
+      cursor: pointer;
+
+      label {
+        margin-left: 8px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+      }
       .tag {
         color: #587df6;
       }
