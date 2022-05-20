@@ -15,6 +15,12 @@ import { CommonButtonComponent } from './components/common-button/common-button.
 import { CodeInputModule } from 'angular-code-input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FollowItemComponent } from './pages/profile/follow-item/follow-item.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NavbarLeftComponent } from './components/navbar-left/navbar-left.component';
+import { PostCreatorComponent } from './components/post-creator/post-creator.component';
+import { SuggestionListComponent } from './components/suggestion-list/suggestion-list.component';
+import { FriendsListComponent } from './components/friends-list/friends-list.component';
+import { PostItemComponent } from './components/post-item/post-item.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { FollowItemComponent } from './pages/profile/follow-item/follow-item.com
     ForgotPasswordComponent,
     CommonButtonComponent,
     FollowItemComponent,
+    HeaderComponent,
+    NavbarLeftComponent,
+    PostCreatorComponent,
+    SuggestionListComponent,
+    FriendsListComponent,
+    PostItemComponent,
   ],
   imports: [
     BrowserModule,

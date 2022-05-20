@@ -1,0 +1,25 @@
+.home-container {
+  app-header {
+  }
+  .body {
+    margin-top: 24px;
+    display: flex;
+    app-navbar-left {
+      flex: 1;
+    }
+    .content {
+      flex: 3;
+      display: flex;
+      .main {
+        margin: 0 auto;
+
+        flex: 2;
+        display: flex;
+        justify-content: center;
+      }
+      .right {
+        flex: 1;
+      }
+    }
+  }
+}
