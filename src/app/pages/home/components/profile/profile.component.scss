@@ -1,10 +1,10 @@
-@import "../../../styles.scss";
-@import "../../../assets/variables.scss";
+@import "../../../../../styles.scss";
+@import '../../../../../assets/variables.scss';
 
 .profile-container {
-  padding: 0 resize(570);
+  // padding: 0 resize(570);
   background-color: $secondary-color !important;
-  height: 100vh;
+  min-height: 100vh;
 
   .avatar-background {
     position: relative;

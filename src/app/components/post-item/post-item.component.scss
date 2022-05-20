@@ -1,0 +1,94 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
+.post-item-container {
+  width: 100%;
+  background: #fff;
+  padding: resize(25);
+  border-radius: resize(8);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: resize(20);
+
+      img {
+        width: resize(64);
+        height: resize(64);
+        border-radius: 100%;
+      }
+
+      .name {
+        font-size: resize(32);
+      }
+
+      .time {
+        font-size: resize(16);
+        color: $gray-color;
+      }
+    }
+
+    mat-icon {
+      color: $gray-color;
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    padding: resize(25) 0;
+
+    p {
+      font-size: resize(24);
+      color: $gray-color;
+      margin: 0;
+    }
+  }
+
+  .interact-count {
+    display: flex;
+    justify-content: space-between;
+    color: $gray-color;
+    margin-bottom: resize(20);
+
+    .count-item {
+      display: flex;
+      align-items: center;
+      gap: resize(10);
+
+      p{
+          font-size: resize(24);
+      }
+    }
+
+    .right {
+      display: flex;
+      gap: resize(20);
+    }
+
+    mat-icon {
+      color: $primary-color;
+    }
+  }
+
+  .interact-container {
+    color: $gray-color;
+    margin-top: resize(20);
+    display: flex;
+    justify-content: space-around;
+
+    .interact-item {
+      display: flex;
+      align-items: center;
+      gap: resize(10);
+
+      p{
+          font-size: resize(32);
+      }
+    }
+  }
+}

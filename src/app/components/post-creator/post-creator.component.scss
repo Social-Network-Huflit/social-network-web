@@ -1,7 +1,13 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
 .container {
   background: #fff;
-  padding: 12px;
+  padding: resize(20) resize(40);
   border-radius: 10px;
+  margin-bottom: resize(13);
+  // max-width: resize(780);
+
   .top {
     display: flex;
     justify-content: center;

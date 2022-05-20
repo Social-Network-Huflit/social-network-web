@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileComponent } from './pages/home/components/profile/profile.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,13 +14,14 @@ import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/f
 import { CommonButtonComponent } from './components/common-button/common-button.component';
 import { CodeInputModule } from 'angular-code-input';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FollowItemComponent } from './pages/profile/follow-item/follow-item.component';
+import { FollowItemComponent } from './pages/home/components/profile/follow-item/follow-item.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarLeftComponent } from './components/navbar-left/navbar-left.component';
 import { PostCreatorComponent } from './components/post-creator/post-creator.component';
 import { SuggestionListComponent } from './components/suggestion-list/suggestion-list.component';
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
+import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PostItemComponent } from './components/post-item/post-item.component';
     SuggestionListComponent,
     FriendsListComponent,
     PostItemComponent,
+    HomeFragmentComponent,
   ],
   imports: [
     BrowserModule,
