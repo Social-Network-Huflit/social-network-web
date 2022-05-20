@@ -11,7 +11,11 @@
       flex: 3;
       display: flex;
       .main {
+        margin: 0 auto;
+
         flex: 2;
+        display: flex;
+        justify-content: center;
       }
       .right {
         flex: 1;

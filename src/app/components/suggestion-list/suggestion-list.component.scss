@@ -1,0 +1,20 @@
+.suggest-list {
+  .item {
+    display: flex;
+    margin: 12px auto;
+    img {
+      max-height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .name-container {
+      .name {
+      }
+      .username {
+      }
+    }
+    button.follow {
+      padding: 5px 10px;
+    }
+  }
+}

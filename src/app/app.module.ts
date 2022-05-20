@@ -16,6 +16,9 @@ import { CodeInputModule } from 'angular-code-input';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarLeftComponent } from './components/navbar-left/navbar-left.component';
 import { PostCreatorComponent } from './components/post-creator/post-creator.component';
+import { SuggestionListComponent } from './components/suggestion-list/suggestion-list.component';
+import { FriendsListComponent } from './components/friends-list/friends-list.component';
+import { PostItemComponent } from './components/post-item/post-item.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { PostCreatorComponent } from './components/post-creator/post-creator.com
     HeaderComponent,
     NavbarLeftComponent,
     PostCreatorComponent,
+    SuggestionListComponent,
+    FriendsListComponent,
+    PostItemComponent,
   ],
   imports: [
     BrowserModule,
