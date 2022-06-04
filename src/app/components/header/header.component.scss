@@ -1,4 +1,5 @@
 @import "../../../styles.scss";
+@import "../../../assets/variables.scss";
 
 .header-container {
   height: resize(100);
@@ -33,17 +34,27 @@
       justify-content: center;
       align-items: center;
       .icon {
-        width: resize(70);
-        height: resize(70);
-        background: #fff;
+        width: resize(60);
+        height: resize(60);
+        background: white;
+        opacity: 0.3;
         margin-right: resize(25);
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 100%;
+        transition: all 0.3s;
         cursor: pointer;
-        mat-icon {
-          color: #9146ff;
+
+        embed {
+          background-color: transparent;
+          width: resize(30);
+          height: resize(30);
+          cursor: pointer;
+        }
+
+        &:hover {
+          opacity: 1;
         }
       }
     }

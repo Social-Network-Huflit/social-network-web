@@ -15,6 +15,10 @@ html {
     label {
       font-family: "Quicksand", sans-serif !important;
     }
+
+    object {
+      pointer-events: none;
+    }
   }
 }
 

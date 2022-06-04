@@ -4,8 +4,8 @@
 .container {
   background: #fff;
   padding: resize(20) resize(40);
-  border-radius: 10px;
-  margin-bottom: resize(13);
+  border-radius: resize(20);
+  margin-bottom: resize(30);
   // max-width: resize(780);
 
   .top {
@@ -31,6 +31,7 @@
       justify-content: center;
       align-items: center;
       margin: 7px auto;
+      margin-bottom: 0;
       padding: 10px;
       cursor: pointer;
 

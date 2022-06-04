@@ -22,6 +22,8 @@ import { SuggestionListComponent } from './components/suggestion-list/suggestion
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
+import { CommentComponent } from './components/post-item/comment/comment.component';
+import { LongPressDirective } from './directives/long-press.directive';
 
 @NgModule({
   declarations: [
@@ -41,14 +43,16 @@ import { HomeFragmentComponent } from './pages/home/components/home/home.compone
     FriendsListComponent,
     PostItemComponent,
     HomeFragmentComponent,
+    CommentComponent,
+    LongPressDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    CodeInputModule,
     MatTabsModule,
+    CodeInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
