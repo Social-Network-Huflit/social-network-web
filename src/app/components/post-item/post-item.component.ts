@@ -5,6 +5,8 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ShareDialogComponent } from '../dialogs/share-dialog/share-dialog.component';
 
 @Component({
   selector: 'app-post-item',
@@ -18,7 +20,7 @@ export class PostItemComponent implements OnInit {
   showComment: boolean = false;
   showShare: boolean = false;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, public dialog: MatDialog) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (e.target !== this.emotion.nativeElement) {
         this.showInteract = false;
@@ -38,5 +40,12 @@ export class PostItemComponent implements OnInit {
 
   toggleShowShare() {
     this.showShare = !this.showShare;
+  }
+
+  openDialog(): void {
+    this.dialog.open(ShareDialogComponent, {
+      width: '700px',
+      panelClass: 'dialog-container',
+    });
   }
 }

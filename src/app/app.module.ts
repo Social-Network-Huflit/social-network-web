@@ -24,6 +24,10 @@ import { PostItemComponent } from './components/post-item/post-item.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 import { CommentComponent } from './components/post-item/comment/comment.component';
 import { LongPressDirective } from './directives/long-press.directive';
+import { ShareDialogComponent } from './components/dialogs/share-dialog/share-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ChangePasswordComponent } from './components/dialogs/change-password/change-password.component';
+import { CollectionComponent } from './pages/collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,9 @@ import { LongPressDirective } from './directives/long-press.directive';
     HomeFragmentComponent,
     CommentComponent,
     LongPressDirective,
+    ShareDialogComponent,
+    ChangePasswordComponent,
+    CollectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,7 @@ import { LongPressDirective } from './directives/long-press.directive';
     MatIconModule,
     MatTabsModule,
     CodeInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

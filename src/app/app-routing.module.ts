@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/home/components/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
+import { CollectionComponent } from './pages/collection/collection.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeFragmentComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
+      {
+        path: 'collection',
+        pathMatch: 'full',
+        component: CollectionComponent,
+      },
     ],
   },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },

@@ -1,9 +1,6 @@
 @import "../../../assets/variables.scss";
 @import "../../../styles.scss";
 
-.color {
-  color: $primary-color;
-}
 .login {
   justify-content: space-between;
   height: 100vh;
@@ -19,6 +16,10 @@
     img {
       width: resize(1048);
       height: resize(734);
+    }
+
+    @include tablet {
+      display: none;
     }
   }
   .loginRight {
@@ -54,18 +55,30 @@
         color: $primary-color;
         text-align: center;
         font-size: resize(24);
+
+        @include mobile {
+          margin-bottom: resize(100);
+        }
       }
 
       label {
         color: #707070;
         font-size: resize(36);
         margin: 15px auto;
+
+        @include mobile {
+          font-size: resize(24);
+        }
       }
 
       .register {
         color: $primary-color;
         margin: 5px auto;
         font-size: resize(48);
+
+        @include mobile {
+          font-size: resize(36);
+        }
       }
     }
   }

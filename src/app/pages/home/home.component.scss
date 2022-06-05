@@ -2,23 +2,44 @@
 
 .home-container {
   .body {
-    padding-left: resize(350);
-    padding-right: resize(350);
+    padding: 0 resize(350);
     margin-top: resize(20);
     display: flex;
     gap: resize(20);
 
-    
-
     app-navbar-left {
       // min-width: resize(300);
-      flex: 1
+      flex: 1;
     }
+
     .content {
       flex: 2;
     }
+
     .right {
       flex: 1;
+    }
+
+    @include desktop-md {
+      padding: 0 resize(150);
+    }
+
+    @include desktop-sm {
+      padding: 0 resize(16);
+    }
+
+    @include tablet {
+      padding-left: resize(200);
+      padding-right: resize(200);
+
+      app-navbar-left,
+      .right {
+        display: none;
+      }
+    }
+
+    @include mobile {
+      padding: 0 resize(16);
     }
   }
 }
