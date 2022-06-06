@@ -8,14 +8,6 @@
     z-index: 1;
   }
   .body {
-    @media only screen and (min-width: 992px) {
-      padding-left: resize(150);
-      padding-right: resize(150);
-      margin-top: resize(20);
-      display: flex;
-      gap: resize(20);
-      position: relative;
-    }
     padding-left: resize(350);
     padding-right: resize(350);
     margin-top: resize(20);
@@ -46,7 +38,7 @@
     }
 
     @include desktop-md {
-      padding: 0 resize(150);
+      padding: 0 resize(100);
       padding-top: resize(150);
     }
 

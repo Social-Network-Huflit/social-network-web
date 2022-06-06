@@ -34,6 +34,7 @@ import { CollectionNavLeftComponent } from './pages/collection/collection-nav-le
 import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
+import { PostSharedComponent } from './components/post-item/post-shared/post-shared.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { PostCreatorDialogComponent } from './components/dialogs/post-creator-di
     CollectionBodyComponent,
     DrawerComponent,
     PostCreatorDialogComponent,
+    PostSharedComponent,
   ],
   imports: [
     BrowserModule,
