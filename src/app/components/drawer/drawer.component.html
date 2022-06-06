@@ -1,0 +1,48 @@
+<div class="header">
+    <img (click)="navigate('/home/profile')" src="https://pickaface.net/gallery/avatar/unr_random_180410_1905_z1exb.png"
+        alt="">
+    <a>
+        <object>
+            <embed src="../../../assets/icons/logout.svg" type="">
+        </object>
+    </a>
+</div>
+<div class="user-info">
+    <a (click)="navigate('/home/profile')">
+        <p class="name">Duy Anh</p>
+    </a>
+    <a (click)="navigate('/home/profile')">
+        <p class="username">@dobadov3</p>
+    </a>
+</div>
+<div class="follow-count">
+    <p class="follow"><strong>6</strong> người đang theo dõi</p>
+    <p class="follow"><strong>8</strong> người theo dõi</p>
+</div>
+<a class="drawer-item" routerLink="/collection" (click)="onHideDrawer()">
+    <div class="flex items-center">
+        <embed src="../.././../assets/icons/bookmark.svg" type="">
+        <p>Đã lưu</p>
+    </div>
+</a>
+<a class="drawer-item" (click)="openDialog()">
+    <div class="flex items-center">
+        <embed src="../.././../assets/icons/unlock.svg" type="">
+        <p>Đổi mật khẩu</p>
+    </div>
+</a>
+<a class="drawer-item" routerLink="/setting" (click)="onHideDrawer()">
+    <div class="flex items-center">
+        <embed src="../.././../assets/icons/setting.svg" type="">
+        <p>Cài đặt</p>
+    </div>
+</a>
+<a class="drawer-item theme">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center">
+            <embed src="../.././../assets/icons/night-mode.svg" type="">
+            <p>Chủ đề</p>
+        </div>
+        <mat-slide-toggle color="black"></mat-slide-toggle>
+    </div>
+</a>

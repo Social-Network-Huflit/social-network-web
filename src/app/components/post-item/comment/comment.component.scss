@@ -67,6 +67,11 @@
     animation-name: emotion-slide-comment;
     animation-duration: 0.5s;
 
+    @include mobile {
+      width: 100%;
+      left: 0;
+    }
+
     .emotion-item {
       a {
         cursor: pointer;
@@ -80,10 +85,10 @@
 }
 
 @keyframes emotion-slide-comment {
-    from {
-      bottom: resize(0);
-    }
-    to {
-      bottom: resize(40);
-    }
+  from {
+    bottom: resize(0);
   }
+  to {
+    bottom: resize(40);
+  }
+}

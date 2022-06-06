@@ -25,6 +25,15 @@ import { HomeFragmentComponent } from './pages/home/components/home/home.compone
 import { CommentComponent } from './components/post-item/comment/comment.component';
 import { LongPressDirective } from './directives/long-press.directive';
 import { FriendItemComponent } from './components/friends-list/friend-item/friend-item.component';
+import { ShareDialogComponent } from './components/dialogs/share-dialog/share-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ChangePasswordComponent } from './components/dialogs/change-password/change-password.component';
+import { CollectionComponent } from './pages/collection/collection.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CollectionNavLeftComponent } from './pages/collection/collection-nav-left/collection-nav-left.component';
+import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
+import { DrawerComponent } from './components/drawer/drawer.component';
+import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +56,13 @@ import { FriendItemComponent } from './components/friends-list/friend-item/frien
     CommentComponent,
     LongPressDirective,
     FriendItemComponent,
+    ShareDialogComponent,
+    ChangePasswordComponent,
+    CollectionComponent,
+    CollectionNavLeftComponent,
+    CollectionBodyComponent,
+    DrawerComponent,
+    PostCreatorDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +71,8 @@ import { FriendItemComponent } from './components/friends-list/friend-item/frien
     MatIconModule,
     MatTabsModule,
     CodeInputModule,
+    MatDialogModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -26,6 +26,10 @@
 
       .name {
         font-size: resize(32);
+
+        @include mobile {
+          font-size: resize(24);
+        }
       }
 
       .time {
@@ -48,6 +52,17 @@
       font-weight: 300;
       color: $gray-color;
       margin: 0;
+
+      @include mobile {
+        font-size: resize(20);
+      }
+    }
+
+    img {
+      width: 100%;
+      margin-top: resize(32);
+      margin-bottom: resize(32);
+      border-radius: resize(8);
     }
   }
 
@@ -69,6 +84,10 @@
 
         &:hover {
           text-decoration: underline;
+        }
+
+        @include mobile {
+          font-size: resize(20);
         }
       }
     }
@@ -105,11 +124,20 @@
       embed {
         width: resize(30);
         height: resize(30);
+
+        @include mobile {
+          width: resize(25);
+          height: resize(25);
+        }
       }
 
       p {
         font-size: resize(22);
         cursor: pointer;
+
+        @include mobile {
+          font-size: resize(18);
+        }
       }
 
       &:hover {
@@ -133,6 +161,16 @@
       animation-name: emotion-slide;
       animation-duration: 0.5s;
 
+      @include desktop-sm {
+        width: 70%;
+      }
+
+      @include mobile {
+        width: 100%;
+        bottom: resize(50);
+        left: 0;
+      }
+
       .emotion-item {
         a {
           cursor: pointer;
@@ -155,6 +193,10 @@
       padding: resize(16);
       box-shadow: 0.3px 0.3px 4px rgba($color: #000000, $alpha: 0.1);
 
+      @include mobile {
+        width: 58%;
+      }
+
       .share-item {
         display: flex;
         align-items: center;
@@ -172,6 +214,10 @@
         p {
           font-weight: 500;
           font-size: resize(24);
+
+          @include mobile {
+            font-size: resize(20);
+          }
         }
 
         &:hover {
@@ -213,12 +259,63 @@
           flex: 1;
         }
 
-        embed {
-          width: resize(30);
-          height: resize(30);
+        a {
+          cursor: pointer;
+
+          embed {
+            width: resize(30);
+            height: resize(30);
+          }
         }
       }
     }
+  }
+
+  .contextmenu-container {
+    position: absolute;
+    background-color: #fff;
+    top: resize(60);
+    right: resize(20);
+    border-radius: resize(10);
+    box-shadow: 1px 1px 4px rgba($color: #000000, $alpha: 0.1);
+    padding: resize(10);
+    display: flex;
+    flex-direction: column;
+    gap: resize(13);
+    animation-name: contextmenu;
+    animation-duration: 1s;
+
+    .contextmenu-item {
+      display: flex;
+      align-items: center;
+      gap: resize(10);
+      padding: resize(10);
+      transition: all 0.5s;
+      border-radius: resize(8);
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+      }
+
+      embed {
+        width: resize(30);
+        height: resize(30);
+      }
+
+      p {
+        font-size: resize(24);
+      }
+    }
+  }
+}
+
+@keyframes contextmenu {
+  from {
+    top: resize(90);
+  }
+  to {
+    top: resize(60);
   }
 }
 
@@ -227,6 +324,9 @@
     bottom: resize(0);
   }
   to {
+    @include mobile {
+      bottom: resize(50);
+    }
     bottom: resize(60);
   }
 }

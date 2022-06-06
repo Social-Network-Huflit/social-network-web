@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/home/components/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
+import { CollectionComponent } from './pages/collection/collection.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
     path: 'forgot-password',
     component: ForgotPasswordComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'collection',
+    pathMatch: 'full',
+    component: CollectionComponent,
   },
 ];
 

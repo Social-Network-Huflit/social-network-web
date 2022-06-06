@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  showNotification: boolean = false;
+  showMenu: boolean = false;
+
+  @Input('classes') classes: string[] = [];
+
+  constructor(private appService: AppService) {}
 
   ngOnInit(): void {}
+
+  onToggleNotification() {
+    this.showMenu = false;
+    this.showNotification = !this.showNotification;
+  }
+
+  onToggleMenu() {
+    this.showNotification = false;
+    this.showMenu = !this.showMenu;
+  }
+
+  onToggleDrawer(value: boolean){
+    this.appService.toggleDrawer(value);
+  }
 }

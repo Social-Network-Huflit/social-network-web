@@ -9,14 +9,14 @@
                 <p class="time">1 giờ trước</p>
             </div>
         </div>
-        <mat-icon>more_horiz</mat-icon>
+        <mat-icon (click)="toggleShowContextmenu()">more_horiz</mat-icon>
     </div>
     <!-- Body -->
     <div class="body">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's
-            standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the</p>
+            industry's</p>
+        <img src="https://maserati.scene7.com/is/image/maserati/maserati/regional/us/hero-website-new-upload/221340M_1920x1080.jpg?$1920x2000$&fit=constrain"
+            alt="">
     </div>
     <!-- Interact count -->
     <div class="interact-count">
@@ -28,7 +28,7 @@
             <div class="count-item" (click)="toggleShowComment()">
                 <p>124 bình luận</p>
             </div>
-            <div class="count-item">
+            <div class="count-item" (click)="openDialog()">
                 <p>124 chia sẻ</p>
             </div>
         </div>
@@ -99,9 +99,11 @@
                 alt="">
             <div class="input-container">
                 <input type="text" placeholder="Viết bình luận">
-                <object>
-                    <embed src="../../../assets/icons/send.svg" type="">
-                </object>
+                <a>
+                    <object>
+                        <embed src="../../../assets/icons/send.svg" type="">
+                    </object>
+                </a>
             </div>
         </div>
         <hr>
@@ -111,6 +113,17 @@
         <app-comment></app-comment>
         <app-comment></app-comment>
 
-        
+
+    </div>
+    <!-- Contextmenu -->
+    <div class="contextmenu-container" *ngIf="showContextMenu">
+        <div class="contextmenu-item">
+            <embed src="../../../assets/icons/bookmark.svg" type="">
+            <p>Lưu bài viết</p>
+        </div>
+        <div class="contextmenu-item">
+            <embed src="../../../assets/icons/trash.svg" type="">
+            <p>Xóa bài viết</p>
+        </div>
     </div>
 </div>
