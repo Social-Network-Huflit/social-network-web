@@ -1,23 +1,45 @@
 @import "../../../styles.scss";
 
 .home-container {
+  position: relative;
+  app-header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+  }
   .body {
+    @media only screen and (min-width: 992px) {
+      padding-left: resize(150);
+      padding-right: resize(150);
+      margin-top: resize(20);
+      display: flex;
+      gap: resize(20);
+      position: relative;
+    }
     padding-left: resize(350);
     padding-right: resize(350);
     margin-top: resize(20);
     display: flex;
     gap: resize(20);
-
-    
+    position: relative;
 
     app-navbar-left {
       // min-width: resize(300);
-      flex: 1
+      height: 100vh;
+
+      flex: 1;
+      position: sticky;
+      top: 90px;
+      z-index: 2;
     }
     .content {
       flex: 2;
     }
     .right {
+      position: sticky;
+      top: 90px;
+      height: 100vh;
+
       flex: 1;
     }
   }

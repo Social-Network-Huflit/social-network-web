@@ -1,0 +1,57 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+.item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-self: center;
+  background-color: rgba($color: #000000, $alpha: 0.05);
+  padding: resize(5) resize(10);
+  border-radius: resize(8);
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: resize(10);
+
+    img {
+      width: resize(40);
+      height: resize(40);
+      border-radius: 100%;
+    }
+
+    .name-container {
+      .name {
+        font-size: resize(24);
+        color: black;
+      }
+      .username {
+        font-size: resize(16);
+        color: $gray-color;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: resize(10);
+
+    p {
+      margin: 0;
+    }
+
+    .symbol-online {
+      width: resize(10);
+      height: resize(10);
+      border-radius: 100%;
+      background-color: $green;
+    }
+    .symbol-offline {
+      width: resize(10);
+      height: resize(10);
+      border-radius: 100%;
+      background-color: $gray-color;
+    }
+  }
+}

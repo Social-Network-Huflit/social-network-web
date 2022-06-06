@@ -24,6 +24,7 @@ import { PostItemComponent } from './components/post-item/post-item.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 import { CommentComponent } from './components/post-item/comment/comment.component';
 import { LongPressDirective } from './directives/long-press.directive';
+import { FriendItemComponent } from './components/friends-list/friend-item/friend-item.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { LongPressDirective } from './directives/long-press.directive';
     HomeFragmentComponent,
     CommentComponent,
     LongPressDirective,
+    FriendItemComponent,
   ],
   imports: [
     BrowserModule,
