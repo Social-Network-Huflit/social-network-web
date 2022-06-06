@@ -1,0 +1,104 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    width: resize(60);
+    height: resize(60);
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  a {
+    padding: resize(8);
+    border-radius: resize(8);
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.1);
+    }
+
+    cursor: pointer;
+    embed {
+      width: resize(30);
+    }
+  }
+}
+
+.user-info {
+  margin-top: resize(10);
+
+  p.name {
+    font-size: resize(24);
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p.username {
+    font-size: resize(16);
+    color: $gray-color;
+    cursor: pointer;
+  }
+}
+
+.follow-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: resize(16);
+  color: $gray-color;
+  margin-bottom: resize(32);
+
+  .follow {
+    cursor: pointer;
+    strong {
+      color: black;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+a.drawer-item {
+  .flex {
+    gap: resize(10);
+    background-color: rgba($color: $secondary-color, $alpha: 0.5);
+    padding: resize(10) resize(16);
+    border-radius: resize(8);
+    margin-bottom: resize(20);
+    transition: all 0.5s;
+    cursor: pointer;
+
+    embed {
+      width: resize(30);
+      height: resize(30);
+    }
+  }
+
+  &:hover {
+    .flex {
+      background-color: rgba($color: $secondary-color, $alpha: 1);
+    }
+  }
+}
+
+.drawer-item.theme {
+  .flex {
+    .flex {
+      background-color: transparent;
+      margin-bottom: 0;
+      justify-content: flex-start;
+      padding: 0;
+    }
+  }
+}

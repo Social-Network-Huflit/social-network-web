@@ -20,11 +20,6 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeFragmentComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
-      {
-        path: 'collection',
-        pathMatch: 'full',
-        component: CollectionComponent,
-      },
     ],
   },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -33,6 +28,11 @@ const routes: Routes = [
     path: 'forgot-password',
     component: ForgotPasswordComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'collection',
+    pathMatch: 'full',
+    component: CollectionComponent,
   },
 ];
 

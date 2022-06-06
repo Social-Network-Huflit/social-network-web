@@ -19,6 +19,7 @@ export class PostItemComponent implements OnInit {
   showInteract: boolean = false;
   showComment: boolean = false;
   showShare: boolean = false;
+  showContextMenu: boolean = false;
 
   constructor(private renderer: Renderer2, public dialog: MatDialog) {
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -40,6 +41,10 @@ export class PostItemComponent implements OnInit {
 
   toggleShowShare() {
     this.showShare = !this.showShare;
+  }
+
+  toggleShowContextmenu() {
+    this.showContextMenu = !this.showContextMenu;
   }
 
   openDialog(): void {

@@ -28,6 +28,11 @@ import { ShareDialogComponent } from './components/dialogs/share-dialog/share-di
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChangePasswordComponent } from './components/dialogs/change-password/change-password.component';
 import { CollectionComponent } from './pages/collection/collection.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CollectionNavLeftComponent } from './pages/collection/collection-nav-left/collection-nav-left.component';
+import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
+import { DrawerComponent } from './components/drawer/drawer.component';
+import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +57,10 @@ import { CollectionComponent } from './pages/collection/collection.component';
     ShareDialogComponent,
     ChangePasswordComponent,
     CollectionComponent,
+    CollectionNavLeftComponent,
+    CollectionBodyComponent,
+    DrawerComponent,
+    PostCreatorDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,8 @@ import { CollectionComponent } from './pages/collection/collection.component';
     MatIconModule,
     MatTabsModule,
     CodeInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

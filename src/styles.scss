@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import "./assets/variables.scss";
 
 html {
   body {
@@ -19,6 +20,10 @@ html {
 
     object {
       pointer-events: none;
+    }
+
+    embed {
+      cursor: pointer !important;
     }
   }
 }
@@ -69,9 +74,21 @@ code-input {
   --item-border-radius: 0px !important;
 }
 
+.mat-slide-toggle .mat-slide-toggle-bar {
+  background-color: $gray-color;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba($color: $gray-color, $alpha: 0.5);
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $primary-color;
+}
+
 mat-dialog-container {
   border-radius: resize(20) !important;
-  max-height: resize(500) !important;
+  min-height: resize(500) !important;
 
   &::-webkit-scrollbar {
     display: none !important;

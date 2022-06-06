@@ -57,6 +57,13 @@
         font-size: resize(20);
       }
     }
+
+    img {
+      width: 100%;
+      margin-top: resize(32);
+      margin-bottom: resize(32);
+      border-radius: resize(8);
+    }
   }
 
   .interact-count {
@@ -153,6 +160,10 @@
       padding: 0 resize(16);
       animation-name: emotion-slide;
       animation-duration: 0.5s;
+
+      @include desktop-sm {
+        width: 70%;
+      }
 
       @include mobile {
         width: 100%;
@@ -258,6 +269,53 @@
         }
       }
     }
+  }
+
+  .contextmenu-container {
+    position: absolute;
+    background-color: #fff;
+    top: resize(60);
+    right: resize(20);
+    border-radius: resize(10);
+    box-shadow: 1px 1px 4px rgba($color: #000000, $alpha: 0.1);
+    padding: resize(10);
+    display: flex;
+    flex-direction: column;
+    gap: resize(13);
+    animation-name: contextmenu;
+    animation-duration: 1s;
+
+    .contextmenu-item {
+      display: flex;
+      align-items: center;
+      gap: resize(10);
+      padding: resize(10);
+      transition: all 0.5s;
+      border-radius: resize(8);
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+      }
+
+      embed {
+        width: resize(30);
+        height: resize(30);
+      }
+
+      p {
+        font-size: resize(24);
+      }
+    }
+  }
+}
+
+@keyframes contextmenu {
+  from {
+    top: resize(90);
+  }
+  to {
+    top: resize(60);
   }
 }
 

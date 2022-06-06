@@ -1,3 +1,7 @@
 <div class="app">
   <router-outlet></router-outlet>
+  <div [ngClass]="{'layer': true, 'active': showDrawer}" (click)="toggleDrawer(false)"></div>
+  <div [ngClass]="{'drawer': true, 'active': showDrawer, 'unactive': !showDrawer}">
+    <app-drawer></app-drawer>
+  </div>
 </div>

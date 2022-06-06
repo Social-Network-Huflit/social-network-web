@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionService } from './collection.service';
+import { CollectionService } from '../collection.service';
 
 @Component({
-  selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.scss']
+  selector: 'app-collection-nav-left',
+  templateUrl: './collection-nav-left.component.html',
+  styleUrls: ['./collection-nav-left.component.scss']
 })
-export class CollectionComponent implements OnInit {
+export class CollectionNavLeftComponent implements OnInit {
   showNavLeft: boolean;
 
   constructor(private service: CollectionService) { }
@@ -20,4 +20,5 @@ export class CollectionComponent implements OnInit {
   toggleNavLeft(value: boolean){
     this.service.onToggleNavLeft(value);
   }
+
 }
