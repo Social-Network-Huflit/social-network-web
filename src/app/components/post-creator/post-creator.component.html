@@ -1,7 +1,11 @@
 <div class="container">
   <div class="top">
     <img src="https://via.placeholder.com/150" alt="" class="avatar" />
-    <input-field class="content" placeholder="Bạn đang nghĩ gì?" (click)="openDialog()"></input-field>
+    <form [formGroup]="formGroup" style="width: 100%;">
+      <input-field [formGroup]="formGroup" name="content" class="content" placeholder="Bạn đang nghĩ gì?"
+        (click)="openDialog()">
+      </input-field>
+    </form>
   </div>
   <div class="bottom">
     <div class="item">
