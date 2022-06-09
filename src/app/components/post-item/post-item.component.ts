@@ -35,8 +35,10 @@ export class PostItemComponent implements OnInit {
 
   constructor(private renderer: Renderer2, public dialog: MatDialog) {
     this.renderer.listen('window', 'click', (e: Event) => {
-      if (e.target !== this.emotion.nativeElement) {
-        this.showInteract = false;
+      if (this.emotion) {
+        if (e.target !== this.emotion.nativeElement) {
+          this.showInteract = false;
+        }
       }
     });
   }

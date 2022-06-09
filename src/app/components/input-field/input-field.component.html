@@ -1,5 +1,5 @@
-<div class="input-container">
+<div class="input-container" [formGroup]="formGroup">
     <mat-icon aria-hidden="false" aria-label="Example home icon">{{icon}}</mat-icon>
-    <input [ngClass]="{'outline-primary-color': true, 'has-icon': icon !== undefined}" type="text"
+    <input formControlName="{{name}}" [ngClass]="{'outline-primary-color': true, 'has-icon': icon !== undefined}" type="text"
         placeholder="{{placeholder}}" name="{{name}}">
 </div>

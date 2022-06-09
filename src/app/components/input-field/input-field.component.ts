@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'input-field',
@@ -27,9 +28,14 @@ export class InputFieldComponent implements OnInit {
   @Input()
   public icon?: string;
 
+  @Input()
+  public formGroup: FormGroup;
+
+
   constructor() {
     console.log({ icon: this.icon });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

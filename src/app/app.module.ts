@@ -35,6 +35,7 @@ import { CollectionBodyComponent } from './pages/collection/collection-body/coll
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
 import { PostSharedComponent } from './components/post-item/post-shared/post-shared.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { PostSharedComponent } from './components/post-item/post-shared/post-sha
     CodeInputModule,
     MatDialogModule,
     MatSlideToggleModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -27,9 +27,11 @@
     display: block;
   }
 
-  .drawer{
+  .drawer {
     opacity: 0;
     visibility: hidden;
+    position: fixed;
+    top: 0;
   }
 
   @include tablet {
@@ -39,8 +41,7 @@
       background-color: #fff;
       min-width: resize(400);
       min-height: 100vh;
-      position: fixed;
-      top: 0;
+
       z-index: 909989;
       border-top-left-radius: resize(32);
       border-bottom-left-radius: resize(32);
@@ -49,34 +50,34 @@
       padding-top: resize(64);
     }
 
-    .drawer.active{
+    .drawer.active {
       right: 0;
       animation-name: slide_drawer;
       animation-duration: 0.5s;
     }
 
-    .drawer.unactive{
-      right: - resize(500);
+    .drawer.unactive {
+      right: resize(-500);
       animation-name: slide_drawer_close;
       animation-duration: 0.5s;
     }
   }
 }
 
-@keyframes slide_drawer{
-  from{
-    right: - resize(500);
+@keyframes slide_drawer {
+  from {
+    right: resize(-500);
   }
-  to{
+  to {
     right: 0;
   }
 }
 
-@keyframes slide_drawer_close{
-  from{
+@keyframes slide_drawer_close {
+  from {
     right: 0;
   }
-  to{
-    right: - resize(500);
+  to {
+    right: resize(-500);
   }
 }
