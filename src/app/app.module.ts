@@ -24,6 +24,7 @@ import { PostItemComponent } from './components/post-item/post-item.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 import { CommentComponent } from './components/post-item/comment/comment.component';
 import { LongPressDirective } from './directives/long-press.directive';
+import { FriendItemComponent } from './components/friends-list/friend-item/friend-item.component';
 import { ShareDialogComponent } from './components/dialogs/share-dialog/share-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChangePasswordComponent } from './components/dialogs/change-password/change-password.component';
@@ -33,6 +34,7 @@ import { CollectionNavLeftComponent } from './pages/collection/collection-nav-le
 import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
+import { PostSharedComponent } from './components/post-item/post-shared/post-shared.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { PostCreatorDialogComponent } from './components/dialogs/post-creator-di
     HomeFragmentComponent,
     CommentComponent,
     LongPressDirective,
+    FriendItemComponent,
     ShareDialogComponent,
     ChangePasswordComponent,
     CollectionComponent,
@@ -61,6 +64,7 @@ import { PostCreatorDialogComponent } from './components/dialogs/post-creator-di
     CollectionBodyComponent,
     DrawerComponent,
     PostCreatorDialogComponent,
+    PostSharedComponent,
   ],
   imports: [
     BrowserModule,

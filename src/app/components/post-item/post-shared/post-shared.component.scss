@@ -1,5 +1,5 @@
-@import "../../../styles.scss";
-@import "../../../assets/variables.scss";
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
 
 .post-item-container {
   width: 100%;
@@ -46,57 +46,53 @@
 
   .body {
     padding: resize(25) 0;
+    .content-sharing {
+    }
+    .content-post-shared {
+      width: 95%;
+      padding: resize(10) resize(30) resize(20) resize(30);
+      margin: 0 auto resize(10) auto;
+      border: 1px rgb(207, 207, 207) solid;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top: none;
+      .user-name {
+        padding: 0;
+        font-weight: 500;
+        font-size: resize(22);
+        box-sizing: border-box;
+        color: #000000;
+      }
 
+      .time-post {
+        font-size: resize(16);
+        margin-bottom: resize(14);
+      }
+      .text-content {
+        font-size: resize(20);
+        color: #000000;
+      }
+      a.user-name:hover,
+      .time-post:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
     p {
       font-size: resize(24);
       font-weight: 300;
       color: $gray-color;
       margin: 0;
-      a {
-        cursor: pointer;
-        text-decoration: underline;
-      }
 
       @include mobile {
         font-size: resize(20);
       }
     }
-    .img-container {
-      position: relative;
-      text-align: center;
-      img {
-        width: 100%;
-        margin-top: resize(32);
-        margin-bottom: resize(32);
-        border-radius: resize(8);
-      }
-      button {
-        display: flex;
-        padding: resize(16);
-        background-color: rgb(217, 217, 217);
-        opacity: 0.3;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: #7c7c7c;
-      }
-      button:hover {
-        opacity: 0.8;
-        padding: resize(18);
-      }
-      mat-icon {
-        font-weight: 600;
-      }
-      .left {
-        position: absolute;
-        left: resize(16);
-        top: 40%;
-      }
-      .right {
-        position: absolute;
-        right: resize(16);
-        top: 40%;
-      }
+
+    img {
+      width: 100%;
+      margin-top: resize(32);
+      border-radius: resize(8);
     }
   }
 

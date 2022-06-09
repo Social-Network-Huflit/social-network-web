@@ -20,6 +20,18 @@ export class PostItemComponent implements OnInit {
   showComment: boolean = false;
   showShare: boolean = false;
   showContextMenu: boolean = false;
+  content: string =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been thes industry's. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.";
+  cutContent: string = '';
+  readMore: string = 'Xem thêm';
+  listImg: string[] = [
+    'https://maserati.scene7.com/is/image/maserati/maserati/regional/us/hero-website-new-upload/221340M_1920x1080.jpg?$1920x2000$&fit=constrain',
+    'https://autopro8.mediacdn.vn/2021/11/11/2022-ferrari-br20-1-16366321688531761127338.jpg',
+    'https://cafefcdn.com/thumb_w/650/203337114487263232/2022/3/22/photo1647918565447-1647918565543359042692.jpg',
+    'https://cms-i.autodaily.vn/du-lieu/2022/01/24/adt-7446-copy.jpg',
+    'https://www.harley-davidson.com/content/dam/h-d/images/product-images/bikes/motorcycle/2022/2022-iron-883/2022-iron-883-016/2022-iron-883-016-motorcycle.jpg',
+  ];
+  indexImg: any = 0;
 
   constructor(private renderer: Renderer2, public dialog: MatDialog) {
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -29,7 +41,11 @@ export class PostItemComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.content.length >= 100) {
+      this.cutContent = this.content.slice(0, 100);
+    }
+  }
 
   onShowInteract() {
     this.showInteract = true;
@@ -45,6 +61,21 @@ export class PostItemComponent implements OnInit {
 
   toggleShowContextmenu() {
     this.showContextMenu = !this.showContextMenu;
+  }
+
+  showFullContent() {
+    this.cutContent = this.content;
+    this.readMore = '';
+  }
+  nextImg() {
+    if (this.indexImg < this.listImg.length) {
+      this.indexImg++;
+    }
+  }
+  prevImg() {
+    if (this.indexImg >= 1) {
+      this.indexImg--;
+    }
   }
 
   openDialog(): void {

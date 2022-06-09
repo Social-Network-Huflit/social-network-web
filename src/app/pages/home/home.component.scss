@@ -1,15 +1,28 @@
 @import "../../../styles.scss";
 
 .home-container {
+  position: relative;
+  app-header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+  }
   .body {
-    padding: 0 resize(350);
-    padding-top: resize(150);
+    padding-left: resize(350);
+    padding-right: resize(350);
+    margin-top: resize(20);
     display: flex;
     gap: resize(20);
+    position: relative;
 
     app-navbar-left {
       // min-width: resize(300);
+      height: 100vh;
+
       flex: 1;
+      position: sticky;
+      top: 90px;
+      z-index: 2;
     }
 
     .content {
@@ -17,11 +30,15 @@
     }
 
     .right {
+      position: sticky;
+      top: 90px;
+      height: 100vh;
+
       flex: 1;
     }
 
     @include desktop-md {
-      padding: 0 resize(150);
+      padding: 0 resize(100);
       padding-top: resize(150);
     }
 

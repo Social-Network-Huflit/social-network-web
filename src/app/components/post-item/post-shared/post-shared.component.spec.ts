@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FriendsListComponent } from './friends-list.component';
+import { PostSharedComponent } from './post-shared.component';
 
-describe('FriendsListComponent', () => {
-  let component: FriendsListComponent;
-  let fixture: ComponentFixture<FriendsListComponent>;
+describe('PostSharedComponent', () => {
+  let component: PostSharedComponent;
+  let fixture: ComponentFixture<PostSharedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FriendsListComponent ]
+      declarations: [ PostSharedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FriendsListComponent);
+    fixture = TestBed.createComponent(PostSharedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -15,23 +15,17 @@
   </div>
   <!-- Body -->
   <div class="body">
-    <p *ngIf="content.length >= 100 && cutContent.length >= 100">
-      {{ cutContent }}... <a (click)="showFullContent()">{{ readMore }}</a>
-    </p>
-    <p *ngIf="content.length < 100 || cutContent.length < 100">{{ content }}</p>
-
-    <div class="img-container">
-      <img src="{{ listImg[indexImg] }}" alt="" />
-      <button class="left" *ngIf="indexImg > 0" (click)="prevImg()">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
-      <button
-        class="right"
-        *ngIf="indexImg < listImg.length - 1"
-        (click)="nextImg()"
-      >
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
+    <div class="content-sharing">
+      <p>Hum hiểu thì thui</p>
+      <img
+        src="https://maserati.scene7.com/is/image/maserati/maserati/regional/us/hero-website-new-upload/221340M_1920x1080.jpg?$1920x2000$&fit=constrain"
+        alt=""
+      />
+    </div>
+    <div class="content-post-shared">
+      <a href="#" class="user-name">Mai Hữu Tín</a>
+      <p class="time-post">10 tháng 4 10:04</p>
+      <p class="text-content">Hum hiểu gì hết hic</p>
     </div>
   </div>
   <!-- Interact count -->
