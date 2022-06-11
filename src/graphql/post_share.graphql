@@ -1,0 +1,29 @@
+mutation SharePost($createPostInput: CreatePostShareInput!){
+  createPostShare(createPostInput: $createPostInput){
+    ...mutationResponse
+    post{
+      ...postShareInfo
+    }
+  }
+}
+
+query GetPostShare($post_share_id: ID!){
+  getPostShare(post_id: $post_share_id){
+    ...postShareInfo
+  }
+}
+
+mutation LikePostShare($post_share_id: ID!, $like_type: String!){
+  likePostShare(post_share_id: $post_share_id, like_type: $like_type){
+    ...mutationResponse
+  }
+}
+
+mutation CommentPostShare($createCommentInput: CreateCommentPostShareInput!){
+  commentPostShare(createCommentInput: $createCommentInput){
+    ...mutationResponse
+    comment{
+      ...commentPostShare
+    }
+  }
+}

@@ -1,0 +1,41 @@
+query GetPosts {
+  getPosts {
+    ... on Post {
+      id
+    }
+
+    ... on PostShare {
+      id
+    }
+  }
+}
+
+query GetPost($post_id: ID!) {
+  getPost(post_id: $post_id) {
+    ...postInfo
+  }
+}
+
+mutation CommentPost($createCommentInput: CreateCommentPostInput!) {
+  createCommentPost(createCommentInput: $createCommentInput) {
+    ...mutationResponse
+    comment {
+      ...commentPost
+    }
+  }
+}
+
+mutation LikePost($post_id: ID!, $like_type: String!) {
+  likePost(post_id: $post_id, like_type: $like_type) {
+    ...mutationResponse
+  }
+}
+
+mutation CreatePost($createPostInput: CreatePostInput!){
+  createPost(createPostInput: $createPostInput){
+    ...mutationResponse
+    post{
+      ...postInfo
+    }
+  }
+}

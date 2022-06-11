@@ -1,5 +1,5 @@
-@import "../../../../styles.scss";
-@import "../../../../assets/variables.scss";
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
 
 .post-item-container {
   width: 100%;
@@ -46,8 +46,6 @@
 
   .body {
     padding: resize(25) 0;
-    .content-sharing {
-    }
     .content-post-shared {
       width: 95%;
       padding: resize(10) resize(30) resize(20) resize(30);
@@ -77,6 +75,10 @@
         text-decoration: underline;
         cursor: pointer;
       }
+    }
+    .content-post-shared.text {
+      border-top: 1px rgb(207, 207, 207) solid !important;
+      border-radius: 8px;
     }
     p {
       font-size: resize(24);
@@ -152,6 +154,16 @@
       border-radius: resize(8);
 
       embed {
+        width: resize(30);
+        height: resize(30);
+
+        @include mobile {
+          width: resize(25);
+          height: resize(25);
+        }
+      }
+
+      img {
         width: resize(30);
         height: resize(30);
 
@@ -281,12 +293,21 @@
         gap: resize(20);
         flex: 1;
 
-        input {
-          background-color: $secondary-color;
-          padding: resize(10) resize(25);
-          border-radius: resize(30);
-          outline: none;
-          flex: 1;
+        form {
+          input {
+            background-color: $secondary-color;
+            padding: resize(10) resize(25);
+            border-radius: resize(30);
+            outline: none;
+            flex: 1;
+          }
+
+          button {
+            img {
+              width: resize(50);
+              height: resize(30);
+            }
+          }
         }
 
         a {

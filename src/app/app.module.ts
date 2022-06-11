@@ -34,8 +34,15 @@ import { CollectionNavLeftComponent } from './pages/collection/collection-nav-le
 import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
-import { PostSharedComponent } from './components/post-item/post-shared/post-shared.component';
+import { PostSharedComponent } from './components/post-shared/post-shared.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ListPostCommentComponent } from './components/post-item/list-post-comment/list-post-comment.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PostBodyComponent } from './components/post-item/post-body/post-body.component';
+import { PostSkeletonComponent } from './components/skeletons/post-skeleton/post-skeleton.component';
+import { TestComponent } from './pages/test/test.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +73,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     DrawerComponent,
     PostCreatorDialogComponent,
     PostSharedComponent,
+    ListPostCommentComponent,
+    PostBodyComponent,
+    PostSkeletonComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +87,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CodeInputModule,
     MatDialogModule,
     MatSlideToggleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GraphQLModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

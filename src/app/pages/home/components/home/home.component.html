@@ -1,12 +1,7 @@
 <app-post-creator></app-post-creator>
 <div class="list-post">
-  <app-post-item></app-post-item>
-  <app-post-shared></app-post-shared>
-  <app-post-shared></app-post-shared>
-
-  <app-post-item></app-post-item>
-  <app-post-item></app-post-item>
-  <app-post-item></app-post-item>
-  <app-post-item></app-post-item>
-  <app-post-item></app-post-item>
+  <ng-container *ngFor="let item of listPost, let i = index">
+    <app-post-item *ngIf="item.__typename === 'Post'" [post_id]="item.id"></app-post-item>
+    <app-post-shared *ngIf="item.__typename === 'PostShare'" [post_share_id]="item.id"></app-post-shared>
+  </ng-container>
 </div>

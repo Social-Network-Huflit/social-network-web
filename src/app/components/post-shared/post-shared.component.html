@@ -1,0 +1,125 @@
+<app-post-skeleton *ngIf="loading"></app-post-skeleton>
+
+<div class="post-item-container" *ngIf="!loading">
+  <!-- Header -->
+  <div class="header">
+    <div class="left">
+      <img [src]="postShare.owner.avatar" alt="" />
+      <div>
+        <p class="name">{{postShare.owner.name}}</p>
+        <p class="time">{{postShare.timestamp}}</p>
+      </div>
+    </div>
+    <mat-icon (click)="toggleShowContextmenu()">more_horiz</mat-icon>
+  </div>
+  <!-- Body -->
+  <div class="body">
+    <div [ngClass]="{'content-sharing': true, 'mb-5': postShare.caption !== ''}">
+      <p>{{postShare.caption}}</p>
+      <img *ngIf="postShare.post.content_type === 'images'"
+        src="https://maserati.scene7.com/is/image/maserati/maserati/regional/us/hero-website-new-upload/221340M_1920x1080.jpg?$1920x2000$&fit=constrain"
+        alt="" />
+    </div>
+    <div [ngClass]="{
+      'content-post-shared': true,
+      'text': postShare.post.content_type === 'text'
+    }">
+      <a href="#" class="user-name">{{postShare.post.owner.name}}</a>
+      <p class="time-post">{{postShare.post.timestamp}}</p>
+      <p class="text-content">{{postShare.post.caption}}</p>
+    </div>
+  </div>
+  <!-- Interact count -->
+  <div class="interact-count">
+    <div class="count-item">
+      <mat-icon>favorite</mat-icon>
+      <p>{{postShare.like_count}}</p>
+    </div>
+    <div class="right">
+      <div class="count-item" (click)="toggleShowComment()">
+        <p>{{postShare.comment_count}} bình luận</p>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <!-- Interact controller -->
+  <div class="interact-container">
+    <div (click)="onLikePost('like')" class="interact-item" appLongPress (longPress)="onShowInteract()">
+      <img src="../../../assets/icons/{{iconAndLabel.icon}}" />
+      <p>Thích</p>
+    </div>
+    <div class="interact-item" (click)="toggleShowComment()">
+      <embed src="../../../assets/icons/003-bubble-chat.svg" type="" />
+      <p>Bình luận</p>
+    </div>
+
+    <!-- Emotion -->
+    <div *ngIf="showInteract" class="emotion-container" #emotion>
+      <div (click)="onLikePost('like')" class="emotion-item">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/heart-circle.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div (click)="onLikePost('haha')" class="emotion-item">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/haha-logo.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div (click)="onLikePost('wow')" class="emotion-item">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/wow-logo.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div (click)="onLikePost('sad')" class="emotion-item">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/sad-icon.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div (click)="onLikePost('angry')" class="emotion-item">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/angry-logo.svg" type="" />
+          </object>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+  <hr *ngIf="showComment" />
+  <!-- Comments -->
+  <div class="comment-container" *ngIf="showComment">
+    <div class="comment-controller">
+      <img [src]="postShare.owner.avatar" alt="" />
+      <div class="input-container">
+        <form (ngSubmit)="onComment()" class="flex items-center w-full" [formGroup]="formGroup">
+          <input formControlName="content" style="flex: 1;" type="text" placeholder="Viết bình luận" />
+          <button type="submit">
+            <img src="../../../assets/icons/send.svg" type="" />
+          </button>
+        </form>
+      </div>
+    </div>
+    <hr />
+    <app-comment *ngFor="let comment of postShare.comments" [comment]="comment"></app-comment>
+  </div>
+  <!-- Contextmenu -->
+  <div class="contextmenu-container" *ngIf="showContextMenu">
+    <div class="contextmenu-item">
+      <embed src="../../../assets/icons/bookmark.svg" type="" />
+      <p>Lưu bài viết</p>
+    </div>
+    <div class="contextmenu-item">
+      <embed src="../../../assets/icons/trash.svg" type="" />
+      <p>Xóa bài viết</p>
+    </div>
+  </div>
+</div>

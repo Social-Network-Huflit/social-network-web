@@ -1,15 +1,15 @@
 <div class="follow-item-container">
     <div class="left">
-        <img src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
+        <img [src]="user.avatar"
             alt="">
         <div class="info">
-            <p class="name">Duy Anh</p>
-            <p class="sub">@dobadov3</p>
+            <p class="name">{{user.name}}</p>
+            <p class="sub">{{user.username}}</p>
         </div>
     </div>
-    <div class="right {{followed && 'followed'}}">
+    <div *ngIf="myUser.id !== user.id" class="right {{user.isFollowed && 'followed'}}">
         <p>
-            {{followed ? "Đang theo dõi" : "Theo dõi"}}
+            {{user.isFollowed? "Đang theo dõi" : "Theo dõi"}}
         </p>
     </div>
 </div>

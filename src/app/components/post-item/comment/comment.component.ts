@@ -4,7 +4,9 @@ import {
   ViewChild,
   ElementRef,
   Renderer2,
+  Input,
 } from '@angular/core';
+import { PostComment, PostShareComment } from 'src/graphql/graphql';
 
 @Component({
   selector: 'app-comment',
@@ -14,6 +16,7 @@ import {
 export class CommentComponent implements OnInit {
   showInteract: boolean = false;
   @ViewChild('emotion') emotion: ElementRef;
+  @Input() comment: PostComment | PostShareComment;
 
   constructor(private renderer: Renderer2) {
     this.renderer.listen('window', 'click', (e: Event) => {

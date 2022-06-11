@@ -1,0 +1,97 @@
+fragment mutationResponse on IMutationResponse {
+  code
+  success
+  message
+  errors {
+    field
+    message
+  }
+}
+
+fragment userInfo on User {
+  id
+  name
+  username
+  email
+  phoneNumber
+  avatar
+}
+
+fragment userFollow on User {
+  id
+  name
+  username
+  avatar
+  isFollowed
+}
+
+fragment commentPost on PostComment {
+  id
+  liked
+  like_type
+  content
+  timestamp
+  owner {
+    ...userFollow
+  }
+}
+
+fragment commentPostShare on PostShareComment {
+  id
+  liked
+  like_type
+  content
+  timestamp
+  owner {
+    ...userFollow
+  }
+}
+
+fragment postInfo on Post {
+  id
+  caption
+  content_type
+  post_type
+  liked
+  like_type
+  like_count
+  comment_count
+  share_count
+  image_link
+  video_link
+  youtube_link
+  timestamp
+  post_type
+  owner {
+    ...userInfo
+  }
+  comments {
+    ...commentPost
+  }
+  shares {
+    id
+    owner {
+      ...userFollow
+    }
+  }
+}
+
+fragment postShareInfo on PostShare {
+  id
+  caption
+  post_type
+  like_count
+  comment_count
+  like_type
+  liked
+  timestamp
+  comments {
+    ...commentPostShare
+  }
+  owner {
+    ...userInfo
+  }
+  post {
+    ...postInfo
+  }
+}

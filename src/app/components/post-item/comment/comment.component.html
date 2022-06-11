@@ -1,15 +1,14 @@
-<div class="comment-item">
-    <img src="https://scontent.fsgn5-15.fna.fbcdn.net/v/t39.30808-6/269987831_1784164695125867_2342026024628273748_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=r1T31IQlbDkAX-336u_&_nc_ht=scontent.fsgn5-15.fna&oh=00_AT_JWPjWrYnZc4AHfNkmgL4cCaU4zlVRDF7r36KOhUqKlQ&oe=629FEF32"
-        alt="">
+<div class="comment-item" *ngIf="comment">
+    <img [src]="comment.owner.avatar" alt="">
     <div class="right">
         <div class="info">
-            <p class="name">Khưu Hồng Tiến</p>
-            <p class="content">Ui ai mà đẹp chai wa kìa chị</p>
+            <p class="name">{{comment.owner.name}}</p>
+            <p class="content">{{comment.content}}</p>
         </div>
         <div class="interact">
             <p appLongPress (longPress)="onShowInteract()">Thích</p>
             <p>Phản hồi</p>
-            <p>46 phút trước</p>
+            <p>{{comment.timestamp}}</p>
         </div>
     </div>
     <div *ngIf="showInteract" class="emotion-container-comment" #emotion>

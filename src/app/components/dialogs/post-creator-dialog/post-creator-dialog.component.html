@@ -6,10 +6,9 @@
     </div>
     <hr>
     <div class="user-info">
-        <img src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-            alt="">
+        <img src="{{user.avatar}}" alt="">
         <div class="right">
-            <p class="name">Duy Anh</p>
+            <p class="name">{{user.name}}</p>
             <div class="post-access">
                 <embed src="../../../../assets/icons/world.svg" type="">
                 <p>Công khai</p>
@@ -17,20 +16,22 @@
             </div>
         </div>
     </div>
-    <textarea placeholder="Bạn đang nghĩ gì thế?"></textarea>
-    <div class="bottom">
-        <div class="item">
-            <mat-icon class="tag">people</mat-icon>
-            <label for="">Gắn thẻ</label>
+    <form [formGroup]="formGroup" (ngSubmit)="onCreatePost()">
+        <textarea formControlName="caption" placeholder="Bạn đang nghĩ gì thế?"></textarea>
+        <div class="bottom">
+            <div class="item">
+                <mat-icon class="tag">people</mat-icon>
+                <label for="">Gắn thẻ</label>
+            </div>
+            <div class="item">
+                <mat-icon class="images">image</mat-icon>
+                <label for="">Hình ảnh</label>
+            </div>
+            <div class="item">
+                <mat-icon class="express">tag_faces</mat-icon>
+                <label for="">Cảm Xúc</label>
+            </div>
         </div>
-        <div class="item">
-            <mat-icon class="images">image</mat-icon>
-            <label for="">Hình ảnh</label>
-        </div>
-        <div class="item">
-            <mat-icon class="express">tag_faces</mat-icon>
-            <label for="">Cảm Xúc</label>
-        </div>
-    </div>
-    <button class="btn-post">Đăng bài</button>
+        <button class="btn-post" type="submit">Đăng bài</button>
+    </form>
 </div>
