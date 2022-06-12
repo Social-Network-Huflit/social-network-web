@@ -6,7 +6,11 @@
   padding: resize(20) resize(40);
   border-radius: resize(20);
   margin-bottom: resize(30);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
+  @include desktop-lg {
+    margin-top: resize(90);
+  }
   @include desktop-sm {
     max-width: resize(640);
   }

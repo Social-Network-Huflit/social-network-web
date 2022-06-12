@@ -35,6 +35,8 @@ import { CollectionBodyComponent } from './pages/collection/collection-body/coll
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
 import { PostSharedComponent } from './components/post-item/post-shared/post-shared.component';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { PostSharedComponent } from './components/post-item/post-shared/post-sha
     DrawerComponent,
     PostCreatorDialogComponent,
     PostSharedComponent,
+    ChatWindowComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

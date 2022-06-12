@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/home/components/profile/profile.compon
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 import { CollectionComponent } from './pages/collection/collection.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     path: 'collection',
     pathMatch: 'full',
     component: CollectionComponent,
+  },
+  {
+    path: 'message',
+    pathMatch: 'full',
+    component: ChatComponent,
   },
 ];
 

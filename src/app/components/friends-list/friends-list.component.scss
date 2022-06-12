@@ -10,5 +10,6 @@
   flex-direction: column;
   gap: resize(13);
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  max-height: resize(340);
 }

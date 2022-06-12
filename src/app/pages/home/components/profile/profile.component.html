@@ -1,76 +1,79 @@
 <div class="profile-container">
-    <div class="avatar-background">
-        <img class="background"
-            src="https://lumiere-a.akamaihd.net/v1/images/sa_pixar_virtualbg_coco_16x9_9ccd7110.jpeg" alt=""
-            width="100%">
-        <img class="avatar"
-            src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-            alt="">
+  <div class="avatar-background">
+    <img
+      class="background"
+      src="https://lumiere-a.akamaihd.net/v1/images/sa_pixar_virtualbg_coco_16x9_9ccd7110.jpeg"
+      alt=""
+      width="100%"
+    />
+    <img
+      class="avatar"
+      src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
+      alt=""
+    />
+  </div>
+  <div class="edit-btn">
+    <button class="bg-primary-color text-white">Chỉnh sửa hồ sơ</button>
+  </div>
+  <div class="information">
+    <div class="mb-[5px] name text-xl">Duy Anh</div>
+    <div class="mb-[5px] sub text-md text-gray-color">@dobaodv3</div>
+    <div class="mb-[5px] sub text-md text-gray-color">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >location_on</mat-icon
+      >
+      <p>Thành phố Hồ Chí Minh</p>
     </div>
-    <div class="edit-btn">
-        <button class="bg-primary-color text-white">
-            Chỉnh sửa hồ sơ
-        </button>
+    <div class="mb-[5px] sub text-md text-gray-color">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >calendar_today</mat-icon
+      >
+      <p>Tham gia từ 04/11/2021</p>
     </div>
-    <div class="information">
-        <div class="mb-[5px] name text-xl">
-            Duy Anh
+  </div>
+  <div class="tab-bar">
+    <mat-tab-group>
+      <mat-tab bodyClass="tab-item" label="Bài đăng">
+        <div class="flex flex-col gap-[20px] mt-5">
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
         </div>
-        <div class="mb-[5px] sub text-md text-gray-color">
-            @dobaodv3
+      </mat-tab>
+      <mat-tab bodyClass="tab-item" label="Theo dõi">
+        <div class="mt-5">
+          <app-follow-item></app-follow-item>
+          <app-follow-item></app-follow-item>
+          <app-follow-item></app-follow-item>
+          <app-follow-item></app-follow-item>
+          <app-follow-item></app-follow-item>
+          <app-follow-item></app-follow-item>
         </div>
-        <div class="mb-[5px] sub text-md text-gray-color">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">location_on</mat-icon>
-            <p>Thành phố Hồ Chí Minh</p>
+      </mat-tab>
+      <mat-tab bodyClass="tab-item" label="Đang theo dõi">
+        <div class="mt-5">
+          <app-follow-item [followed]="true"></app-follow-item>
+          <app-follow-item [followed]="true"></app-follow-item>
+          <app-follow-item [followed]="true"></app-follow-item>
+          <app-follow-item [followed]="true"></app-follow-item>
+          <app-follow-item [followed]="true"></app-follow-item>
+          <app-follow-item [followed]="true"></app-follow-item>
+          <app-follow-item [followed]="true"></app-follow-item>
         </div>
-        <div class="mb-[5px] sub text-md text-gray-color">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">calendar_today</mat-icon>
-            <p>Tham gia từ 04/11/2021</p>
+      </mat-tab>
+      <mat-tab bodyClass="tab-item" label="Đã thích">
+        <div class="flex flex-col gap-[20px] mt-5">
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
+          <app-post-item></app-post-item>
         </div>
-    </div>
-    <div class="tab-bar">
-        <mat-tab-group>
-            <mat-tab bodyClass="tab-item" label="Bài đăng">
-                <div class="flex flex-col gap-[20px] mt-5">
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                </div>
-            </mat-tab>
-            <mat-tab bodyClass="tab-item" label="Theo dõi">
-                <div class="mt-5">
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                </div>
-            </mat-tab>
-            <mat-tab bodyClass="tab-item" label="Đang theo dõi">
-                <div class="mt-5">
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                </div>
-            </mat-tab>
-            <mat-tab bodyClass="tab-item" label="Đã thích">
-                <div class="flex flex-col gap-[20px] mt-5">
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                </div>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </div>
