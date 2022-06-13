@@ -42,14 +42,13 @@ export class PostSharedComponent implements OnInit {
     icon: string;
     label: string;
   };
-  formGroup: FormGroup;
 
   constructor(
     private renderer: Renderer2,
     public dialog: MatDialog,
     private likePostShareGQL: LikePostShareGQL,
     private getPostShareGQL: GetPostShareGQL,
-    private commentPostShareGQL: CommentPostShareGQL
+    
   ) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (this.emotion) {
@@ -61,9 +60,7 @@ export class PostSharedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      content: new FormControl(''),
-    });
+    
 
     this.getPostShareQueryRef = this.getPostShareGQL.watch(
       {
@@ -124,17 +121,5 @@ export class PostSharedComponent implements OnInit {
       });
   }
 
-  onComment() {
-    this.commentPostShareGQL
-      .mutate({
-        createCommentInput: {
-          post_share_id: this.post_share_id,
-          content: this.formGroup.value.content,
-        },
-      })
-      .subscribe(() => {
-        this.getPostShareQueryRef.refetch();
-        this.formGroup.reset();
-      });
-  }
+  
 }

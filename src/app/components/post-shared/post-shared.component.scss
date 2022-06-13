@@ -271,55 +271,6 @@
 
   .comment-container {
     padding: resize(16) 0;
-
-    hr {
-      margin-bottom: resize(20);
-    }
-
-    .comment-controller {
-      display: flex;
-      align-items: center;
-      gap: resize(20);
-      margin-bottom: resize(20);
-
-      img {
-        width: resize(50);
-        height: resize(50);
-        border-radius: 100%;
-      }
-      .input-container {
-        display: flex;
-        align-items: center;
-        gap: resize(20);
-        flex: 1;
-
-        form {
-          input {
-            background-color: $secondary-color;
-            padding: resize(10) resize(25);
-            border-radius: resize(30);
-            outline: none;
-            flex: 1;
-          }
-
-          button {
-            img {
-              width: resize(50);
-              height: resize(30);
-            }
-          }
-        }
-
-        a {
-          cursor: pointer;
-
-          embed {
-            width: resize(30);
-            height: resize(30);
-          }
-        }
-      }
-    }
   }
 
   .contextmenu-container {

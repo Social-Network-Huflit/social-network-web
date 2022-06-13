@@ -27,3 +27,21 @@ mutation CommentPostShare($createCommentInput: CreateCommentPostShareInput!){
     }
   }
 }
+
+mutation LikeCommentPostShare($comment_id: ID!, $like_type: String!){
+  likeCommentPostShare(comment_id: $comment_id, like_type: $like_type){
+    ...mutationResponse
+  }
+}
+
+mutation ReplyCommentPostShare($replyCommentPostInput: ReplyCommentPostShareInput!){
+  replyCommentPostShare(replyCommentPostInput: $replyCommentPostInput){
+    ...mutationResponse
+  }
+}
+
+mutation LikeReplyCommentPostShare($reply_comment_id: ID!, $like_type: String!){
+  likeReplyCommentPostShare(reply_comment_id: $reply_comment_id, like_type: $like_type){
+    ...mutationResponse
+  }
+}

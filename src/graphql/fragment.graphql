@@ -34,9 +34,37 @@ fragment commentPost on PostComment {
   owner {
     ...userFollow
   }
+  reply_comments{
+    ...replyCommentPost
+  }
+}
+
+fragment replyCommentPost on PostReplyComment {
+  id
+  liked
+  like_type
+  content
+  timestamp
+  owner {
+    ...userFollow
+  }
 }
 
 fragment commentPostShare on PostShareComment {
+  id
+  liked
+  like_type
+  content
+  timestamp
+  owner {
+    ...userFollow
+  }
+  reply_comments{
+    ...replyCommentPostShare
+  }
+}
+
+fragment replyCommentPostShare on PostShareReplyComment {
   id
   liked
   like_type

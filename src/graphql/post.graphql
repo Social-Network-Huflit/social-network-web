@@ -39,3 +39,21 @@ mutation CreatePost($createPostInput: CreatePostInput!){
     }
   }
 }
+
+mutation LikeCommentPost($comment_id: ID!, $like_type: String!){
+  likeCommentPost(comment_id: $comment_id, like_type: $like_type){
+    ...mutationResponse
+  }
+}
+
+mutation ReplyCommentPost($replyCommentInput: ReplyCommentPostInput!){
+  replyCommentPost(replyCommentPostInput: $replyCommentInput){
+    ...mutationResponse
+  }
+}
+
+mutation LikeReplyCommentPost($reply_comment_id: ID!, $like_type: String!){
+  likeReplyCommentPost(reply_comment_id: $reply_comment_id, like_type: $like_type){
+    ...mutationResponse
+  }
+}

@@ -1,0 +1,69 @@
+<div class="comment-item" *ngIf="comment">
+    <img [src]="comment.owner.avatar" alt="">
+    <div class="right">
+        <div class="info">
+            <p class="name">{{comment.owner.name}}</p>
+            <p class="content">{{comment.content}}</p>
+        </div>
+        <div class="interact">
+            <div class="flex items-center gap-2">
+                <div class="emotion-item" *ngIf="comment.liked">
+                    <img src="../../../assets/icons/{{iconAndLabel.icon}}" type="">
+                </div>
+                <p (click)="onLikeComment('like')" appLongPress (longPress)="onShowInteract()" [ngClass]="{
+                    'like': comment.like_type === 'like',
+                    'haha': comment.like_type === 'haha',
+                    'wow': comment.like_type === 'wow',
+                    'sad': comment.like_type === 'sad',
+                    'angry': comment.like_type === 'angry'
+                  }">{{iconAndLabel.label}}</p>
+            </div>
+            <p (click)="onToggleShowReplyComment()">Phản hồi</p>
+            <p>{{comment.timestamp}}</p>
+        </div>
+    </div>
+    <div *ngIf="showInteract" class="emotion-container-comment" #emotion>
+        <div class="emotion-item" (click)="onLikeComment('like')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/heart-circle.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeComment('haha')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/haha-logo.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeComment('wow')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/wow-logo.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeComment('sad')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/sad-icon.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeComment('angry')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/angry-logo.svg" type="">
+                </object>
+            </a>
+        </div>
+    </div>
+</div>
+<app-reply-comment-post-share *ngFor="let comment of comment.reply_comments" [getPostShareQueryRef]="getPostShareQueryRef" [reply_comment]="comment"></app-reply-comment-post-share>
+<form (ngSubmit)="onReplyComment()" [formGroup]="formGroup" *ngIf="showReplyComment">
+    <input formControlName="content" type="text" placeholder="Viết bình luận" />
+    <button type="submit">
+        <img src="../../../assets/icons/send.svg" class="animate-pin" />
+    </button>
+</form>
