@@ -1,7 +1,14 @@
 <div class="container">
-  <div class="top">
-    <img src="https://via.placeholder.com/150" alt="" class="avatar" />
-    <input-field class="content" placeholder="Bạn đang nghĩ gì?" (click)="openDialog()"></input-field>
+  <div class="top flex items-center">
+    <img *ngIf="user" src="{{user.avatar}}" alt="" class="avatar" />
+    <div class="animate-pulse" *ngIf="!user">
+      <div class="rounded-full bg-gray-200 w-14 h-14"></div>
+    </div>
+    <form [formGroup]="formGroup" style="width: 100%;">
+      <input-field [formGroup]="formGroup" name="content" class="content" placeholder="Bạn đang nghĩ gì?"
+        (click)="openDialog()">
+      </input-field>
+    </form>
   </div>
   <div class="bottom">
     <div class="item">

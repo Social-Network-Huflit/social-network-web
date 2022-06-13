@@ -7,7 +7,7 @@
   background: #fff;
   .loginLeft {
     background-color: $primary-color;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -24,7 +24,7 @@
   }
   .loginRight {
     flex: 1;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

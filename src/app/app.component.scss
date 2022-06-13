@@ -31,6 +31,8 @@
   .drawer {
     opacity: 0;
     visibility: hidden;
+    position: fixed;
+    top: 0;
   }
 
   @include tablet {
@@ -40,8 +42,7 @@
       background-color: #fff;
       min-width: resize(400);
       min-height: 100vh;
-      position: fixed;
-      top: 0;
+
       z-index: 909989;
       border-top-left-radius: resize(32);
       border-bottom-left-radius: resize(32);
@@ -57,7 +58,7 @@
     }
 
     .drawer.unactive {
-      right: -resize(500);
+      right: resize(-500);
       animation-name: slide_drawer_close;
       animation-duration: 0.5s;
     }
@@ -66,7 +67,7 @@
 
 @keyframes slide_drawer {
   from {
-    right: -resize(500);
+    right: resize(-500);
   }
   to {
     right: 0;
@@ -78,6 +79,6 @@
     right: 0;
   }
   to {
-    right: -resize(500);
+    right: resize(-500);
   }
 }

@@ -1,5 +1,5 @@
-@import "../../../../styles.scss";
-@import "../../../../assets/variables.scss";
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
 
 .post-item-container {
   width: 100%;
@@ -48,8 +48,6 @@
 
   .body {
     padding: resize(25) 0;
-    .content-sharing {
-    }
     .content-post-shared {
       width: 95%;
       padding: resize(10) resize(30) resize(20) resize(30);
@@ -79,6 +77,10 @@
         text-decoration: underline;
         cursor: pointer;
       }
+    }
+    .content-post-shared.text {
+      border-top: 1px rgb(207, 207, 207) solid !important;
+      border-radius: 8px;
     }
     p {
       font-size: resize(24);
@@ -154,6 +156,16 @@
       border-radius: resize(8);
 
       embed {
+        width: resize(30);
+        height: resize(30);
+
+        @include mobile {
+          width: resize(25);
+          height: resize(25);
+        }
+      }
+
+      img {
         width: resize(30);
         height: resize(30);
 
@@ -261,46 +273,6 @@
 
   .comment-container {
     padding: resize(16) 0;
-
-    hr {
-      margin-bottom: resize(20);
-    }
-
-    .comment-controller {
-      display: flex;
-      align-items: center;
-      gap: resize(20);
-      margin-bottom: resize(20);
-
-      img {
-        width: resize(50);
-        height: resize(50);
-        border-radius: 100%;
-      }
-      .input-container {
-        display: flex;
-        align-items: center;
-        gap: resize(20);
-        flex: 1;
-
-        input {
-          background-color: $secondary-color;
-          padding: resize(10) resize(25);
-          border-radius: resize(30);
-          outline: none;
-          flex: 1;
-        }
-
-        a {
-          cursor: pointer;
-
-          embed {
-            width: resize(30);
-            height: resize(30);
-          }
-        }
-      }
-    }
   }
 
   .contextmenu-container {

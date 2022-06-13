@@ -14,6 +14,7 @@
     display: flex;
     gap: resize(20);
     position: relative;
+    padding-top: resize(100);
 
     app-navbar-left {
       // min-width: resize(300);
@@ -42,19 +43,17 @@
     }
 
     @include desktop-md {
-      padding: 0 resize(100);
-      padding-top: resize(150);
+      padding-left: resize(100);
+      padding-right: resize(100);
     }
 
     @include desktop-sm {
       padding: 0 resize(16);
-      padding-top: resize(150);
     }
 
     @include tablet {
       padding-left: resize(200);
       padding-right: resize(200);
-      padding-top: resize(150);
 
       app-navbar-left,
       .right {
@@ -64,7 +63,6 @@
 
     @include mobile {
       padding: 0 resize(16);
-      padding-top: resize(150);
     }
   }
 }

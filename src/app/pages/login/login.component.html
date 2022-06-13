@@ -3,18 +3,24 @@
         <img src="../../../assets/images/t7HWomG - Imgur.png" alt="">
     </div>
     <div class="loginRight">
-        <div class="flex flex-col wrapper">
-            <h1 class=" w-full text-primary-color">Đăng nhập</h1>
-            <input-field class="loginInput" name="usernameOrEmail" placeholder="Username or email" icon="person">
-            </input-field>
-            <input-field class="loginInput" name="password" placeholder="Mật khẩu" icon="lock"></input-field>
+        <form [formGroup]="formGroup" (ngSubmit)="onLogin()">
+            <div class="flex flex-col wrapper">
+                <h1 class=" w-full text-primary-color">Đăng nhập</h1>
+                <input-field [formGroup]="formGroup" class="loginInput" name="usernameOrEmail"
+                    placeholder="Username or email" icon="person">
+                </input-field>
+                <input-field type="password" [formGroup]="formGroup" class="loginInput" name="password" placeholder="Mật khẩu"
+                    icon="lock"></input-field>
 
-            <button routerLink="" class="buttonLogin">Đăng nhập</button>
-            <a routerLink="/forgot-password" class="forgotPass">Quên mật khẩu</a>
-            <label for="#">
-                Không có tài khoản?</label>
-            <a routerLink="/register" class="register">Đăng Ký</a>
-        </div>
+                <button type="submit" class="buttonLogin">Đăng nhập</button>
+                <a routerLink="/forgot-password" class="forgotPass">Quên mật khẩu</a>
+                <div class="my-5 text-center">
+                    <label for="#">
+                        Không có tài khoản?</label>
+                </div>
+                <a routerLink="/register" class="register">Đăng Ký</a>
+            </div>
+        </form>
     </div>
 
 </div>

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { GetMyUserDocument, GetMyUserQuery, GetMyUserQueryVariables, User } from 'src/graphql/graphql';
 
 @Component({
   selector: 'app-follow-item',
@@ -6,9 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./follow-item.component.scss'],
 })
 export class FollowItemComponent implements OnInit {
-  @Input() followed: boolean;
+  @Input() user: User;
+  myUser: User;
 
-  constructor() {}
+  constructor(private apollo: Apollo) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const cache = this.apollo.client.readQuery<GetMyUserQuery, GetMyUserQueryVariables>({
+      query: GetMyUserDocument
+    });
+
+    this.myUser = cache?.getMyUser as User
+  }
 }

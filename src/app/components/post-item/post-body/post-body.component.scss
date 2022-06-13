@@ -1,0 +1,58 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+
+.body {
+  padding: resize(25) 0;
+
+  p {
+    font-size: resize(24);
+    font-weight: 300;
+    color: $gray-color;
+    margin: 0;
+    a {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    @include mobile {
+      font-size: resize(20);
+    }
+  }
+  .img-container {
+    position: relative;
+    text-align: center;
+    img {
+      width: 100%;
+      margin-top: resize(32);
+      margin-bottom: resize(32);
+      border-radius: resize(8);
+    }
+    button {
+      display: flex;
+      padding: resize(16);
+      background-color: rgb(217, 217, 217);
+      opacity: 0.3;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #7c7c7c;
+    }
+    button:hover {
+      opacity: 0.8;
+      padding: resize(18);
+    }
+    mat-icon {
+      font-weight: 600;
+    }
+    .left {
+      position: absolute;
+      left: resize(16);
+      top: 40%;
+    }
+    .right {
+      position: absolute;
+      right: resize(16);
+      top: 40%;
+    }
+  }
+}
