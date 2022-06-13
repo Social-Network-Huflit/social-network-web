@@ -18,6 +18,7 @@ import {
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   showNotification: boolean = false;
+  showChat: boolean = false;
   showMenu: boolean = false;
 
   @Input('classes') classes: string[] = [];
@@ -39,12 +40,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onToggleNotification() {
     this.showMenu = false;
+    this.showChat = false;
+
     this.showNotification = !this.showNotification;
   }
 
   onToggleMenu() {
+    this.showChat = false;
     this.showNotification = false;
     this.showMenu = !this.showMenu;
+  }
+  onToggleChat() {
+    this.showMenu = false;
+    this.showNotification = false;
+    this.showChat = !this.showChat;
   }
 
   onToggleDrawer(value: boolean) {

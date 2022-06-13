@@ -27,7 +27,7 @@
       width: $size;
       height: $size;
       position: absolute;
-      bottom: - calc($size / 2);
+      bottom: calc($size / 2);
       left: resize(40);
       border-radius: 100%;
 
@@ -45,7 +45,17 @@
       border-radius: 20px;
     }
   }
-
+  .tab-bar {
+    mat-tap-group {
+      .mat-tap-body-wrapper {
+        map-tap-body {
+          .mat-tab-body.mat-tab-body-active {
+            z-index: 0 !important;
+          }
+        }
+      }
+    }
+  }
   .information {
     .sub {
       display: flex;
@@ -61,6 +71,8 @@
 }
 
 :host ::ng-deep .mat-tab-label-container {
+  z-index: 0 !important;
+
   .mat-tab-labels {
     justify-content: space-between;
 

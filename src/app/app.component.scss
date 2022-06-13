@@ -8,9 +8,10 @@
 }
 
 .app {
+  height: 0px;
   .layer {
     width: 100vw;
-    height: 1000vh;
+    height: 100vh;
     z-index: 9999;
     position: fixed;
     top: 0;

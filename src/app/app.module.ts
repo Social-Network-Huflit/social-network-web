@@ -34,6 +34,8 @@ import { CollectionNavLeftComponent } from './pages/collection/collection-nav-le
 import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
+import { ChatComponent } from './pages/chat/chat.component';
 import { PostSharedComponent } from './components/post-shared/post-shared.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraphQLModule } from './graphql.module';
@@ -77,6 +79,8 @@ import { ReplyCommentPostShareComponent } from './components/post-shared/list-po
     DrawerComponent,
     PostCreatorDialogComponent,
     PostSharedComponent,
+    ChatWindowComponent,
+    ChatComponent,
     ListPostCommentComponent,
     PostBodyComponent,
     PostSkeletonComponent,

@@ -4,6 +4,7 @@
 .navbar-left-container {
   display: flex;
   flex-direction: column;
+  z-index: 999;
 
   .nav-item {
     display: flex;

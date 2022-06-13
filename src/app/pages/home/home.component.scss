@@ -33,9 +33,13 @@
     .right {
       position: sticky;
       top: 90px;
-      height: 100vh;
+      height: 100%;
 
       flex: 1;
+    }
+
+    @include desktop-lg {
+      padding: 0 resize(75);
     }
 
     @include desktop-md {

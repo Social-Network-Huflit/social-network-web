@@ -7,7 +7,7 @@ import { ProfileComponent } from './pages/home/components/profile/profile.compon
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 import { CollectionComponent } from './pages/collection/collection.component';
-import { TestComponent } from './pages/test/test.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -36,9 +36,9 @@ const routes: Routes = [
     component: CollectionComponent,
   },
   {
-    path: 'test',
+    path: 'message',
     pathMatch: 'full',
-    component: TestComponent,
+    component: ChatComponent,
   },
 ];
 
