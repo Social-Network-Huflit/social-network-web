@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'test',
     pathMatch: 'full',
-    component: TestComponent,
+    component: ChatComponent
   },
 ];
 
