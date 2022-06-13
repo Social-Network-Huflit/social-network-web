@@ -1,9 +1,10 @@
 @import "../../../styles.scss";
 @import "../../../assets/variables.scss";
 
-.header-wrapper.collection {
-  .header-container {
-    @include tablet {
+
+.header-wrapper.collection{
+  .header-container{
+    @include tablet{
       padding-left: resize(16);
       padding-right: resize(16);
     }
@@ -61,7 +62,7 @@
           border-radius: 100%;
           transition: all 0.3s;
           cursor: pointer;
-          opacity: 0.5;
+          opacity: 0.1;
 
           embed {
             background-color: transparent;
@@ -87,11 +88,11 @@
       background-color: #fff;
       right: 200px;
       top: resize(100);
-      z-index: 999;
       min-width: 300px;
       padding: resize(16) resize(12);
       border-radius: resize(20);
       box-shadow: 1px 1px 4px rgba($color: #000000, $alpha: 0.1);
+      z-index: 909;
 
       @include desktop-sm {
         right: 150px;
@@ -128,19 +129,6 @@
       }
     }
 
-    app-chat-window {
-      display: flex;
-      align-items: center;
-      right: 150px;
-      top: resize(100);
-      position: absolute;
-
-      gap: resize(10);
-      margin-bottom: resize(13);
-      padding: resize(5) resize(10);
-      border-radius: resize(8);
-      cursor: pointer;
-    }
     .menu-setting {
       position: absolute;
       background-color: #fff;

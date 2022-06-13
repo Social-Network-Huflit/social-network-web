@@ -31,17 +31,12 @@ html {
 @function resize($dp) {
   @return calc($dp * 0.75px);
 }
-$desktop-lg-width: 1440px;
+
 $desktop-md-width: 1366px;
 $desktop-sm-width: 1024px;
 $tablet-width: 768px;
 $mobile-width: 375px;
 
-@mixin desktop-lg {
-  @media (max-width: #{$desktop-lg-width}) {
-    @content;
-  }
-}
 @mixin desktop-md {
   @media (max-width: #{$desktop-md-width}) {
     @content;

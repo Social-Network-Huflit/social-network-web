@@ -9,31 +9,21 @@
     <div class="header-right">
       <div class="tools-bar">
         <!-- Show -->
-        <div
-          class="icon notification"
-          (click)="onToggleNotification()"
-          #menu_notification
-        >
-          <embed src="../../../assets/icons/bell-solid.svg" type="" />
+        <div class="icon notification" (click)="onToggleNotification()" #menu_notification>
+          <embed src="../../../assets/icons/bell-solid.svg" type="">
         </div>
-        <div class="icon chat" (click)="onToggleChat()">
-          <embed
-            src="../../../assets/icons/facebook-messenger-brands.svg"
-            type=""
-          />
+        <div class="icon chat">
+          <embed src="../../../assets/icons/facebook-messenger-brands.svg" type="">
         </div>
         <div class="icon menu" (click)="onToggleMenu()" #menu_setting>
-          <embed src="../../../assets/icons/chevron-down-solid.svg" type="" />
+          <embed src="../../../assets/icons/chevron-down-solid.svg" type="">
         </div>
         <!-- Hide -->
         <div class="icon search">
-          <embed
-            src="../../../assets/icons/search-interface-symbol.svg"
-            type=""
-          />
+          <embed src="../../../assets/icons/search-interface-symbol.svg" type="">
         </div>
         <div class="icon menu-mobile" (click)="onToggleDrawer(true)">
-          <embed src="../../../assets/icons/menu.svg" type="" />
+          <embed src="../../../assets/icons/menu.svg" type="">
         </div>
       </div>
     </div>
@@ -42,98 +32,65 @@
     <div class="menu-notification" *ngIf="showNotification">
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="">
         </div>
         <div class="right">
-          <p>
-            <strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của
-            bạn
-          </p>
+          <p><strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của bạn</p>
           <p>1 giờ trước</p>
         </div>
         <mat-icon>more_horiz</mat-icon>
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="">
         </div>
         <div class="right">
-          <p>
-            <strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của
-            bạn
-          </p>
+          <p><strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của bạn</p>
           <p>1 giờ trước</p>
         </div>
         <mat-icon>more_horiz</mat-icon>
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="">
         </div>
         <div class="right">
-          <p>
-            <strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của
-            bạn
-          </p>
+          <p><strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của bạn</p>
           <p>1 giờ trước</p>
         </div>
         <mat-icon>more_horiz</mat-icon>
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="">
         </div>
         <div class="right">
-          <p>
-            <strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của
-            bạn
-          </p>
+          <p><strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của bạn</p>
           <p>1 giờ trước</p>
         </div>
         <mat-icon>more_horiz</mat-icon>
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="">
         </div>
         <div class="right">
-          <p>
-            <strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của
-            bạn
-          </p>
+          <p><strong>Duy Anh</strong> đã bình luận <strong>bài viết</strong> của bạn</p>
           <p>1 giờ trước</p>
         </div>
         <mat-icon>more_horiz</mat-icon>
       </div>
     </div>
 
-    <!-- Chat log -->
-    <app-chat-window *ngIf="showChat"></app-chat-window>
-
     <!-- Menu setting -->
     <div class="menu-setting" *ngIf="showMenu">
       <div class="menu-setting-item">
-        <embed src="../../../assets/icons/setting.svg" type="" />
+        <embed src="../../../assets/icons/setting.svg" type="">
         <p>Cài đặt</p>
       </div>
       <div class="menu-setting-item theme">
         <div class="flex items-center">
-          <embed src="../../../assets/icons/night-mode.svg" type="" />
+          <embed src="../../../assets/icons/night-mode.svg" type="">
           <p>Chủ đề</p>
         </div>
         <mat-slide-toggle color="black"></mat-slide-toggle>
