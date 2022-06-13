@@ -6,33 +6,55 @@
   background-color: #fff;
   height: resize(115);
   margin-bottom: resize(13);
-  border-radius: resize(8);
+  border-radius: resize(20);
   padding: 0 resize(40);
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  @include mobile {
+    padding: 0 resize(16);
+  }
+
   .left {
     display: flex;
     align-items: center;
     gap: resize(20);
 
+    @include mobile {
+      gap: resize(15);
+    }
+
     img {
       width: resize(80);
       height: resize(80);
       border-radius: 100%;
+
+      @include mobile {
+        width: resize(60);
+        height: resize(60);
+      }
     }
 
     .info {
       .name {
         font-size: resize(32);
         margin-bottom: resize(10);
+
+        @include mobile {
+          font-size: resize(24);
+          margin-bottom: 0;
+        }
       }
 
       .sub {
         font-size: resize(24);
         color: $gray-color;
+
+        @include mobile {
+          font-size: resize(16);
+        }
       }
     }
   }
@@ -47,6 +69,15 @@
 
     p {
       text-align: center;
+    }
+
+    @include mobile {
+      min-width: resize(150);
+      padding: resize(10);
+
+      p {
+        font-size: resize(16);
+      }
     }
   }
 

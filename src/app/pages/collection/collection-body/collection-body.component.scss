@@ -1,0 +1,133 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+
+.collection-body-container {
+  padding-top: resize(150);
+  padding-left: resize(700);
+  padding-right: resize(300);
+
+  @include desktop-md {
+    padding-left: resize(500);
+    padding-right: resize(100);
+  }
+
+  @include desktop-sm {
+    padding-left: resize(450);
+    padding-right: resize(50);
+  }
+
+  @include mobile {
+    padding-left: resize(16);
+    padding-right: resize(16);
+  }
+
+  .header {
+    margin-bottom: resize(32);
+
+    p.title {
+      font-size: resize(32);
+      font-weight: bold;
+    }
+    embed {
+      display: none;
+      width: resize(50);
+      height: resize(50);
+    }
+
+    @include mobile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      embed {
+        display: block;
+        padding: resize(5);
+        border-radius: resize(8);
+        transition: all 0.5s;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba($color: #000000, $alpha: 0.1);
+        }
+      }
+    }
+  }
+
+  .collection-item {
+    display: flex;
+    align-items: center;
+    gap: resize(20);
+    background-color: #fff;
+    border-radius: resize(16);
+    padding: resize(16);
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: resize(20);
+
+    img {
+      width: resize(200);
+      height: resize(200);
+      border-radius: resize(8);
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: resize(30);
+
+      @include mobile {
+        gap: resize(20);
+      }
+
+      p.collection-title {
+        font-weight: bold;
+        font-size: resize(24);
+      }
+
+      .controller {
+        display: flex;
+        gap: resize(32);
+        align-items: center;
+
+        .controller-item {
+          padding: resize(16);
+          border-radius: resize(16);
+          cursor: pointer;
+          transition: all 0.5s;
+          background-color: rgba($color: #000000, $alpha: 0.1);
+
+          embed {
+            width: resize(32);
+            height: resize(32);
+          }
+        }
+      }
+    }
+
+    @include tablet {
+      flex-direction: column;
+      align-items: flex-start;
+
+      img {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .right {
+        align-items: flex-end !important;
+      }
+    }
+
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.1);
+
+      .controller {
+        .controller-item {
+          background-color: #fff !important;
+        }
+      }
+    }
+  }
+}

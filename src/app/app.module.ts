@@ -22,6 +22,31 @@ import { SuggestionListComponent } from './components/suggestion-list/suggestion
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
+import { CommentComponent } from './components/post-item/list-post-comment/comment/comment.component';
+import { LongPressDirective } from './directives/long-press.directive';
+import { FriendItemComponent } from './components/friends-list/friend-item/friend-item.component';
+import { ShareDialogComponent } from './components/dialogs/share-dialog/share-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ChangePasswordComponent } from './components/dialogs/change-password/change-password.component';
+import { CollectionComponent } from './pages/collection/collection.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CollectionNavLeftComponent } from './pages/collection/collection-nav-left/collection-nav-left.component';
+import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
+import { DrawerComponent } from './components/drawer/drawer.component';
+import { PostCreatorDialogComponent } from './components/dialogs/post-creator-dialog/post-creator-dialog.component';
+import { PostSharedComponent } from './components/post-shared/post-shared.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ListPostCommentComponent } from './components/post-item/list-post-comment/list-post-comment.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PostBodyComponent } from './components/post-item/post-body/post-body.component';
+import { PostSkeletonComponent } from './components/skeletons/post-skeleton/post-skeleton.component';
+import { TestComponent } from './pages/test/test.component';
+import { ReplyCommentComponent } from './components/post-item/list-post-comment/comment/reply-comment/reply-comment.component';
+import { ListPostShareCommentComponent } from './components/post-shared/list-post-share-comment/list-post-share-comment.component';
+import { CommentItemComponent } from './components/post-shared/list-post-share-comment/comment-item/comment-item.component';
+import { ReplyCommentPostShareComponent } from './components/post-shared/list-post-share-comment/comment-item/reply-comment/reply-comment.component';
 
 @NgModule({
   declarations: [
@@ -41,14 +66,39 @@ import { HomeFragmentComponent } from './pages/home/components/home/home.compone
     FriendsListComponent,
     PostItemComponent,
     HomeFragmentComponent,
+    CommentComponent,
+    LongPressDirective,
+    FriendItemComponent,
+    ShareDialogComponent,
+    ChangePasswordComponent,
+    CollectionComponent,
+    CollectionNavLeftComponent,
+    CollectionBodyComponent,
+    DrawerComponent,
+    PostCreatorDialogComponent,
+    PostSharedComponent,
+    ListPostCommentComponent,
+    PostBodyComponent,
+    PostSkeletonComponent,
+    TestComponent,
+    ReplyCommentComponent,
+    ListPostShareCommentComponent,
+    CommentItemComponent,
+    ReplyCommentPostShareComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    CodeInputModule,
     MatTabsModule,
+    CodeInputModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    GraphQLModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

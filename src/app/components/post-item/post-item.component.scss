@@ -5,7 +5,8 @@
   width: 100%;
   background: #fff;
   padding: resize(25);
-  border-radius: resize(8);
+  border-radius: resize(20);
+  position: relative;
 
   .header {
     display: flex;
@@ -25,6 +26,10 @@
 
       .name {
         font-size: resize(32);
+
+        @include mobile {
+          font-size: resize(24);
+        }
       }
 
       .time {
@@ -44,8 +49,54 @@
 
     p {
       font-size: resize(24);
+      font-weight: 300;
       color: $gray-color;
       margin: 0;
+      a {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      @include mobile {
+        font-size: resize(20);
+      }
+    }
+    .img-container {
+      position: relative;
+      text-align: center;
+      img {
+        width: 100%;
+        margin-top: resize(32);
+        margin-bottom: resize(32);
+        border-radius: resize(8);
+      }
+      button {
+        display: flex;
+        padding: resize(16);
+        background-color: rgb(217, 217, 217);
+        opacity: 0.3;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #7c7c7c;
+      }
+      button:hover {
+        opacity: 0.8;
+        padding: resize(18);
+      }
+      mat-icon {
+        font-weight: 600;
+      }
+      .left {
+        position: absolute;
+        left: resize(16);
+        top: 40%;
+      }
+      .right {
+        position: absolute;
+        right: resize(16);
+        top: 40%;
+      }
     }
   }
 
@@ -53,15 +104,25 @@
     display: flex;
     justify-content: space-between;
     color: $gray-color;
-    margin-bottom: resize(20);
+    margin-bottom: resize(10);
+    font-weight: 300;
 
     .count-item {
       display: flex;
       align-items: center;
       gap: resize(10);
 
-      p{
-          font-size: resize(24);
+      p {
+        font-size: resize(24);
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        @include mobile {
+          font-size: resize(20);
+        }
       }
     }
 
@@ -77,18 +138,217 @@
 
   .interact-container {
     color: $gray-color;
-    margin-top: resize(20);
+    margin: resize(10) 0;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    font-weight: 300;
+    position: relative;
 
     .interact-item {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: resize(10);
+      cursor: pointer;
+      padding: resize(5) 0;
+      flex: 1;
+      border-radius: resize(8);
 
-      p{
-          font-size: resize(32);
+      img {
+        width: resize(30);
+        height: resize(30);
+
+        @include mobile {
+          width: resize(25);
+          height: resize(25);
+        }
+      }
+
+      embed {
+        width: resize(30);
+        height: resize(30);
+
+        @include mobile {
+          width: resize(25);
+          height: resize(25);
+        }
+      }
+
+      p {
+        font-size: resize(22);
+        cursor: pointer;
+
+        @include mobile {
+          font-size: resize(18);
+        }
+      }
+
+      p.like {
+        color: $primary-color;
+      }
+
+      p.haha {
+        color: $haha;
+      }
+
+      p.wow {
+        color: $wow;
+      }
+
+      p.sad {
+        color: $sad;
+      }
+
+      p.angry {
+        color: $angry;
+      }
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
       }
     }
+
+    .emotion-container {
+      position: absolute;
+      background-color: white;
+      width: 50%;
+      height: resize(80);
+      left: 2.5%;
+      bottom: resize(60);
+      border-radius: resize(50);
+      box-shadow: 0.3px 0.3px 4px rgba($color: #000000, $alpha: 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 resize(16);
+      animation-name: emotion-slide;
+      animation-duration: 0.5s;
+
+      @include desktop-sm {
+        width: 70%;
+      }
+
+      @include mobile {
+        width: 100%;
+        bottom: resize(50);
+        left: 0;
+      }
+
+      .emotion-item {
+        a {
+          cursor: pointer;
+          embed {
+            width: resize(50);
+            height: resize(50);
+          }
+        }
+      }
+    }
+
+    .share-container {
+      position: absolute;
+      width: 35%;
+      background-color: white;
+      right: 0;
+      top: resize(50);
+      z-index: 909;
+      border-radius: resize(20);
+      padding: resize(16);
+      box-shadow: 0.3px 0.3px 4px rgba($color: #000000, $alpha: 0.1);
+
+      @include mobile {
+        width: 58%;
+      }
+
+      .share-item {
+        display: flex;
+        align-items: center;
+        gap: resize(8);
+        margin-bottom: resize(10);
+        cursor: pointer;
+        padding: resize(5) resize(16);
+        border-radius: resize(8);
+
+        embed {
+          width: resize(30);
+          height: resize(30);
+        }
+
+        p {
+          font-weight: 500;
+          font-size: resize(24);
+
+          @include mobile {
+            font-size: resize(20);
+          }
+        }
+
+        &:hover {
+          background-color: rgba($color: #000000, $alpha: 0.1);
+        }
+      }
+    }
+  }
+
+ 
+
+  .contextmenu-container {
+    position: absolute;
+    background-color: #fff;
+    top: resize(60);
+    right: resize(20);
+    border-radius: resize(10);
+    box-shadow: 1px 1px 4px rgba($color: #000000, $alpha: 0.1);
+    padding: resize(10);
+    display: flex;
+    flex-direction: column;
+    gap: resize(13);
+    animation-name: contextmenu;
+    animation-duration: 1s;
+
+    .contextmenu-item {
+      display: flex;
+      align-items: center;
+      gap: resize(10);
+      padding: resize(10);
+      transition: all 0.5s;
+      border-radius: resize(8);
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+      }
+
+      embed {
+        width: resize(30);
+        height: resize(30);
+      }
+
+      p {
+        font-size: resize(24);
+      }
+    }
+  }
+}
+
+@keyframes contextmenu {
+  from {
+    top: resize(90);
+  }
+  to {
+    top: resize(60);
+  }
+}
+
+@keyframes emotion-slide {
+  from {
+    bottom: resize(0);
+  }
+  to {
+    @include mobile {
+      bottom: resize(50);
+    }
+    bottom: resize(60);
   }
 }

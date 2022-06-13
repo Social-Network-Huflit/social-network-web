@@ -1,0 +1,62 @@
+<div class="comment-item" *ngIf="true">
+    <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t1.6435-9/101017316_1373100179527131_8224389736458878976_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=174925&_nc_ohc=keuTTZj9phgAX_SCXTW&_nc_ht=scontent.fvca1-4.fna&oh=00_AT-gGk1nK_NckrpITtkzt7DsUDT--SAtNnbgx9zZHz0rbg&oe=62B89E73"
+        alt="">
+    <div class="right">
+        <div class="info">
+            <p class="name">{{reply_comment.owner.name}}</p>
+            <p class="content">{{reply_comment.content}}</p>
+        </div>
+        <div class="interact">
+            <div class="flex items-center gap-2">
+                <div class="emotion-item" *ngIf="reply_comment.liked">
+                    <img src="../../../assets/icons/{{iconAndLabel.icon}}" type="">
+                </div>
+                <p (click)="onLikeReplyComment('like')" appLongPress (longPress)="onShowInteract()" [ngClass]="{
+                    'like': reply_comment.like_type === 'like',
+                    'haha': reply_comment.like_type === 'haha',
+                    'wow': reply_comment.like_type === 'wow',
+                    'sad': reply_comment.like_type === 'sad',
+                    'angry': reply_comment.like_type === 'angry'
+                  }">{{iconAndLabel.label}}</p>
+            </div>
+            <p>1h ago</p>
+        </div>
+    </div>
+    <div *ngIf="showInteract" class="emotion-container-comment" #emotion>
+        <div class="emotion-item" (click)="onLikeReplyComment('like')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/heart-circle.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeReplyComment('haha')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/haha-logo.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeReplyComment('wow')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/wow-logo.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeReplyComment('sad')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/sad-icon.svg" type="">
+                </object>
+            </a>
+        </div>
+        <div class="emotion-item" (click)="onLikeReplyComment('angry')">
+            <a>
+                <object>
+                    <embed src="../../../assets/icons/angry-logo.svg" type="">
+                </object>
+            </a>
+        </div>
+    </div>
+</div>

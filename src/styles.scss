@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import "./assets/variables.scss";
 
 html {
   body {
     height: 100%;
     margin: 0;
     font-family: "Quicksand", sans-serif !important;
+    position: relative;
 
     h1 {
       font-family: "Quicksand", sans-serif !important;
@@ -15,11 +17,48 @@ html {
     label {
       font-family: "Quicksand", sans-serif !important;
     }
+
+    object {
+      pointer-events: none;
+    }
+
+    embed {
+      cursor: pointer !important;
+    }
   }
 }
 
 @function resize($dp) {
   @return calc($dp * 0.75px);
+}
+
+$desktop-md-width: 1366px;
+$desktop-sm-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 375px;
+
+@mixin desktop-md {
+  @media (max-width: #{$desktop-md-width}) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media (max-width: #{$desktop-sm-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
 }
 
 code-input {
@@ -33,4 +72,33 @@ code-input {
   --item-border-bottom-focused: 2px solid #9146ff !important;
   --item-shadow-focused: none !important;
   --item-border-radius: 0px !important;
+}
+
+.mat-slide-toggle .mat-slide-toggle-bar {
+  background-color: $gray-color;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba($color: $gray-color, $alpha: 0.5);
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $primary-color;
+}
+
+mat-dialog-container {
+  border-radius: resize(20) !important;
+  min-height: resize(500) !important;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  @include mobile {
+    padding: resize(5) resize(10) !important;
+  }
+}
+
+mat-spinner {
+  padding: resize(100) !important;
 }

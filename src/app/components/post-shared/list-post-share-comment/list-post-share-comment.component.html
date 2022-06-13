@@ -1,0 +1,13 @@
+<div class="comment-controller">
+    <img [src]="postShare.owner.avatar" alt="" />
+    <div class="input-container">
+        <form (ngSubmit)="onComment()" class="flex items-center w-full" [formGroup]="formGroup">
+            <input formControlName="content" style="flex: 1;" type="text" placeholder="Viết bình luận" />
+            <button type="submit">
+                <img src="../../../assets/icons/send.svg" type="" />
+            </button>
+        </form>
+    </div>
+</div>
+<hr />
+<app-comment-item-share *ngFor="let comment of postShare.comments" [comment]="comment" [getPostShareQueryRef]="getPostShareQueryRef"></app-comment-item-share>

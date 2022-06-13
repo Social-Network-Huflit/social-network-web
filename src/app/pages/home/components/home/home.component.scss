@@ -1,5 +1,7 @@
+@import "../../../../../styles.scss";
+
 .list-post{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: resize(30);
 }

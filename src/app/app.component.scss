@@ -1,6 +1,83 @@
+@import "../styles.scss";
+@import "../assets/variables.scss";
+
 * {
   padding: 0;
   margin: 0;
   background: #f0f0ff;
 }
-$RedColor: #fff;
+
+.app {
+  .layer {
+    width: 100vw;
+    height: 1000vh;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    cursor: pointer;
+
+    @include tablet {
+    }
+  }
+
+  .layer.active {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    display: block;
+  }
+
+  .drawer {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+  }
+
+  @include tablet {
+    .drawer {
+      opacity: 1;
+      visibility: visible;
+      background-color: #fff;
+      min-width: resize(400);
+      min-height: 100vh;
+
+      z-index: 909989;
+      border-top-left-radius: resize(32);
+      border-bottom-left-radius: resize(32);
+      padding-left: resize(32);
+      padding-right: resize(32);
+      padding-top: resize(64);
+    }
+
+    .drawer.active {
+      right: 0;
+      animation-name: slide_drawer;
+      animation-duration: 0.5s;
+    }
+
+    .drawer.unactive {
+      right: resize(-500);
+      animation-name: slide_drawer_close;
+      animation-duration: 0.5s;
+    }
+  }
+}
+
+@keyframes slide_drawer {
+  from {
+    right: resize(-500);
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slide_drawer_close {
+  from {
+    right: 0;
+  }
+  to {
+    right: resize(-500);
+  }
+}

@@ -1,18 +1,21 @@
 <div class="navbar-left-container">
   <a routerLink="profile">
     <div class="nav-item active">
-      <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="">
+      <img src="{{user?.avatar}}" alt="" *ngIf="user">
+      <div class="animate-pulse" *ngIf="!user">
+        <div class="rounded-full bg-gray-200 w-5 h-5"></div>
+      </div>
       <p>Duy Anh</p>
     </div>
   </a>
-  <a>
+  <a routerLink="/collection">
     <div class="nav-item">
       <mat-icon>bookmark</mat-icon>
       <p>Đã lưu</p>
     </div>
   </a>
   <a>
-    <div class="nav-item">
+    <div class="nav-item" (click)="openDialog()">
       <mat-icon>lock</mat-icon>
       <p>Đổi mật khẩu</p>
     </div>

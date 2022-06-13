@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -8,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class ForgotPasswordComponent implements OnInit {
   currentPage: 'send-email' | 'send-code' | 'change-password' | 'success' =
     'send-email';
+  sendEmailForm: FormGroup;
+  changePasswordForm: FormGroup;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sendEmailForm = new FormGroup({
+      email: new FormControl('')
+    })
+    this.changePasswordForm = new FormGroup({
+      new_password: new FormControl(''),
+      confirm_password: new FormControl(''),
+    })
+  }
 
   onChangePage() {
     switch (this.currentPage) {
@@ -30,16 +41,16 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
 
-  onSendMail(){
-    console.log("send mail")
+  onSendMail() {
+    console.log('send mail');
     this.onChangePage();
   }
 
-  onDoneSendCode(code: string){
-    this.onChangePage()
+  onDoneSendCode(code: string) {
+    this.onChangePage();
   }
 
-  onChangePassword(){
+  onChangePassword() {
     this.onChangePage();
   }
 }

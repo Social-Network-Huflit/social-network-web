@@ -1,4 +1,4 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .input-container {
   position: relative;
@@ -11,9 +11,19 @@
     color: #707070;
   }
   input {
-    padding: 12px resize(70);
+    padding: 12px resize(30);
     background-color: #f0f0ff;
     border-radius: 10px;
     width: 100%;
+
+    @include mobile {
+      // border-radius: resize(30);
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  input.has-icon {
+    padding: 12px resize(70);
   }
 }

@@ -1,0 +1,37 @@
+<div class="dialog-container">
+    <div class="header">
+        <p class="title">
+            Tạo bài viết
+        </p>
+    </div>
+    <hr>
+    <div class="user-info">
+        <img src="{{user.avatar}}" alt="">
+        <div class="right">
+            <p class="name">{{user.name}}</p>
+            <div class="post-access">
+                <embed src="../../../../assets/icons/world.svg" type="">
+                <p>Công khai</p>
+                <embed src="../../../../assets/icons/chevron-down-solid.svg" type="">
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="formGroup" (ngSubmit)="onCreatePost()">
+        <textarea formControlName="caption" placeholder="Bạn đang nghĩ gì thế?"></textarea>
+        <div class="bottom">
+            <div class="item">
+                <mat-icon class="tag">people</mat-icon>
+                <label for="">Gắn thẻ</label>
+            </div>
+            <div class="item">
+                <mat-icon class="images">image</mat-icon>
+                <label for="">Hình ảnh</label>
+            </div>
+            <div class="item">
+                <mat-icon class="express">tag_faces</mat-icon>
+                <label for="">Cảm Xúc</label>
+            </div>
+        </div>
+        <button class="btn-post" type="submit">Đăng bài</button>
+    </form>
+</div>

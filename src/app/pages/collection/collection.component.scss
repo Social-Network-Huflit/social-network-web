@@ -1,0 +1,28 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
+.body {
+  display: flex;
+
+  .wrapper {
+    display: none;
+    position: fixed;
+    width: 400px;
+    height: 100vh;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
+  @include mobile {
+    .wrapper {
+      z-index: 99;
+    }
+
+    .active {
+      opacity: 0.2;
+      display: block;
+    }
+  }
+}

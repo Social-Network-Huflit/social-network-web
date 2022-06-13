@@ -1,58 +1,117 @@
-<div class="post-item-container">
-    <div class="header">
-        <div class="left">
-            <img src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-                alt="">
-            <div>
-                <p class="name">Duy Anh</p>
-                <p class="time">1 giờ trước</p>
-            </div>
-        </div>
-        <mat-icon>more_horiz</mat-icon>
+<app-post-skeleton *ngIf="loading"></app-post-skeleton>
+<div class="post-item-container" *ngIf="!loading">
+  <!-- Header -->
+  <div class="header">
+    <div class="left">
+      <img [src]="post.owner.avatar" alt="" />
+      <div>
+        <p class="name">{{post.owner.name}}</p>
+        <p class="time" *ngIf="post">{{post.timestamp}}</p>
+      </div>
     </div>
-    <div class="body">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's
-            standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the
-            industry's
-            standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the
-            industry's
-            standard dummy text ever since the 1500s</p>
+    <mat-icon (click)="toggleShowContextmenu()">more_horiz</mat-icon>
+  </div>
+  <!-- Body -->
+  <app-post-body [post]="post"></app-post-body>
+  <!-- Interact count -->
+  <div class="interact-count">
+    <div class="count-item">
+      <mat-icon>favorite</mat-icon>
+      <p>{{post.like_count}}</p>
+    </div>
+    <div class="right">
+      <div class="count-item" (click)="toggleShowComment()">
+        <p>{{post.comment_count}} bình luận</p>
+      </div>
+      <div class="count-item" (click)="openDialog()">
+        <p>{{post.share_count}} chia sẻ</p>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <!-- Interact controller -->
+  <div class="interact-container">
+    <div class="interact-item" (click)="onLikePost('like')" appLongPress (longPress)="onShowInteract()">
+      <img src="../../../assets/icons/{{iconAndLabel.icon}}" />
+      <p [ngClass]="{
+        'like': post.like_type === 'like',
+        'haha': post.like_type === 'haha',
+        'wow': post.like_type === 'wow',
+        'sad': post.like_type === 'sad',
+        'angry': post.like_type === 'angry'
+      }">{{iconAndLabel.label}}</p>
+    </div>
+    <div class="interact-item" (click)="toggleShowComment()">
+      <embed src="../../../assets/icons/003-bubble-chat.svg" type="" />
+      <p>Bình luận</p>
+    </div>
+    <div class="interact-item" (click)="toggleShowShare()">
+      <embed src="../../../assets/icons/004-share.svg" type="" />
+      <p>Chia sẻ</p>
+    </div>
+    <!-- Emotion -->
+    <div *ngIf="showInteract" class="emotion-container" #emotion>
+      <div class="emotion-item" (click)="onLikePost('like')">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/heart-circle.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div class="emotion-item" (click)="onLikePost('haha')">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/haha-logo.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div class="emotion-item" (click)="onLikePost('wow')">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/wow-logo.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div class="emotion-item" (click)="onLikePost('sad')">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/sad-icon.svg" type="" />
+          </object>
+        </a>
+      </div>
+      <div class="emotion-item" (click)="onLikePost('angry')">
+        <a>
+          <object>
+            <embed src="../../../assets/icons/angry-logo.svg" type="" />
+          </object>
+        </a>
+      </div>
     </div>
 
-    <div class="interact-count">
-        <div class="count-item">
-            <mat-icon>favorite</mat-icon>
-            <p>124</p>
-        </div>
-        <div class="right">
-            <div class="count-item">
-                <p>124</p>
-                <p>bình luận</p>
-            </div>
-            <div class="count-item">
-                <p>124</p>
-                <p>chia sẻ</p>
-            </div>
-        </div>
+    <div class="share-container" *ngIf="showShare">
+      <div class="share-item">
+        <embed src="../../../assets/icons/editing.svg" type="" />
+        <p>Viết bài</p>
+      </div>
+      <div class="share-item" (click)="onSharePost('')">
+        <embed src="../../../assets/icons/004-share.svg" type="" />
+        <p>Chia sẻ ngay</p>
+      </div>
     </div>
+  </div>
+  <hr *ngIf="showComment" />
+  <!-- Comments -->
+  <app-list-post-comment [getPostQueryRef]="getPostQueryRef" [post]="post" *ngIf="showComment"></app-list-post-comment>
 
-    <hr>
-
-    <div class="interact-container">
-        <div class="interact-item">
-            <mat-icon>favorite_border</mat-icon>
-            <p>Thích</p>
-        </div>
-        <div class="interact-item">
-            <mat-icon>chat</mat-icon>
-            <p>Bình luận</p>
-        </div>
-        <div class="interact-item">
-            <mat-icon>share</mat-icon>
-            <p>Chia sẻ</p>
-        </div>
+  <!-- Contextmenu -->
+  <div class="contextmenu-container" *ngIf="showContextMenu">
+    <div class="contextmenu-item">
+      <embed src="../../../assets/icons/bookmark.svg" type="" />
+      <p>Lưu bài viết</p>
     </div>
+    <div class="contextmenu-item">
+      <embed src="../../../assets/icons/trash.svg" type="" />
+      <p>Xóa bài viết</p>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,15 @@
 <div class="follow-item-container">
     <div class="left">
-        <img src="https://ownyourbits.com/wp-content/uploads/2017/01/chameleon3.jpg" alt="">
+        <img [src]="user.avatar"
+            alt="">
         <div class="info">
-            <p class="name">Duy Anh</p>
-            <p class="sub">@dobadov3</p>
+            <p class="name">{{user.name}}</p>
+            <p class="sub">{{user.username}}</p>
         </div>
     </div>
-    <div class="right {{followed && 'followed'}}">
+    <div *ngIf="myUser.id !== user.id" class="right {{user.isFollowed && 'followed'}}">
         <p>
-            {{followed ? "Đang theo dõi" : "Theo dõi"}}
+            {{user.isFollowed? "Đang theo dõi" : "Theo dõi"}}
         </p>
     </div>
 </div>

@@ -1,0 +1,122 @@
+@import "../../../../../../styles.scss";
+@import "../../../../../../assets/variables.scss";
+
+.comment-item {
+  display: flex;
+  gap: resize(13);
+  align-items: flex-start;
+  margin-bottom: resize(20);
+  position: relative;
+  padding-left: resize(100);
+
+  img {
+    width: resize(60);
+    height: resize(60);
+    border-radius: 100%;
+  }
+
+  .right {
+    .info {
+      background-color: rgba($color: $secondary-color, $alpha: 0.5);
+      padding: resize(10) resize(20);
+      border-radius: resize(20);
+      display: flex;
+      flex-direction: column;
+      gap: resize(0.5);
+      align-items: flex-start;
+
+      p.name {
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .interact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: resize(13);
+      gap: resize(30);
+      margin-left: resize(20);
+
+      .emotion-item {
+        img {
+          width: resize(30);
+          height: resize(30);
+        }
+      }
+
+      p {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      p.like {
+        color: $primary-color;
+      }
+
+      p.haha {
+        color: $haha;
+      }
+
+      p.wow {
+        color: $wow;
+      }
+
+      p.sad {
+        color: $sad;
+      }
+
+      p.angry {
+        color: $angry;
+      }
+    }
+  }
+
+  .emotion-container-comment {
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    height: resize(80);
+    left: 7.5%;
+    bottom: resize(40);
+    border-radius: resize(50);
+    box-shadow: 0.3px 0.3px 4px rgba($color: #000000, $alpha: 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 resize(16);
+    animation-name: emotion-slide-comment;
+    animation-duration: 0.5s;
+
+    @include mobile {
+      width: 100%;
+      left: 0;
+    }
+
+    .emotion-item {
+      a {
+        cursor: pointer;
+        embed {
+          width: resize(50);
+          height: resize(50);
+        }
+      }
+    }
+  }
+}
+
+@keyframes emotion-slide-comment {
+  from {
+    bottom: resize(0);
+  }
+  to {
+    bottom: resize(40);
+  }
+}
