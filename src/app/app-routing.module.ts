@@ -8,6 +8,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeFragmentComponent } from './pages/home/components/home/home.component';
 import { CollectionComponent } from './pages/collection/collection.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { UserManagerComponent } from './pages/admin/user-manager/user-manager.component';
+import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
 
 const routes: Routes = [
   {
@@ -37,8 +40,25 @@ const routes: Routes = [
   },
   {
     path: 'message',
+    component: ChatComponent,
     pathMatch: 'full',
-    component: ChatComponent
+  },
+  // ADMIN
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: 'user-manager',
+        component: UserManagerComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'post-manager',
+        component: PostManagerComponent,
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 
