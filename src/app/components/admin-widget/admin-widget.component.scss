@@ -1,0 +1,22 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+.widget-container {
+  background-color: #5ceca7;
+  height: resize(150);
+  width: resize(450);
+  padding: resize(20);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  span {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .number {
+    margin-top: 15px;
+    font-size: 32px;
+  }
+}

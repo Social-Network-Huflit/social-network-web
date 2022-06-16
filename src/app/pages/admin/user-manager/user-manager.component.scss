@@ -1,0 +1,60 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+.user-manager-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  .widget {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: resize(20);
+  }
+  h2 {
+    margin: 32px auto;
+    font-size: 32px;
+  }
+  .list-users {
+    table.users-table {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+
+      border-radius: 10px;
+      tr {
+        border: 1px solid #ccc;
+        .paginator {
+          width: 100%;
+        }
+      }
+      .table-header {
+        background-color: #ccc;
+        th {
+          padding: resize(20);
+          font-size: 18px;
+        }
+      }
+      .table-item {
+        td {
+          padding: resize(15) 0;
+          text-align: center;
+          font-size: 16px;
+        }
+        .id {
+        }
+        .user a:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+        .phone {
+        }
+        .email {
+        }
+
+        .delete {
+          color: red;
+        }
+      }
+    }
+  }
+}

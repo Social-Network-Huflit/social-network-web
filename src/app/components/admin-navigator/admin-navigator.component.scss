@@ -1,0 +1,60 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+
+.navigator-container {
+  background-color: $primary-color;
+  height: 100vh;
+  border-right: 0.6px solid rgba(0, 0, 0, 0.35);
+  .admin-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-top: resize(32);
+      margin-bottom: resize(12);
+      width: resize(150);
+      height: resize(150);
+      border-radius: 50%;
+    }
+    .admin-name {
+      font-size: resize(28);
+      font-weight: 500;
+      color: #fff;
+    }
+    .sign-out {
+      padding: resize(20);
+      margin-top: 10px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 500;
+      background-color: rgb(75, 218, 40);
+      border-radius: 10px;
+    }
+  }
+  .navigator {
+    h2 {
+      margin: resize(20) resize(32);
+      font-weight: 500;
+      font-size: 28px;
+      color: #cccccc;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: resize(100);
+      .nav-item {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: resize(20);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        p {
+          margin-left: resize(10);
+        }
+      }
+    }
+  }
+}
