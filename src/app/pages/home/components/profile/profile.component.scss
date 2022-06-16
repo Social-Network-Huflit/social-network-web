@@ -27,7 +27,7 @@
       width: $size;
       height: $size;
       position: absolute;
-      bottom: calc($size / 2);
+      bottom: calc($size / -2);
       left: resize(40);
       border-radius: 100%;
 

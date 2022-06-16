@@ -482,6 +482,7 @@ export interface Query {
   getPost?: Maybe<Post>;
   getPostShare?: Maybe<PostShare>;
   getPosts: Array<PostType>;
+  getUserById: User;
   initRoom: Scalars['Boolean'];
 }
 
@@ -493,6 +494,11 @@ export interface QueryGetPostArgs {
 
 export interface QueryGetPostShareArgs {
   post_id: Scalars['ID'];
+}
+
+
+export interface QueryGetUserByIdArgs {
+  user_id: Scalars['ID'];
 }
 
 export interface RegisterInput {
@@ -769,6 +775,13 @@ export type GetMyUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetMyUserQuery = { __typename?: 'Query', getMyUser?: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string } | null };
+
+export type GetUserByIdQueryVariables = Exact<{
+  user_id: Scalars['ID'];
+}>;
+
+
+export type GetUserByIdQuery = { __typename?: 'Query', getUserById: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string } };
 
 export const MutationResponseFragmentDoc = gql`
     fragment mutationResponse on IMutationResponse {
@@ -1252,6 +1265,24 @@ export const GetMyUserDocument = gql`
   })
   export class GetMyUserGQL extends Apollo.Query<GetMyUserQuery, GetMyUserQueryVariables> {
     override document = GetMyUserDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetUserByIdDocument = gql`
+    query GetUserById($user_id: ID!) {
+  getUserById(user_id: $user_id) {
+    ...userInfo
+  }
+}
+    ${UserInfoFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetUserByIdGQL extends Apollo.Query<GetUserByIdQuery, GetUserByIdQueryVariables> {
+    override document = GetUserByIdDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

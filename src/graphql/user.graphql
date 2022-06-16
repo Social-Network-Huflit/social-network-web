@@ -3,3 +3,9 @@ query GetMyUser {
     ...userInfo
   }
 }
+
+query GetUserById($user_id: ID!){
+  getUserById(user_id: $user_id){
+    ...userInfo
+  }
+}
