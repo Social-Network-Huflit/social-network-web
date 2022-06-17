@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/home/components/profile/profile.compon
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/forgotpassword.component';
 import { CommonButtonComponent } from './components/common-button/common-button.component';
 import { CodeInputModule } from 'angular-code-input';
@@ -49,6 +50,11 @@ import { ReplyCommentComponent } from './components/post-item/list-post-comment/
 import { ListPostShareCommentComponent } from './components/post-shared/list-post-share-comment/list-post-share-comment.component';
 import { CommentItemComponent } from './components/post-shared/list-post-share-comment/comment-item/comment-item.component';
 import { ReplyCommentPostShareComponent } from './components/post-shared/list-post-share-comment/comment-item/reply-comment/reply-comment.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminNavigatorComponent } from './components/admin-navigator/admin-navigator.component';
+import { UserManagerComponent } from './pages/admin/user-manager/user-manager.component';
+import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
+import { AdminWidgetComponent } from './components/admin-widget/admin-widget.component';
 import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/follow-skeleton.component';
 
 @NgModule({
@@ -59,6 +65,7 @@ import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/
     HomeComponent,
     ProfileComponent,
     InputFieldComponent,
+
     ForgotPasswordComponent,
     CommonButtonComponent,
     FollowItemComponent,
@@ -90,6 +97,11 @@ import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/
     ListPostShareCommentComponent,
     CommentItemComponent,
     ReplyCommentPostShareComponent,
+    AdminComponent,
+    AdminNavigatorComponent,
+    UserManagerComponent,
+    PostManagerComponent,
+    AdminWidgetComponent,
     FollowSkeletonComponent
   ],
   imports: [
@@ -97,6 +109,7 @@ import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatPaginatorModule,
     MatTabsModule,
     CodeInputModule,
     MatDialogModule,

@@ -21,6 +21,8 @@
     input-field {
     }
     .chat-container {
+      border-top: 1px solid #ccc;
+
       height: 70vh;
       overflow-y: scroll;
       .chat-item {
@@ -66,18 +68,6 @@
         background-color: #f1f1f1;
         cursor: pointer;
       }
-    }
-
-    .see-all-messages {
-      margin: resize(20) auto 0 auto;
-      width: 100%;
-
-      border-radius: 10px;
-      background-color: #dddddd;
-      padding: resize(10);
-    }
-    .see-all-messages:hover {
-      opacity: 0.7;
     }
   }
   .chat-item-detail {
@@ -126,34 +116,65 @@
       }
     }
     .chat-log {
+      position: relative;
+      height: 70%;
+      margin-left: resize(20);
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+
       .partner-chat {
         display: flex;
+        align-items: end;
+
         .avatar {
           $size: resize(50);
           border-radius: 50%;
-          margin-right: resize(25);
+          margin-right: resize(15);
           width: $size;
           height: $size;
         }
         .content-chat {
-          .name {
-          }
           .chat-message {
+            margin-top: 5px;
+            background-color: rgb(238, 238, 238);
+            padding: 15px;
+            border-radius: 20px;
           }
         }
       }
       .your-chat {
+        display: flex;
+        justify-content: end;
         .content-chat {
           .chat-message {
+            margin-top: 5px;
+            margin-right: 10px;
+            background-color: $primary-color;
+            padding: 15px;
+            color: #fff;
+            border-radius: 20px;
           }
         }
       }
-    }
-    .input-message {
-      padding: resize(10);
-      background-color: #e4e4e4;
-      width: 100%;
-      border-radius: 10px;
+      .input-content {
+        bottom: 10px;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        width: 70%;
+
+        .input-message {
+          padding: resize(10);
+          background-color: #e4e4e4;
+          width: 100%;
+          border-radius: 10px;
+          margin: 5px 15px;
+        }
+        mat-icon {
+          color: $primary-color;
+        }
+      }
     }
   }
 }

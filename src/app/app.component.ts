@@ -16,7 +16,7 @@ export class AppComponent {
     this.service.showDrawer.subscribe((value) => (this.showDrawer = value));
   }
 
-  toggleDrawer(value: boolean){
+  toggleDrawer(value: boolean) {
     this.service.toggleDrawer(value);
-}
+  }
 }

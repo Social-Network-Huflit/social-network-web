@@ -19,7 +19,10 @@
     app-navbar-left {
       // min-width: resize(300);
       height: 100vh;
-
+      @include desktop-md {
+        margin-top: 100px;
+      }
+      flex: 1;
       position: sticky;
       top: 90px;
       height: 100%;
