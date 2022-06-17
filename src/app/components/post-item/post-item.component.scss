@@ -24,10 +24,12 @@
         width: resize(64);
         height: resize(64);
         border-radius: 100%;
+        cursor: pointer;
       }
 
       .name {
         font-size: resize(32);
+        cursor: pointer;
 
         @include mobile {
           font-size: resize(24);

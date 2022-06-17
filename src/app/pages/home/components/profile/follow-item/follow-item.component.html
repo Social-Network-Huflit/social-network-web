@@ -1,13 +1,14 @@
-<div class="follow-item-container">
+<app-follow-skeleton *ngIf="loading"></app-follow-skeleton>
+
+<div class="follow-item-container" *ngIf="!loading">
     <div class="left">
-        <img [src]="user.avatar"
-            alt="">
+        <img [src]="user.avatar" alt="">
         <div class="info">
             <p class="name">{{user.name}}</p>
             <p class="sub">{{user.username}}</p>
         </div>
     </div>
-    <div *ngIf="myUser.id !== user.id" class="right {{user.isFollowed && 'followed'}}">
+    <div *ngIf="myUser.id !== user.id" class="right {{user.isFollowed && 'followed'}}" (click)="onFollow()">
         <p>
             {{user.isFollowed? "Đang theo dõi" : "Theo dõi"}}
         </p>

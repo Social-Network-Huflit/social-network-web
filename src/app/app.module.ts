@@ -38,7 +38,7 @@ import { PostCreatorDialogComponent } from './components/dialogs/post-creator-di
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { PostSharedComponent } from './components/post-shared/post-shared.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ListPostCommentComponent } from './components/post-item/list-post-comment/list-post-comment.component';
@@ -55,6 +55,7 @@ import { AdminNavigatorComponent } from './components/admin-navigator/admin-navi
 import { UserManagerComponent } from './pages/admin/user-manager/user-manager.component';
 import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
 import { AdminWidgetComponent } from './components/admin-widget/admin-widget.component';
+import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/follow-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { AdminWidgetComponent } from './components/admin-widget/admin-widget.com
     UserManagerComponent,
     PostManagerComponent,
     AdminWidgetComponent,
+    FollowSkeletonComponent
   ],
   imports: [
     BrowserModule,
@@ -116,6 +118,7 @@ import { AdminWidgetComponent } from './components/admin-widget/admin-widget.com
     GraphQLModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
