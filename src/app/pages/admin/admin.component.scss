@@ -1,0 +1,15 @@
+@import "../../../styles.scss";
+@import "../../../assets/variables.scss";
+.admin-container {
+  display: flex;
+  justify-content: center;
+  .nav-left {
+    flex: 1;
+  }
+  .body {
+    margin-left: resize(10);
+    margin-top: resize(30);
+    flex: 3;
+    padding: resize(20);
+  }
+}

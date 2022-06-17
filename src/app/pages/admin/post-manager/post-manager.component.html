@@ -1,0 +1,68 @@
+<div class="post-manager-container">
+  <div class="widget">
+    <app-admin-widget
+      titleWidget="Bài viết mới hôm nay"
+      [number]="5"
+    ></app-admin-widget>
+    <app-admin-widget
+      titleWidget="Tương tác/bài viết"
+      [number]="10.3"
+    ></app-admin-widget>
+  </div>
+  <h2>Danh sách bài viết</h2>
+  <div class="list-posts">
+    <table class="posts-table">
+      <tr class="table-header">
+        <th>ID</th>
+        <th>Người đăng</th>
+        <th>Thời gian đăng</th>
+        <th>Lượt tương tác</th>
+        <th>Link bài viết</th>
+        <th>Hành động</th>
+      </tr>
+      <tr class="table-item">
+        <td class="id">1</td>
+        <td class="user"><a>Mai Hữu Tín</a></td>
+        <td class="date">16/06/2022</td>
+        <td class="interaction">3</td>
+        <td class="link"><a href="#" class="">Link</a></td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">2</td>
+        <td class="user"><a>Mai Hữu Tín</a></td>
+        <td class="date">16/06/2022</td>
+        <td class="interaction">1</td>
+        <td class="link"><a href="#" class="">Link</a></td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">3</td>
+        <td class="user"><a>Nguyễn Duy Anh</a></td>
+        <td class="date">15/06/2022</td>
+        <td class="interaction">2</td>
+        <td class="link"><a href="#" class="">Link</a></td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">4</td>
+        <td class="user"><a>Mai Hữu Tín</a></td>
+        <td class="date">13/06/2022</td>
+        <td class="interaction">5</td>
+        <td class="link"><a href="#" class="">Link</a></td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <mat-paginator
+            [length]="100"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

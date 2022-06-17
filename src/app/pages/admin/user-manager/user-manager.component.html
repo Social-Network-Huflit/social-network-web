@@ -1,0 +1,78 @@
+<!-- <mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+>
+</mat-paginator> -->
+<div class="user-manager-container">
+  <div class="widget">
+    <app-admin-widget
+      titleWidget="Người dùng mới"
+      [number]="5"
+    ></app-admin-widget>
+    <app-admin-widget
+      titleWidget="Số người dùng"
+      [number]="20"
+    ></app-admin-widget>
+  </div>
+  <h2>Danh sách người dùng</h2>
+  <div class="list-users">
+    <table class="users-table">
+      <tr class="table-header">
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Hành động</th>
+      </tr>
+      <tr class="table-item">
+        <td class="id">1</td>
+        <td class="user"><a>Mai Hữu Tín</a></td>
+        <td class="phone">0386837571</td>
+        <td class="email">huutin@gmail.com</td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">2</td>
+        <td class="user"><a>Nguyễn Thành An</a></td>
+        <td class="phone">0386421241</td>
+        <td class="email">thanhan@gmail.com</td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">3</td>
+        <td class="user"><a>Nguyễn Duy Anh</a></td>
+        <td class="phone">0902138574</td>
+        <td class="email">duyanh@gmail.com</td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">4</td>
+        <td class="user"><a>Trần Hoàng Triều</a></td>
+        <td class="phone">0383231412</td>
+        <td class="email">hoangtrieu@gmail.com</td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+      <tr class="table-item">
+        <td class="id">5</td>
+        <td class="user"><a>Vĩnh Kì</a></td>
+        <td class="phone">0385125412</td>
+        <td class="email">bp.vinhky@gmail.com</td>
+        <td class="delete"><mat-icon>delete</mat-icon></td>
+      </tr>
+
+      <tr>
+        <td colspan="5">
+          <mat-paginator
+            [length]="20"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
