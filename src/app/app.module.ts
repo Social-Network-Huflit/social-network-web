@@ -37,7 +37,7 @@ import { PostCreatorDialogComponent } from './components/dialogs/post-creator-di
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { PostSharedComponent } from './components/post-shared/post-shared.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ListPostCommentComponent } from './components/post-item/list-post-comment/list-post-comment.component';
@@ -49,6 +49,7 @@ import { ReplyCommentComponent } from './components/post-item/list-post-comment/
 import { ListPostShareCommentComponent } from './components/post-shared/list-post-share-comment/list-post-share-comment.component';
 import { CommentItemComponent } from './components/post-shared/list-post-share-comment/comment-item/comment-item.component';
 import { ReplyCommentPostShareComponent } from './components/post-shared/list-post-share-comment/comment-item/reply-comment/reply-comment.component';
+import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/follow-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { ReplyCommentPostShareComponent } from './components/post-shared/list-po
     ReplyCommentComponent,
     ListPostShareCommentComponent,
     CommentItemComponent,
-    ReplyCommentPostShareComponent
+    ReplyCommentPostShareComponent,
+    FollowSkeletonComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +105,7 @@ import { ReplyCommentPostShareComponent } from './components/post-shared/list-po
     GraphQLModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

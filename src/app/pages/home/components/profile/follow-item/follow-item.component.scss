@@ -60,6 +60,9 @@
   }
 
   .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: resize(210);
     background-color: $primary-color;
     color: #fff;

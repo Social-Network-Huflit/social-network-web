@@ -24,7 +24,7 @@
       'content-post-shared': true,
       'text': postShare.post.content_type === 'text'
     }">
-      <a href="#" class="user-name">{{postShare.post.owner.name}}</a>
+      <a routerLink="/home/profile/{{postShare.post.owner.id}}" class="user-name">{{postShare.post.owner.name}}</a>
       <p class="time-post">{{postShare.post.timestamp}}</p>
       <p class="text-content">{{postShare.post.caption}}</p>
     </div>

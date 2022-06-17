@@ -3,28 +3,28 @@
   <!-- Header -->
   <div class="header">
     <div class="left">
-      <img [src]="post.owner.avatar" alt="" />
+      <img [src]="post?.owner?.avatar" alt="" (click)="onNavigateProfile()" />
       <div>
-        <p class="name">{{post.owner.name}}</p>
+        <p class="name" (click)="onNavigateProfile()">{{post?.owner?.name}}</p>
         <p class="time" *ngIf="post">{{post.timestamp}}</p>
       </div>
     </div>
     <mat-icon (click)="toggleShowContextmenu()">more_horiz</mat-icon>
   </div>
   <!-- Body -->
-  <app-post-body [post]="post"></app-post-body>
+  <app-post-body *ngIf="post" [post]="post"></app-post-body>
   <!-- Interact count -->
   <div class="interact-count">
     <div class="count-item">
       <mat-icon>favorite</mat-icon>
-      <p>{{post.like_count}}</p>
+      <p>{{post?.like_count}}</p>
     </div>
     <div class="right">
       <div class="count-item" (click)="toggleShowComment()">
-        <p>{{post.comment_count}} bình luận</p>
+        <p>{{post?.comment_count}} bình luận</p>
       </div>
       <div class="count-item" (click)="openDialog()">
-        <p>{{post.share_count}} chia sẻ</p>
+        <p>{{post?.share_count}} chia sẻ</p>
       </div>
     </div>
   </div>
@@ -34,11 +34,11 @@
     <div class="interact-item" (click)="onLikePost('like')" appLongPress (longPress)="onShowInteract()">
       <img src="../../../assets/icons/{{iconAndLabel.icon}}" />
       <p [ngClass]="{
-        'like': post.like_type === 'like',
-        'haha': post.like_type === 'haha',
-        'wow': post.like_type === 'wow',
-        'sad': post.like_type === 'sad',
-        'angry': post.like_type === 'angry'
+        'like': post?.like_type === 'like',
+        'haha': post?.like_type === 'haha',
+        'wow': post?.like_type === 'wow',
+        'sad': post?.like_type === 'sad',
+        'angry': post?.like_type === 'angry'
       }">{{iconAndLabel.label}}</p>
     </div>
     <div class="interact-item" (click)="toggleShowComment()">
@@ -101,7 +101,8 @@
   </div>
   <hr *ngIf="showComment" />
   <!-- Comments -->
-  <app-list-post-comment [getPostQueryRef]="getPostQueryRef" [post]="post" *ngIf="showComment"></app-list-post-comment>
+  <app-list-post-comment [getPostQueryRef]="getPostQueryRef" [post]="post" *ngIf="showComment  && post">
+  </app-list-post-comment>
 
   <!-- Contextmenu -->
   <div class="contextmenu-container" *ngIf="showContextMenu">

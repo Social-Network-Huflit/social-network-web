@@ -7,8 +7,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { QueryRef } from 'apollo-angular';
 import {
+  GetMyUserGQL,
   GetPostGQL,
   GetPostQuery,
   GetPostsDocument,
@@ -18,6 +20,7 @@ import {
   LikePostGQL,
   Post,
   SharePostGQL,
+  User,
 } from 'src/graphql/graphql';
 import getEmotion from 'src/helpers/getEmotion';
 import { ShareDialogComponent } from '../dialogs/share-dialog/share-dialog.component';
@@ -33,7 +36,8 @@ export class PostItemComponent implements OnInit {
   @ViewChild('emotion') emotion: ElementRef;
   @Input() post_id: string;
 
-  post: Post;
+  post?: Post;
+  user?: User;
   getPostQueryRef: QueryRef<GetPostQuery, any>;
   getPostsQueryRef: QueryRef<GetPostsQuery, any>;
 
@@ -53,7 +57,9 @@ export class PostItemComponent implements OnInit {
     private getPostGQL: GetPostGQL,
     private likePostGQL: LikePostGQL,
     private sharePostGQL: SharePostGQL,
-    private getPostsGQL: GetPostsGQL
+    private getPostsGQL: GetPostsGQL,
+    private getMyUserGQL: GetMyUserGQL,
+    private router: Router
   ) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (this.emotion) {
@@ -77,6 +83,10 @@ export class PostItemComponent implements OnInit {
         fetchPolicy: 'cache-and-network',
       }
     );
+
+    this.getMyUserGQL.watch().valueChanges.subscribe(({ data }) => {
+      this.user = data.getMyUser as User;
+    });
 
     this.getPostQueryRef.valueChanges.subscribe(({ data, loading }) => {
       if (loading === false) {
@@ -171,5 +181,14 @@ export class PostItemComponent implements OnInit {
         }
       )
       .subscribe();
+  }
+
+  onNavigateProfile() {
+    console.log('haha');
+    if (this.post?.owner.id === this.user?.id) {
+      this.router.navigate(['/home/profile']);
+    } else {
+      this.router.navigate(['/home/profile', this.post?.owner.id]);
+    }
   }
 }
