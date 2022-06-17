@@ -4,8 +4,36 @@ query GetMyUser {
   }
 }
 
-query GetUserById($user_id: ID!){
-  getUserById(user_id: $user_id){
+query GetUserById($user_id: ID!) {
+  getUserById(user_id: $user_id) {
     ...userInfo
+  }
+}
+
+mutation FollowUser($user_id: ID!) {
+  followUser(user_id: $user_id) {
+    ...mutationResponse
+  }
+}
+
+query Search($content: String!) {
+  searchUser(content: $content) {
+    id
+  }
+}
+
+mutation WriteHistory($user_id: ID!) {
+  writeHistory(user_id: $user_id) {
+    code
+    success
+    message
+  }
+}
+
+mutation RemoveHistory($history_id: ID!) {
+  removeHistory(history_id: $history_id) {
+    code
+    success
+    message
   }
 }

@@ -36,8 +36,8 @@ export class PostItemComponent implements OnInit {
   @ViewChild('emotion') emotion: ElementRef;
   @Input() post_id: string;
 
-  post: Post;
-  user: User;
+  post?: Post;
+  user?: User;
   getPostQueryRef: QueryRef<GetPostQuery, any>;
   getPostsQueryRef: QueryRef<GetPostsQuery, any>;
 
@@ -185,10 +185,10 @@ export class PostItemComponent implements OnInit {
 
   onNavigateProfile() {
     console.log('haha');
-    if (this.post.owner.id === this.user.id) {
+    if (this.post?.owner.id === this.user?.id) {
       this.router.navigate(['/home/profile']);
     } else {
-      this.router.navigate(['/home/profile', this.post.owner.id]);
+      this.router.navigate(['/home/profile', this.post?.owner.id]);
     }
   }
 }

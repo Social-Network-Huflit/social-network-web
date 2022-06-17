@@ -4,33 +4,45 @@
       <a routerLink="/">
         <p>Logo here</p>
       </a>
-      <mat-icon>search</mat-icon>
+      <div class="search" (click)="onSearchMode()">
+        <input type="text" [ngModel]="searchValue" (ngModelChange)="onChangeSearch($event)" #search placeholder="Search"
+          [ngClass]="{'active': searchMode}">
+        <mat-icon class="search" #search>search</mat-icon>
+        <div class="search-menu" *ngIf="searchMode" #search>
+          <p class="title">Tìm kiếm gần đây</p>
+          <ng-container *ngIf="!isTyping">
+            <div class="search-item" *ngFor="let history of user?.history">
+              <div class="left">
+                <img [src]="history.user.avatar" (click)="navigateProfile(history.user.id)" alt="">
+                <p class="name" (click)="navigateProfile(history.user.id)">{{history.user.name}}</p>
+              </div>
+              <mat-icon class="close" (click)="removeHistory(history.id)">close</mat-icon>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="isTyping">
+            <app-follow-item (click)="navigateProfile(user_id)" *ngFor="let user_id of searchResult"
+              [user_id]="user_id">
+
+            </app-follow-item>
+          </ng-container>
+        </div>
+      </div>
     </div>
     <div class="header-right">
       <div class="tools-bar">
         <!-- Show -->
-        <div
-          class="icon notification"
-          (click)="onToggleNotification()"
-          #menu_notification
-        >
+        <div class="icon notification" #notification (click)="onToggleNotification()" #menu_notification>
           <embed src="../../../assets/icons/bell-solid.svg" type="" />
         </div>
-        <div class="icon chat" (click)="onToggleChat()">
-          <embed
-            src="../../../assets/icons/facebook-messenger-brands.svg"
-            type=""
-          />
+        <div class="icon chat" #message (click)="onToggleChat()">
+          <embed src="../../../assets/icons/facebook-messenger-brands.svg" type="" />
         </div>
-        <div class="icon menu" (click)="onToggleMenu()" #menu_setting>
+        <div class="icon menu" #menu (click)="onToggleMenu()" #menu_setting>
           <embed src="../../../assets/icons/chevron-down-solid.svg" type="" />
         </div>
         <!-- Hide -->
         <div class="icon search">
-          <embed
-            src="../../../assets/icons/search-interface-symbol.svg"
-            type=""
-          />
+          <embed src="../../../assets/icons/search-interface-symbol.svg" type="" />
         </div>
         <div class="icon menu-mobile" (click)="onToggleDrawer(true)">
           <embed src="../../../assets/icons/menu.svg" type="" />
@@ -39,13 +51,10 @@
     </div>
 
     <!-- Menu notification -->
-    <div class="menu-notification" *ngIf="showNotification">
+    <div class="menu-notification" *ngIf="showNotification" #notification>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="" />
         </div>
         <div class="right">
           <p>
@@ -58,10 +67,7 @@
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="" />
         </div>
         <div class="right">
           <p>
@@ -74,10 +80,7 @@
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="" />
         </div>
         <div class="right">
           <p>
@@ -90,10 +93,7 @@
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="" />
         </div>
         <div class="right">
           <p>
@@ -106,10 +106,7 @@
       </div>
       <div class="notification-item">
         <div class="avatar">
-          <img
-            src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg"
-            alt=""
-          />
+          <img src="https://mykarment.com/wp-content/uploads/2015/08/leader1.jpg" alt="" />
         </div>
         <div class="right">
           <p>
@@ -123,10 +120,10 @@
     </div>
 
     <!-- Chat log -->
-    <app-chat-window *ngIf="showChat"></app-chat-window>
+    <app-chat-window *ngIf="showChat" #message></app-chat-window>
 
     <!-- Menu setting -->
-    <div class="menu-setting" *ngIf="showMenu">
+    <div class="menu-setting" *ngIf="showMenu" #menu>
       <div class="menu-setting-item">
         <embed src="../../../assets/icons/setting.svg" type="" />
         <p>Cài đặt</p>

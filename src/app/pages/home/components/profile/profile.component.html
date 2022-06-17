@@ -24,33 +24,22 @@
         <mat-tab-group>
             <mat-tab bodyClass="tab-item" label="Bài đăng">
                 <div class="flex flex-col gap-[20px] mt-5">
-                    <!-- <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item>
-                    <app-post-item></app-post-item> -->
+                    <ng-container *ngFor="let post of posts">
+                        <app-post-item *ngIf="post.__typename === 'Post'" [post_id]="post.id"></app-post-item>
+                        <app-post-shared *ngIf="post.__typename === 'PostShare'" [post_share_id]="post.id">
+                        </app-post-shared>
+                    </ng-container>
                 </div>
             </mat-tab>
             <mat-tab bodyClass="tab-item" label="Theo dõi">
                 <div class="mt-5">
-                    <!-- <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item>
-                    <app-follow-item></app-follow-item> -->
+                    <app-follow-item *ngFor="let follow of user?.followers" [user_id]="follow.id"></app-follow-item>
+
                 </div>
             </mat-tab>
             <mat-tab bodyClass="tab-item" label="Đang theo dõi">
                 <div class="mt-5">
-                    <!-- <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item>
-                    <app-follow-item [followed]="true"></app-follow-item> -->
+                    <app-follow-item *ngFor="let follow of user?.following" [user_id]="follow.id"></app-follow-item>
                 </div>
             </mat-tab>
             <mat-tab bodyClass="tab-item" label="Đã thích">
