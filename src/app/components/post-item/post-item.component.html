@@ -3,9 +3,9 @@
   <!-- Header -->
   <div class="header">
     <div class="left">
-      <img [src]="post.owner.avatar" alt="" />
+      <img [src]="post.owner.avatar" alt="" (click)="onNavigateProfile()" />
       <div>
-        <p class="name">{{post.owner.name}}</p>
+        <p class="name" (click)="onNavigateProfile()">{{post.owner.name}}</p>
         <p class="time" *ngIf="post">{{post.timestamp}}</p>
       </div>
     </div>

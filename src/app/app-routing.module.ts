@@ -23,7 +23,16 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: '', component: HomeFragmentComponent, pathMatch: 'full' },
-      { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'profile/:user_id',
+        component: ProfileComponent,
+        pathMatch: 'full',
+      },
     ],
   },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
