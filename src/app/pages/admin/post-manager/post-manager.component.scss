@@ -14,6 +14,31 @@
     margin: 32px auto;
     font-size: 32px;
   }
+  .search {
+    display: flex;
+    align-items: center;
+    margin-bottom: resize(20);
+    label {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .input-container {
+      margin-left: resize(10);
+      display: flex;
+      align-items: center;
+      position: relative;
+      input {
+        padding: resize(15) resize(55);
+        border-radius: 5px;
+      }
+      mat-icon {
+        position: absolute;
+        top: 25%;
+        left: 5%;
+        color: #707070;
+      }
+    }
+  }
   .list-posts {
     table.posts-table {
       width: 100%;

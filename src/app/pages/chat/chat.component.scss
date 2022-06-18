@@ -121,11 +121,11 @@
       margin-left: resize(20);
       display: flex;
       flex-direction: column;
-      justify-content: end;
+      justify-content: flex-end;
 
       .partner-chat {
         display: flex;
-        align-items: end;
+        align-items: flex-end;
 
         .avatar {
           $size: resize(50);
@@ -145,7 +145,7 @@
       }
       .your-chat {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         .content-chat {
           .chat-message {
             margin-top: 5px;

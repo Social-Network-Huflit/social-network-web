@@ -56,6 +56,7 @@ import { UserManagerComponent } from './pages/admin/user-manager/user-manager.co
 import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
 import { AdminWidgetComponent } from './components/admin-widget/admin-widget.component';
 import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/follow-skeleton.component';
+import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/
     UserManagerComponent,
     PostManagerComponent,
     AdminWidgetComponent,
-    FollowSkeletonComponent
+    FollowSkeletonComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,

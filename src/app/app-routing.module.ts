@@ -11,6 +11,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UserManagerComponent } from './pages/admin/user-manager/user-manager.component';
 import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
+import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
 
 const routes: Routes = [
   {
@@ -67,7 +68,17 @@ const routes: Routes = [
         component: PostManagerComponent,
         pathMatch: 'full',
       },
+      {
+        path: '',
+        component: PostManagerComponent,
+        pathMatch: 'full',
+      },
     ],
+  },
+  {
+    path: 'admin-login',
+    component: LoginAdminComponent,
+    pathMatch: 'full',
   },
 ];
 
