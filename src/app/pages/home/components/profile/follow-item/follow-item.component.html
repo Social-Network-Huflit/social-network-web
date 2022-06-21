@@ -2,10 +2,12 @@
 
 <div class="follow-item-container" *ngIf="!loading">
     <div class="left">
-        <img [src]="user.avatar" alt="">
+        <a routerLink="/home/profile/{{user.id}}"><img [src]="user.avatar" alt=""></a>
         <div class="info">
-            <p class="name">{{user.name}}</p>
-            <p class="sub">{{user.username}}</p>
+            <a routerLink="/home/profile/{{user.id}}">
+                <p class="name">{{user.name}}</p>
+            </a>
+            <p class="sub">@{{user.username}}</p>
         </div>
     </div>
     <div *ngIf="myUser.id !== user.id" class="right {{user.isFollowed && 'followed'}}" (click)="onFollow()">

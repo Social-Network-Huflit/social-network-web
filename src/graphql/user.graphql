@@ -37,3 +37,9 @@ mutation RemoveHistory($history_id: ID!) {
     message
   }
 }
+
+query GetSuggestionUser{
+  getSuggestionUser{
+    id
+  }
+}

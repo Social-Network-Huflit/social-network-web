@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
-import { HttpLink } from 'apollo-angular/http';
+// import { HttpLink } from 'apollo-angular/http';
 import { onError } from '@apollo/client/link/error';
+import { HttpLink, } from 'apollo-angular-link-http';
 
 const uri = 'http://localhost:4000/graphql'; // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
@@ -19,7 +20,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const link = httpLink.create({ uri, withCredentials: true });
 
   return {
-    link: errorLink.concat(link),
+    link: errorLink.concat(link as any),
     cache: new InMemoryCache(),
     credentials: 'include',
     defaultOptions: {
@@ -27,6 +28,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
         errorPolicy: 'all',
       },
     },
+    
   };
 }
 

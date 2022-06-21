@@ -10,6 +10,9 @@ export class CommonButtonComponent implements OnInit {
   title: string;
 
   @Input()
+  loading?: boolean;
+
+  @Input()
   onClick: Function;
 
   constructor() { }

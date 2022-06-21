@@ -1,5 +1,6 @@
 @import "../../../styles.scss";
 @import "../../../assets/variables.scss";
+
 .chat-page-container {
   height: 100%;
   margin-top: resize(100);
@@ -9,7 +10,7 @@
     background: #fff;
     padding: resize(25);
     width: resize(500);
-    height: 89vh;
+    height: calc(100vh - resize(100));
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     .title {
@@ -23,50 +24,13 @@
     .chat-container {
       border-top: 1px solid #ccc;
 
-      height: 70vh;
-      overflow-y: scroll;
-      .chat-item {
-        margin-top: resize(20);
-        display: flex;
-        align-items: center;
-        width: 100%;
-        padding: resize(12);
-        border-radius: 5px;
-        // justify-content: center;
-        .avatar {
-          $size: resize(100);
-          border-radius: 50%;
-          margin-right: resize(25);
-          width: $size;
-          height: $size;
-        }
-        .right {
-          width: 100%;
-          p.name {
-            font-size: resize(24);
-            margin-bottom: resize(18);
-            font-weight: 500;
-          }
-          .message-description {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            .message {
-              font-size: resize(20);
+      height: 80vh;
+      padding: 0;
+      overflow-y: auto;
 
-              color: $gray-color;
-            }
-            .time {
-              margin-left: resize(20);
-              font-size: resize(18);
-              color: $gray-color;
-            }
-          }
-        }
-      }
-      .chat-item:hover {
-        background-color: #f1f1f1;
-        cursor: pointer;
+      /* width */
+      &::-webkit-scrollbar {
+        width: 0px;
       }
     }
   }
@@ -121,11 +85,11 @@
       margin-left: resize(20);
       display: flex;
       flex-direction: column;
-      justify-content: end;
+      justify-content: flex-end;
 
       .partner-chat {
         display: flex;
-        align-items: end;
+        align-items: flex-end;
 
         .avatar {
           $size: resize(50);
@@ -145,7 +109,7 @@
       }
       .your-chat {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         .content-chat {
           .chat-message {
             margin-top: 5px;

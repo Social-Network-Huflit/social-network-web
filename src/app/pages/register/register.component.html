@@ -1,7 +1,7 @@
 <div class="register flex items-center">
     <div class="registerLeft">
         <div class="wrapper">
-            <form [formGroup]="formGroup">
+            <form [formGroup]="formGroup" (ngSubmit)="onRegister()">
                 <h1 class=" w-full text-primary-color color">Đăng Ký</h1>
                 <input-field [formGroup]="formGroup" class="registerInput" name="name" icon="info"
                     placeholder="Họ và tên">
@@ -17,13 +17,13 @@
                 </input-field>
 
                 <input-field [formGroup]="formGroup" class="registerInput" name="password" icon="lock"
-                    placeholder="Mật khẩu"></input-field>
+                    placeholder="Mật khẩu" type="password"></input-field>
 
                 <input-field [formGroup]="formGroup" class="registerInput" name="confirmPassword"
-                    placeholder="Xác nhận mật khẩu" icon="lock">
+                    placeholder="Xác nhận mật khẩu" icon="lock" type="password">
                 </input-field>
 
-                <button class="buttonRegister">Đăng Ký</button>
+                <button type="submit" [disabled]="!formGroup.valid" class="buttonRegister">Đăng Ký</button>
                 <br>
                 <div class="mb-5">
                     <label for="#">

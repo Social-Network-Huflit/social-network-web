@@ -1,7 +1,7 @@
 <app-header [classes]="['collection']"></app-header>
 <div class="body">
-    <app-collection-nav-left></app-collection-nav-left>
+    <app-collection-nav-left [collections]="collections"></app-collection-nav-left>
     <div [ngClass]="{'active': showNavLeft, 'wrapper': true}" (click)="toggleNavLeft(false)">
     </div>
-    <app-collection-body></app-collection-body>
+    <router-outlet></router-outlet>
 </div>

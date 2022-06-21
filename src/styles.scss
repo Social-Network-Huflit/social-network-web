@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 @import "./assets/variables.scss";
+@import "../node_modules/angular-notifier/styles.scss";
 
 html {
   body {
@@ -25,6 +26,19 @@ html {
 
     embed {
       cursor: pointer !important;
+    }
+
+    // input {
+    //   border: none !important;
+    //   font-family: "Quicksand", sans-serif !important;
+    // }
+
+    textarea {
+      &:focus {
+        border: none !important;
+        outline: none !important;
+        font-family: "Quicksand", sans-serif !important;
+      }
     }
   }
 }
@@ -67,19 +81,6 @@ $mobile-width: 375px;
   }
 }
 
-code-input {
-  --item-spacing: 10px !important;
-  --item-height: 3em !important;
-  --item-border: none !important;
-  --item-border-bottom: 2px solid #cdd4d9 !important;
-  --item-border-has-value: none !important;
-  --item-border-bottom-has-value: 2px solid #9146ff !important;
-  --item-border-focused: none !important;
-  --item-border-bottom-focused: 2px solid #9146ff !important;
-  --item-shadow-focused: none !important;
-  --item-border-radius: 0px !important;
-}
-
 .mat-slide-toggle .mat-slide-toggle-bar {
   background-color: $gray-color;
 }
@@ -107,4 +108,17 @@ mat-dialog-container {
 
 mat-spinner {
   padding: resize(100) !important;
+}
+
+code-input {
+  --item-spacing: 10px !important;
+  --item-height: 3em !important;
+  --item-border: none !important;
+  --item-border-bottom: 2px solid #cdd4d9 !important;
+  --item-border-has-value: none !important;
+  --item-border-bottom-has-value: 2px solid #9146ff !important;
+  --item-border-focused: none !important;
+  --item-border-bottom-focused: 2px solid #9146ff !important;
+  --item-shadow-focused: none !important;
+  --item-border-radius: 0px !important;
 }

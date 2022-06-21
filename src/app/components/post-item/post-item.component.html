@@ -9,7 +9,7 @@
         <p class="time" *ngIf="post">{{post.timestamp}}</p>
       </div>
     </div>
-    <mat-icon (click)="toggleShowContextmenu()">more_horiz</mat-icon>
+      <mat-icon (click)="toggleShowContextmenu()">more_horiz</mat-icon>
   </div>
   <!-- Body -->
   <app-post-body *ngIf="post" [post]="post"></app-post-body>
@@ -105,8 +105,8 @@
   </app-list-post-comment>
 
   <!-- Contextmenu -->
-  <div class="contextmenu-container" *ngIf="showContextMenu">
-    <div class="contextmenu-item">
+  <div class="contextmenu-container" *ngIf="showContextMenu" #menu>
+    <div class="contextmenu-item" (click)="onSavePost()">
       <embed src="../../../assets/icons/bookmark.svg" type="" />
       <p>Lưu bài viết</p>
     </div>

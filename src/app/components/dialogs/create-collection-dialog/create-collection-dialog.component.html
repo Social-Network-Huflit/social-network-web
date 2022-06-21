@@ -1,0 +1,7 @@
+<div class="create-collection-container">
+    <h1>Tạo bộ sưu tập</h1>
+    <form [formGroup]="formGroup" (ngSubmit)="onAddCollection()">
+        <input-field name="name" [formGroup]="formGroup" placeholder="Tên bộ sưu tập"></input-field>
+        <button type="submit">Thêm bộ sưu tập</button>
+    </form>
+</div>

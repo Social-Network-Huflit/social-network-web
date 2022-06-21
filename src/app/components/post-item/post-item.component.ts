@@ -10,6 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { QueryRef } from 'apollo-angular';
 import {
+  AddCollectionGQL,
+  GetCollectionsGQL,
+  GetCollectionsQuery,
   GetMyUserGQL,
   GetPostGQL,
   GetPostQuery,
@@ -23,6 +26,7 @@ import {
   User,
 } from 'src/graphql/graphql';
 import getEmotion from 'src/helpers/getEmotion';
+import { ChooseCollectionComponent } from '../dialogs/choose-collection/choose-collection.component';
 import { ShareDialogComponent } from '../dialogs/share-dialog/share-dialog.component';
 
 export type LikeType = 'like' | 'haha' | 'wow' | 'sad' | 'angry';
@@ -40,6 +44,7 @@ export class PostItemComponent implements OnInit {
   user?: User;
   getPostQueryRef: QueryRef<GetPostQuery, any>;
   getPostsQueryRef: QueryRef<GetPostsQuery, any>;
+  getCollectionsQueryRef: QueryRef<GetCollectionsQuery, any>;
 
   showInteract: boolean = false;
   showComment: boolean = false;
@@ -59,6 +64,8 @@ export class PostItemComponent implements OnInit {
     private sharePostGQL: SharePostGQL,
     private getPostsGQL: GetPostsGQL,
     private getMyUserGQL: GetMyUserGQL,
+    private addCollectionGQL: AddCollectionGQL,
+    private getCollectionsGQL: GetCollectionsGQL,
     private router: Router
   ) {
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -71,6 +78,8 @@ export class PostItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCollectionsQueryRef = this.getCollectionsGQL.watch();
+
     if (this.loading === undefined) {
       this.loading = true;
     }
@@ -190,5 +199,18 @@ export class PostItemComponent implements OnInit {
     } else {
       this.router.navigate(['/home/profile', this.post?.owner.id]);
     }
+  }
+
+  onSavePost() {
+    const dialogRef = this.dialog.open(ChooseCollectionComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(item => {
+      this.addCollectionGQL.mutate({
+        collection_id: item,
+        post_id: this.post!.id
+      }).subscribe(() => this.getCollectionsQueryRef.refetch());
+    })
   }
 }

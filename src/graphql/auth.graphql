@@ -4,6 +4,40 @@ mutation Login($loginInput: LoginInput!) {
   }
 }
 
-mutation Logout{
+mutation Register($registerInput: RegisterInput!) {
+  register(registerInput: $registerInput) {
+    ...mutationResponse
+  }
+}
+
+mutation Logout {
   logout
+}
+
+mutation SendMail($email: String!) {
+  sendEmail(email: $email) {
+    code
+    success
+    message
+    errors {
+      field
+      message
+    }
+  }
+}
+
+mutation SendCode($code: String!) {
+  sendCode(code: $code)
+}
+
+mutation ChangePassword($changePasswordInput: ChangePasswordInput!) {
+  changePassword(changePasswordInput: $changePasswordInput) {
+    code
+    success
+    message
+    errors {
+      field
+      message
+    }
+  }
 }

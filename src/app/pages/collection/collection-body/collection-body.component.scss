@@ -63,6 +63,15 @@
     transition: all 0.5s;
     cursor: pointer;
     margin-bottom: resize(20);
+    min-width: 1200px;
+
+    @include desktop-md {
+      min-width: 800px;
+    }
+
+    @include desktop-sm {
+      min-width: 650px;
+    }
 
     img {
       width: resize(200);
@@ -109,14 +118,16 @@
     @include tablet {
       flex-direction: column;
       align-items: flex-start;
+      min-width: 400px;
 
       img {
-        width: 100% !important;
-        height: 100% !important;
+        width: 100%;
+        height: 100%;
       }
 
       .right {
-        align-items: flex-end !important;
+        width: 100%;
+        align-items: flex-start !important;
       }
     }
 
@@ -128,6 +139,10 @@
           background-color: #fff !important;
         }
       }
+    }
+
+    @include mobile {
+      min-width: 300px;
     }
   }
 }

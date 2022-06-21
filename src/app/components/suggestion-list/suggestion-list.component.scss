@@ -39,12 +39,54 @@
       }
     }
 
-    button{
+    button {
       padding: resize(5) resize(20);
       text-align: center;
       border-radius: resize(25);
       color: white;
       font-size: resize(16);
+    }
+  }
+}
+
+::ng-deep app-follow-item {
+  .follow-item-container {
+    margin: 0;
+    padding: resize(10) resize(16);
+    height: auto;
+    margin-bottom: resize(13);
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color: #000, $alpha: 0.1);
+    }
+
+    .left {
+      img {
+        width: resize(40) !important;
+        height: resize(40) !important;
+      }
+    }
+
+    .info {
+      p.name {
+        font-size: resize(24);
+        margin-bottom: resize(0);
+      }
+      p.sub {
+        font-size: resize(16);
+        margin: 0;
+      }
+    }
+
+    .right {
+      min-width: resize(100);
+      padding: resize(5);
+      p {
+        font-size: resize(16);
+        margin: 0;
+      }
     }
   }
 }

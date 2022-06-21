@@ -1,1 +1,6 @@
-<button class="common-button bg-primary-color text-white py-[10px] px-[60px] text-xl" (click)="onClick()">{{title}}</button>
+<button class="common-button bg-primary-color text-white py-[10px] px-[60px] text-xl" (click)="onClick()">
+    <p *ngIf="!loading">{{title}}</p>
+    <div class=" flex justify-center items-center" *ngIf="loading">
+        <div class="animate-spin rounded-full h-7 w-7 border-b-2 border-white"></div>
+    </div>
+</button>

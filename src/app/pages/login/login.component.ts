@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { QueryRef } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import {
@@ -19,12 +20,16 @@ export class LoginComponent implements OnInit, OnDestroy {
   getMyUserQueryRef: QueryRef<GetMyUserQuery, Exact<{ [key: string]: never }>>;
   getMyUserSubscription: Subscription;
   formGroup: FormGroup;
+  private readonly notifier: NotifierService;
 
   constructor(
     private loginGQL: LoginGQL,
     private getMyUserGQL: GetMyUserGQL,
-    private router: Router
-  ) {}
+    private router: Router,
+    notifierService: NotifierService
+  ) {
+    this.notifier = notifierService;
+  }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -52,12 +57,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       })
       .subscribe(({ errors, data }) => {
         if (errors) {
-          //Show message
+          errors.forEach((item) => this.notifier.notify('error', item.message));
           return;
         }
 
         if (data) {
           if (data.login.code !== 200) {
+            this.notifier.notify('warning', data.login.message);
             return;
           }
 

@@ -1,0 +1,31 @@
+mutation CreateCollection($name: String!){
+  createCollection(name: $name){
+    ...mutationResponse
+  }
+}
+
+query GetCollections{
+  getMyCollection{
+    ...collectionInfo
+  }
+}
+
+query GetCollection($collection_id: ID!){
+  getCollection(collection_id: $collection_id){
+    ...collectionInfo
+  }
+}
+
+mutation AddCollection($post_id: ID!, $collection_id: ID!){
+  addToCollection(post_id: $post_id, collection_id: $collection_id){
+    ...mutationResponse
+  }
+}
+
+mutation RemoveFromCollection($post_id: ID!, $collection_id: ID!){
+  removeFromCollection(post_id: $post_id, collection_id: $collection_id){
+    code
+    success
+    message
+  }
+}

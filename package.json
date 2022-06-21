@@ -11,6 +11,9 @@
     "gen-graphql": "graphql-codegen --config codegen.yml"
   },
   "private": true,
+  "resolutions": {
+    "apollo-link": "^1.2.14"
+  },
   "dependencies": {
     "@angular/animations": "~13.2.0",
     "@angular/cdk": "^13.3.5",
@@ -25,10 +28,16 @@
     "@apollo/client": "^3.0.0",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "angular-code-input": "^1.6.0",
+    "angular-notifier": "^11.0.0",
     "apollo-angular": "^3.0.1",
-    "graphql": "^16",
+    "apollo-angular-link-http": "^1.11.0",
+    "apollo-link": "^1.2.14",
+    "apollo-upload-client": "^17.0.0",
+    "flowbite": "^1.4.7",
+    "graphql": "^15.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "tw-elements": "^1.0.0-alpha12",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -40,6 +49,7 @@
     "@graphql-codegen/typescript": "2.5.0",
     "@graphql-codegen/typescript-apollo-angular": "3.4.11",
     "@graphql-codegen/typescript-operations": "2.4.1",
+    "@types/apollo-upload-client": "^17.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^17.0.41",
     "autoprefixer": "^10.4.2",
