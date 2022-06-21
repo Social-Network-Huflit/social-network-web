@@ -1,0 +1,16 @@
+<div class="container text-center" *ngIf="users">
+    <h1>Tin nhắn mới</h1>
+    <div class="friend-container">
+        <div (click)="selectUser(user)" class="friend-item" *ngFor="let user of users">
+            <img [src]="user.avatar" alt="">
+            <p>{{user.name}}</p>
+        </div>
+        <form [formGroup]="formGroup" class="flex flex-col items-center" *ngIf="showInput">
+            <input-field type="text" [formGroup]="formGroup" placeholder="Tin nhắn" name="content"></input-field>
+            <div (click)="onSendMsg()">
+                <app-common-button title="Gửi"></app-common-button>
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -1,18 +1,4 @@
 <p class="title">Bạn bè</p>
-<div class="list-friend-container mt-3">
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
-  <app-friend-item></app-friend-item>
+<div class="list-friend-container mt-3" *ngIf="myUser">
+  <app-friend-item *ngFor="let friend of myUser.following" [user]="friend"></app-friend-item>
 </div>

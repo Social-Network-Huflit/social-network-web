@@ -17,10 +17,10 @@ fragment userInfo on User {
   avatar
   isFollowed
   following {
-    id
+    ...userFollow
   }
   followers {
-    id
+    ...userFollow
   }
   history {
     id
@@ -148,5 +148,25 @@ fragment collectionInfo on Collection {
     post {
       ...postInfo
     }
+  }
+}
+
+fragment roomInfo on Room {
+  id
+  name
+  avatar
+  last_message
+  timestamp
+}
+
+fragment messageInfo on Message {
+  id
+  content
+  isSender
+  receiver {
+    id
+    username
+    name
+    avatar
   }
 }

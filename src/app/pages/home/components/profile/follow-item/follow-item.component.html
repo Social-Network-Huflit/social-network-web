@@ -2,17 +2,17 @@
 
 <div class="follow-item-container" *ngIf="!loading">
     <div class="left">
-        <a routerLink="/home/profile/{{user.id}}"><img [src]="user.avatar" alt=""></a>
+        <a routerLink="/home/profile/{{user?.id}}"><img [src]="user?.avatar" alt=""></a>
         <div class="info">
-            <a routerLink="/home/profile/{{user.id}}">
-                <p class="name">{{user.name}}</p>
+            <a routerLink="/home/profile/{{user?.id}}">
+                <p class="name">{{user?.name}}</p>
             </a>
-            <p class="sub">@{{user.username}}</p>
+            <p class="sub">@{{user?.username}}</p>
         </div>
     </div>
-    <div *ngIf="myUser.id !== user.id" class="right {{user.isFollowed && 'followed'}}" (click)="onFollow()">
+    <div *ngIf="myUser?.id !== user?.id" class="right {{user?.isFollowed && 'followed'}}" (click)="onFollow()">
         <p>
-            {{user.isFollowed? "Đang theo dõi" : "Theo dõi"}}
+            {{user?.isFollowed? "Đang theo dõi" : "Theo dõi"}}
         </p>
     </div>
 </div>

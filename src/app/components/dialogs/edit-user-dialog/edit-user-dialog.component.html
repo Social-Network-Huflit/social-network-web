@@ -1,0 +1,20 @@
+<div class="container text-center flex flex-col items-center gap-[10px]">
+    <div class="image-container">
+        <img [src]="background" alt="" (click)="fileBackgroundInput.click()">
+        <img [src]="image" alt="" class="avatar" (click)="fileInput.click()">
+    </div>
+    <input type="file" style="display: none;" #fileInput (change)="onChangeFile($event)">
+    <input type="file" style="display: none;" #fileBackgroundInput (change)="onChangeBackground($event)">
+
+    <form [formGroup]="formGroup" class="mt-14">
+        <input-field name="name" [value]="user?.name" [formGroup]="formGroup" placeholder="Họ và tên"></input-field>
+        <input-field name="username" [value]="user?.username" [disable]="true" [formGroup]="formGroup"></input-field>
+        <input-field name="email" [value]="user?.email" [disable]="true" [formGroup]="formGroup"></input-field>
+        <input-field name="phoneNumber" [value]="user?.phoneNumber" [formGroup]="formGroup" placeholder="Số điện thoại">
+        </input-field>
+
+        <div (click)="onEdit()">
+            <app-common-button title="Chỉnh sửa"></app-common-button>
+        </div>
+    </form>
+</div>

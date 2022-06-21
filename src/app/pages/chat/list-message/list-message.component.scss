@@ -1,0 +1,121 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+
+.chat-item-detail {
+  height: 83vh;
+
+  .header-detail {
+    padding: resize(24);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    box-shadow: rgba(100, 100, 111, 0.2) 5px 2px 3px;
+
+    .avatar {
+      $size: resize(75);
+      border-radius: 50%;
+      margin: 0 resize(24);
+      width: $size;
+      height: $size;
+    }
+    .right {
+      margin-left: resize(8);
+      a.name {
+        font-size: resize(30);
+        font-weight: 600;
+      }
+      .status {
+        display: flex;
+        align-items: center;
+        p {
+          font-size: 16px;
+          margin-right: resize(16);
+        }
+        .symbol-online {
+          width: resize(15);
+          height: resize(15);
+          border-radius: 100%;
+          margin-top: 3px;
+          box-sizing: border-box;
+          background-color: $green;
+        }
+      }
+    }
+  }
+  .chat-log {
+    // position: relative;
+    height: 100%;
+    margin-left: resize(20);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: scroll;
+
+    .chat-item {
+      display: flex;
+      align-items: flex-end;
+      margin: resize(10) 0;
+
+      .content-chat {
+        .chat-message {
+          margin-top: 5px;
+          border-radius: resize(40);
+          padding: resize(10) resize(20);
+        }
+      }
+    }
+
+    .partner-chat {
+      .avatar {
+        $size: resize(50);
+        border-radius: 50%;
+        margin-right: resize(15);
+        width: $size;
+        height: $size;
+      }
+      .content-chat {
+        .chat-message {
+          background-color: rgb(238, 238, 238);
+        }
+      }
+    }
+
+    .your-chat {
+      justify-content: flex-end;
+      .content-chat {
+        .chat-message {
+          margin-right: 10px;
+          background-color: $primary-color;
+          color: #fff;
+        }
+      }
+    }
+
+    .input-content {
+      padding: resize(20) resize(15) 0 resize(15);
+      display: flex;
+      align-items: center;
+      gap: resize(20);
+
+      form {
+        display: flex;
+        align-items: center;
+        gap: resize(10);
+
+        .input-message {
+          padding: resize(10);
+          padding-left: resize(30);
+          background-color: #e4e4e4;
+          width: 100%;
+          border-radius: resize(30);
+          outline: none;
+          // margin: 5px 15px;
+        }
+      }
+      mat-icon {
+        color: $primary-color;
+      }
+    }
+  }
+}

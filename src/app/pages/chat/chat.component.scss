@@ -19,8 +19,15 @@
       margin-bottom: resize(15);
     }
 
-    input-field {
+    .flex {
+      button {
+        background-color: $primary-color;
+        color: white;
+        padding: resize(5) resize(20);
+        border-radius: resize(8);
+      }
     }
+
     .chat-container {
       border-top: 1px solid #ccc;
 
@@ -34,111 +41,12 @@
       }
     }
   }
-  .chat-item-detail {
+
+  .list-message {
     flex: 3;
     @include desktop-sm {
       flex: 2;
     }
     height: 89vh;
-    .header-detail {
-      padding: resize(24);
-      display: flex;
-      align-items: center;
-      width: 100%;
-      border-bottom: 1px solid #ccc;
-      box-shadow: rgba(100, 100, 111, 0.2) 5px 2px 3px;
-
-      .avatar {
-        $size: resize(75);
-        border-radius: 50%;
-        margin: 0 resize(24);
-        width: $size;
-        height: $size;
-      }
-      .right {
-        margin-left: resize(8);
-        a.name {
-          font-size: resize(30);
-          font-weight: 600;
-        }
-        .status {
-          display: flex;
-          align-items: center;
-          p {
-            font-size: 16px;
-            margin-right: resize(16);
-          }
-          .symbol-online {
-            width: resize(15);
-            height: resize(15);
-            border-radius: 100%;
-            margin-top: 3px;
-            box-sizing: border-box;
-            background-color: $green;
-          }
-        }
-      }
-    }
-    .chat-log {
-      position: relative;
-      height: 70%;
-      margin-left: resize(20);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-
-      .partner-chat {
-        display: flex;
-        align-items: flex-end;
-
-        .avatar {
-          $size: resize(50);
-          border-radius: 50%;
-          margin-right: resize(15);
-          width: $size;
-          height: $size;
-        }
-        .content-chat {
-          .chat-message {
-            margin-top: 5px;
-            background-color: rgb(238, 238, 238);
-            padding: 15px;
-            border-radius: 20px;
-          }
-        }
-      }
-      .your-chat {
-        display: flex;
-        justify-content: flex-end;
-        .content-chat {
-          .chat-message {
-            margin-top: 5px;
-            margin-right: 10px;
-            background-color: $primary-color;
-            padding: 15px;
-            color: #fff;
-            border-radius: 20px;
-          }
-        }
-      }
-      .input-content {
-        bottom: 10px;
-        position: fixed;
-        display: flex;
-        align-items: center;
-        width: 70%;
-
-        .input-message {
-          padding: resize(10);
-          background-color: #e4e4e4;
-          width: 100%;
-          border-radius: 10px;
-          margin: 5px 15px;
-        }
-        mat-icon {
-          color: $primary-color;
-        }
-      }
-    }
   }
 }
