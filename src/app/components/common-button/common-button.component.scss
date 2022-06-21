@@ -1,4 +1,17 @@
+.common-button {
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.common-button{
-    border-radius: 8px;
+  p {
+    margin: 0;
+  }
+}
+
+::ng-deep {
+  mat-spinner {
+    width: 10px;
+    height: 10px;
+  }
 }

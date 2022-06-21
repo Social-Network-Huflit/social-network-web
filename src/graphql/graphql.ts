@@ -19,6 +19,49 @@ export interface Scalars {
   Upload: any;
 }
 
+export interface ChangePasswordInput {
+  newPassword: Scalars['String'];
+  user_id: Scalars['ID'];
+}
+
+export interface Collection {
+  __typename?: 'Collection';
+  createdAt: Scalars['DateTime'];
+  deletedAt: Scalars['DateTime'];
+  details: Array<CollectionDetail>;
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  owner: User;
+  updatedAt: Scalars['DateTime'];
+}
+
+export interface CollectionDetail {
+  __typename?: 'CollectionDetail';
+  createdAt: Scalars['DateTime'];
+  deletedAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  post?: Maybe<Post>;
+  updatedAt: Scalars['DateTime'];
+}
+
+export interface CollectionDetailMutationResponse extends IMutationResponse {
+  __typename?: 'CollectionDetailMutationResponse';
+  code: Scalars['Float'];
+  detail?: Maybe<CollectionDetail>;
+  errors?: Maybe<Array<FieldError>>;
+  message: Scalars['String'];
+  success: Scalars['Boolean'];
+}
+
+export interface CollectionMutationResponse extends IMutationResponse {
+  __typename?: 'CollectionMutationResponse';
+  code: Scalars['Float'];
+  collection?: Maybe<Collection>;
+  errors?: Maybe<Array<FieldError>>;
+  message: Scalars['String'];
+  success: Scalars['Boolean'];
+}
+
 export interface CommentMutationResponse extends IMutationResponse {
   __typename?: 'CommentMutationResponse';
   code: Scalars['Float'];
@@ -55,8 +98,7 @@ export interface CreateMessageInput {
 
 export interface CreatePostInput {
   caption?: InputMaybe<Scalars['String']>;
-  image_link?: InputMaybe<Scalars['String']>;
-  video_link?: InputMaybe<Scalars['String']>;
+  files?: InputMaybe<Array<Scalars['Upload']>>;
   youtube_link?: InputMaybe<Scalars['String']>;
 }
 
@@ -116,10 +158,14 @@ export interface MessageMutationResponse extends IMutationResponse {
 
 export interface Mutation {
   __typename?: 'Mutation';
+  addToCollection: CollectionDetailMutationResponse;
+  changePassword: MutationResponse;
   commentPostShare: CommentPostShareMutationResponse;
+  createCollection: CollectionMutationResponse;
   createCommentPost: CommentMutationResponse;
   createPost: PostMutationResponse;
   createPostShare: PostShareMutationResponse;
+  deleteCollection: CollectionMutationResponse;
   deleteCommentPost: PostMutationResponse;
   deleteCommentPostShare: MutationResponse;
   deletePost: PostMutationResponse;
@@ -136,9 +182,12 @@ export interface Mutation {
   login: UserMutationResponse;
   logout: Scalars['Boolean'];
   register: UserMutationResponse;
+  removeFromCollection: MutationResponse;
   removeHistory: MutationResponse;
   replyCommentPost: ReplyCommentMutationResponse;
   replyCommentPostShare: ReplyCommentPostShareMutationResponse;
+  sendCode?: Maybe<Scalars['String']>;
+  sendEmail: MutationResponse;
   sendMessage: MessageMutationResponse;
   updateCommentPost: CommentMutationResponse;
   updateCommentPostShare: CommentPostShareMutationResponse;
@@ -150,8 +199,24 @@ export interface Mutation {
 }
 
 
+export interface MutationAddToCollectionArgs {
+  collection_id: Scalars['ID'];
+  post_id: Scalars['ID'];
+}
+
+
+export interface MutationChangePasswordArgs {
+  changePasswordInput: ChangePasswordInput;
+}
+
+
 export interface MutationCommentPostShareArgs {
   createCommentInput: CreateCommentPostShareInput;
+}
+
+
+export interface MutationCreateCollectionArgs {
+  name: Scalars['String'];
 }
 
 
@@ -167,6 +232,11 @@ export interface MutationCreatePostArgs {
 
 export interface MutationCreatePostShareArgs {
   createPostInput: CreatePostShareInput;
+}
+
+
+export interface MutationDeleteCollectionArgs {
+  id: Scalars['ID'];
 }
 
 
@@ -251,6 +321,12 @@ export interface MutationRegisterArgs {
 }
 
 
+export interface MutationRemoveFromCollectionArgs {
+  collection_id: Scalars['ID'];
+  post_id: Scalars['ID'];
+}
+
+
 export interface MutationRemoveHistoryArgs {
   history_id: Scalars['ID'];
 }
@@ -263,6 +339,16 @@ export interface MutationReplyCommentPostArgs {
 
 export interface MutationReplyCommentPostShareArgs {
   replyCommentPostInput: ReplyCommentPostShareInput;
+}
+
+
+export interface MutationSendCodeArgs {
+  code: Scalars['String'];
+}
+
+
+export interface MutationSendEmailArgs {
+  email: Scalars['String'];
 }
 
 
@@ -315,13 +401,13 @@ export interface MutationResponse {
 
 export interface Post {
   __typename?: 'Post';
+  assets: Array<PostAsset>;
   caption?: Maybe<Scalars['String']>;
   comment_count: Scalars['Float'];
   comments: Array<PostComment>;
   content_type: Scalars['String'];
   createdAt: Scalars['DateTime'];
   id: Scalars['ID'];
-  image_link?: Maybe<Scalars['String']>;
   like_count: Scalars['Float'];
   like_type?: Maybe<Scalars['String']>;
   liked: Scalars['Boolean'];
@@ -332,8 +418,18 @@ export interface Post {
   shares: Array<PostShare>;
   timestamp: Scalars['String'];
   updatedAt: Scalars['DateTime'];
-  video_link?: Maybe<Scalars['String']>;
   youtube_link?: Maybe<Scalars['String']>;
+}
+
+export interface PostAsset {
+  __typename?: 'PostAsset';
+  asset_type: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+  deletedAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  link: Scalars['String'];
+  post: Post;
+  updatedAt: Scalars['DateTime'];
 }
 
 export interface PostComment {
@@ -499,14 +595,22 @@ export type PostType = Post | PostShare;
 export interface Query {
   __typename?: 'Query';
   getAllUser: Array<User>;
+  getCollection?: Maybe<Collection>;
+  getMyCollection: Array<Collection>;
   getMyUser?: Maybe<User>;
   getPost?: Maybe<Post>;
   getPostByUser: Array<PostType>;
   getPostShare?: Maybe<PostShare>;
   getPosts: Array<PostType>;
+  getSuggestionUser: Array<User>;
   getUserById: User;
   initRoom: Scalars['Boolean'];
-  searchUser?: Maybe<Array<User>>;
+  searchUser: Array<User>;
+}
+
+
+export interface QueryGetCollectionArgs {
+  collection_id: Scalars['ID'];
 }
 
 
@@ -614,6 +718,7 @@ export interface UpdatePostShareInput {
 export interface User {
   __typename?: 'User';
   avatar: Scalars['String'];
+  collections: Array<Collection>;
   comments_post: Array<PostComment>;
   comments_post_share: Array<PostShareComment>;
   createdAt: Scalars['DateTime'];
@@ -657,10 +762,77 @@ export type LoginMutationVariables = Exact<{
 
 export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UserMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
 
+export type RegisterMutationVariables = Exact<{
+  registerInput: RegisterInput;
+}>;
+
+
+export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LogoutMutation = { __typename?: 'Mutation', logout: boolean };
+
+export type SendMailMutationVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type SendMailMutation = { __typename?: 'Mutation', sendEmail: { __typename?: 'MutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+
+export type SendCodeMutationVariables = Exact<{
+  code: Scalars['String'];
+}>;
+
+
+export type SendCodeMutation = { __typename?: 'Mutation', sendCode?: string | null };
+
+export type ChangePasswordMutationVariables = Exact<{
+  changePasswordInput: ChangePasswordInput;
+}>;
+
+
+export type ChangePasswordMutation = { __typename?: 'Mutation', changePassword: { __typename?: 'MutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+
+export type CreateCollectionMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type CreateCollectionMutation = { __typename?: 'Mutation', createCollection: { __typename?: 'CollectionMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+
+export type GetCollectionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCollectionsQuery = { __typename?: 'Query', getMyCollection: Array<{ __typename?: 'Collection', id: string, name: string, details: Array<{ __typename?: 'CollectionDetail', id: string, post?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null }> }> };
+
+export type GetCollectionQueryVariables = Exact<{
+  collection_id: Scalars['ID'];
+}>;
+
+
+export type GetCollectionQuery = { __typename?: 'Query', getCollection?: { __typename?: 'Collection', id: string, name: string, details: Array<{ __typename?: 'CollectionDetail', id: string, post?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null }> } | null };
+
+export type AddCollectionMutationVariables = Exact<{
+  post_id: Scalars['ID'];
+  collection_id: Scalars['ID'];
+}>;
+
+
+export type AddCollectionMutation = { __typename?: 'Mutation', addToCollection: { __typename?: 'CollectionDetailMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+
+export type RemoveFromCollectionMutationVariables = Exact<{
+  post_id: Scalars['ID'];
+  collection_id: Scalars['ID'];
+}>;
+
+
+export type RemoveFromCollectionMutation = { __typename?: 'Mutation', removeFromCollection: { __typename?: 'MutationResponse', code: number, success: boolean, message: string } };
+
+type MutationResponseCollectionDetailMutationResponseFragment = { __typename?: 'CollectionDetailMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null };
+
+type MutationResponseCollectionMutationResponseFragment = { __typename?: 'CollectionMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null };
 
 type MutationResponseCommentMutationResponseFragment = { __typename?: 'CommentMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null };
 
@@ -678,7 +850,7 @@ type MutationResponseReplyCommentPostShareMutationResponseFragment = { __typenam
 
 type MutationResponseUserMutationResponseFragment = { __typename?: 'UserMutationResponse', code: number, success: boolean, message: string, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null };
 
-export type MutationResponseFragment = MutationResponseCommentMutationResponseFragment | MutationResponseCommentPostShareMutationResponseFragment | MutationResponseMessageMutationResponseFragment | MutationResponsePostMutationResponseFragment | MutationResponsePostShareMutationResponseFragment | MutationResponseReplyCommentMutationResponseFragment | MutationResponseReplyCommentPostShareMutationResponseFragment | MutationResponseUserMutationResponseFragment;
+export type MutationResponseFragment = MutationResponseCollectionDetailMutationResponseFragment | MutationResponseCollectionMutationResponseFragment | MutationResponseCommentMutationResponseFragment | MutationResponseCommentPostShareMutationResponseFragment | MutationResponseMessageMutationResponseFragment | MutationResponsePostMutationResponseFragment | MutationResponsePostShareMutationResponseFragment | MutationResponseReplyCommentMutationResponseFragment | MutationResponseReplyCommentPostShareMutationResponseFragment | MutationResponseUserMutationResponseFragment;
 
 export type UserInfoFragment = { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> };
 
@@ -692,9 +864,11 @@ export type CommentPostShareFragment = { __typename?: 'PostShareComment', id: st
 
 export type ReplyCommentPostShareFragment = { __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } };
 
-export type PostInfoFragment = { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, image_link?: string | null, video_link?: string | null, youtube_link?: string | null, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> };
+export type PostInfoFragment = { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> };
 
-export type PostShareInfoFragment = { __typename?: 'PostShare', id: string, caption?: string | null, post_type: string, like_count: number, comment_count: number, like_type?: string | null, liked: boolean, timestamp: string, comments: Array<{ __typename?: 'PostShareComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, post: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, image_link?: string | null, video_link?: string | null, youtube_link?: string | null, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } };
+export type PostShareInfoFragment = { __typename?: 'PostShare', id: string, caption?: string | null, post_type: string, like_count: number, comment_count: number, like_type?: string | null, liked: boolean, timestamp: string, comments: Array<{ __typename?: 'PostShareComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, post: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } };
+
+export type CollectionInfoFragment = { __typename?: 'Collection', id: string, name: string, details: Array<{ __typename?: 'CollectionDetail', id: string, post?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null }> };
 
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -713,7 +887,7 @@ export type GetPostQueryVariables = Exact<{
 }>;
 
 
-export type GetPostQuery = { __typename?: 'Query', getPost?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, image_link?: string | null, video_link?: string | null, youtube_link?: string | null, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null };
+export type GetPostQuery = { __typename?: 'Query', getPost?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null };
 
 export type CommentPostMutationVariables = Exact<{
   createCommentInput: CreateCommentPostInput;
@@ -735,7 +909,7 @@ export type CreatePostMutationVariables = Exact<{
 }>;
 
 
-export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'PostMutationResponse', code: number, success: boolean, message: string, post?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, image_link?: string | null, video_link?: string | null, youtube_link?: string | null, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'PostMutationResponse', code: number, success: boolean, message: string, post?: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } | null, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
 
 export type LikeCommentPostMutationVariables = Exact<{
   comment_id: Scalars['ID'];
@@ -765,14 +939,14 @@ export type SharePostMutationVariables = Exact<{
 }>;
 
 
-export type SharePostMutation = { __typename?: 'Mutation', createPostShare: { __typename?: 'PostShareMutationResponse', code: number, success: boolean, message: string, post?: { __typename?: 'PostShare', id: string, caption?: string | null, post_type: string, like_count: number, comment_count: number, like_type?: string | null, liked: boolean, timestamp: string, comments: Array<{ __typename?: 'PostShareComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, post: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, image_link?: string | null, video_link?: string | null, youtube_link?: string | null, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } } | null, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
+export type SharePostMutation = { __typename?: 'Mutation', createPostShare: { __typename?: 'PostShareMutationResponse', code: number, success: boolean, message: string, post?: { __typename?: 'PostShare', id: string, caption?: string | null, post_type: string, like_count: number, comment_count: number, like_type?: string | null, liked: boolean, timestamp: string, comments: Array<{ __typename?: 'PostShareComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, post: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } } | null, errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null } };
 
 export type GetPostShareQueryVariables = Exact<{
   post_share_id: Scalars['ID'];
 }>;
 
 
-export type GetPostShareQuery = { __typename?: 'Query', getPostShare?: { __typename?: 'PostShare', id: string, caption?: string | null, post_type: string, like_count: number, comment_count: number, like_type?: string | null, liked: boolean, timestamp: string, comments: Array<{ __typename?: 'PostShareComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, post: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, image_link?: string | null, video_link?: string | null, youtube_link?: string | null, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } } | null };
+export type GetPostShareQuery = { __typename?: 'Query', getPostShare?: { __typename?: 'PostShare', id: string, caption?: string | null, post_type: string, like_count: number, comment_count: number, like_type?: string | null, liked: boolean, timestamp: string, comments: Array<{ __typename?: 'PostShareComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostShareReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, post: { __typename?: 'Post', id: string, caption?: string | null, content_type: string, post_type: string, liked: boolean, like_type?: string | null, like_count: number, comment_count: number, share_count: number, youtube_link?: string | null, timestamp: string, assets: Array<{ __typename?: 'PostAsset', id: string, asset_type: string, link: string }>, owner: { __typename?: 'User', id: string, name: string, username: string, email: string, phoneNumber: string, avatar: string, isFollowed: boolean, following: Array<{ __typename?: 'User', id: string }>, followers: Array<{ __typename?: 'User', id: string }>, history: Array<{ __typename?: 'HistorySearch', id: string, user: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }, comments: Array<{ __typename?: 'PostComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean }, reply_comments: Array<{ __typename?: 'PostReplyComment', id: string, liked: boolean, like_type?: string | null, content: string, timestamp: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> }>, shares: Array<{ __typename?: 'PostShare', id: string, owner: { __typename?: 'User', id: string, name: string, username: string, avatar: string, isFollowed: boolean } }> } } | null };
 
 export type LikePostShareMutationVariables = Exact<{
   post_share_id: Scalars['ID'];
@@ -836,7 +1010,7 @@ export type SearchQueryVariables = Exact<{
 }>;
 
 
-export type SearchQuery = { __typename?: 'Query', searchUser?: Array<{ __typename?: 'User', id: string }> | null };
+export type SearchQuery = { __typename?: 'Query', searchUser: Array<{ __typename?: 'User', id: string }> };
 
 export type WriteHistoryMutationVariables = Exact<{
   user_id: Scalars['ID'];
@@ -851,6 +1025,11 @@ export type RemoveHistoryMutationVariables = Exact<{
 
 
 export type RemoveHistoryMutation = { __typename?: 'Mutation', removeHistory: { __typename?: 'MutationResponse', code: number, success: boolean, message: string } };
+
+export type GetSuggestionUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSuggestionUserQuery = { __typename?: 'Query', getSuggestionUser: Array<{ __typename?: 'User', id: string }> };
 
 export const MutationResponseFragmentDoc = gql`
     fragment mutationResponse on IMutationResponse {
@@ -962,11 +1141,14 @@ export const PostInfoFragmentDoc = gql`
   like_count
   comment_count
   share_count
-  image_link
-  video_link
   youtube_link
   timestamp
   post_type
+  assets {
+    id
+    asset_type
+    link
+  }
   owner {
     ...userInfo
   }
@@ -1006,6 +1188,18 @@ export const PostShareInfoFragmentDoc = gql`
     ${CommentPostShareFragmentDoc}
 ${UserInfoFragmentDoc}
 ${PostInfoFragmentDoc}`;
+export const CollectionInfoFragmentDoc = gql`
+    fragment collectionInfo on Collection {
+  id
+  name
+  details {
+    id
+    post {
+      ...postInfo
+    }
+  }
+}
+    ${PostInfoFragmentDoc}`;
 export const LoginDocument = gql`
     mutation Login($loginInput: LoginInput!) {
   login(loginInput: $loginInput) {
@@ -1024,6 +1218,24 @@ export const LoginDocument = gql`
       super(apollo);
     }
   }
+export const RegisterDocument = gql`
+    mutation Register($registerInput: RegisterInput!) {
+  register(registerInput: $registerInput) {
+    ...mutationResponse
+  }
+}
+    ${MutationResponseFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class RegisterGQL extends Apollo.Mutation<RegisterMutation, RegisterMutationVariables> {
+    override document = RegisterDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const LogoutDocument = gql`
     mutation Logout {
   logout
@@ -1035,6 +1247,162 @@ export const LogoutDocument = gql`
   })
   export class LogoutGQL extends Apollo.Mutation<LogoutMutation, LogoutMutationVariables> {
     override document = LogoutDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SendMailDocument = gql`
+    mutation SendMail($email: String!) {
+  sendEmail(email: $email) {
+    code
+    success
+    message
+    errors {
+      field
+      message
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SendMailGQL extends Apollo.Mutation<SendMailMutation, SendMailMutationVariables> {
+    override document = SendMailDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SendCodeDocument = gql`
+    mutation SendCode($code: String!) {
+  sendCode(code: $code)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SendCodeGQL extends Apollo.Mutation<SendCodeMutation, SendCodeMutationVariables> {
+    override document = SendCodeDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ChangePasswordDocument = gql`
+    mutation ChangePassword($changePasswordInput: ChangePasswordInput!) {
+  changePassword(changePasswordInput: $changePasswordInput) {
+    code
+    success
+    message
+    errors {
+      field
+      message
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ChangePasswordGQL extends Apollo.Mutation<ChangePasswordMutation, ChangePasswordMutationVariables> {
+    override document = ChangePasswordDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const CreateCollectionDocument = gql`
+    mutation CreateCollection($name: String!) {
+  createCollection(name: $name) {
+    ...mutationResponse
+  }
+}
+    ${MutationResponseFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CreateCollectionGQL extends Apollo.Mutation<CreateCollectionMutation, CreateCollectionMutationVariables> {
+    override document = CreateCollectionDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetCollectionsDocument = gql`
+    query GetCollections {
+  getMyCollection {
+    ...collectionInfo
+  }
+}
+    ${CollectionInfoFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetCollectionsGQL extends Apollo.Query<GetCollectionsQuery, GetCollectionsQueryVariables> {
+    override document = GetCollectionsDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetCollectionDocument = gql`
+    query GetCollection($collection_id: ID!) {
+  getCollection(collection_id: $collection_id) {
+    ...collectionInfo
+  }
+}
+    ${CollectionInfoFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetCollectionGQL extends Apollo.Query<GetCollectionQuery, GetCollectionQueryVariables> {
+    override document = GetCollectionDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const AddCollectionDocument = gql`
+    mutation AddCollection($post_id: ID!, $collection_id: ID!) {
+  addToCollection(post_id: $post_id, collection_id: $collection_id) {
+    ...mutationResponse
+  }
+}
+    ${MutationResponseFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class AddCollectionGQL extends Apollo.Mutation<AddCollectionMutation, AddCollectionMutationVariables> {
+    override document = AddCollectionDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const RemoveFromCollectionDocument = gql`
+    mutation RemoveFromCollection($post_id: ID!, $collection_id: ID!) {
+  removeFromCollection(post_id: $post_id, collection_id: $collection_id) {
+    code
+    success
+    message
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class RemoveFromCollectionGQL extends Apollo.Mutation<RemoveFromCollectionMutation, RemoveFromCollectionMutationVariables> {
+    override document = RemoveFromCollectionDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -1464,6 +1832,24 @@ export const RemoveHistoryDocument = gql`
   })
   export class RemoveHistoryGQL extends Apollo.Mutation<RemoveHistoryMutation, RemoveHistoryMutationVariables> {
     override document = RemoveHistoryDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetSuggestionUserDocument = gql`
+    query GetSuggestionUser {
+  getSuggestionUser {
+    id
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetSuggestionUserGQL extends Apollo.Query<GetSuggestionUserQuery, GetSuggestionUserQueryVariables> {
+    override document = GetSuggestionUserDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

@@ -2,6 +2,8 @@
 
 .home-container {
   position: relative;
+  padding-bottom: resize(50);
+
   app-header {
     position: sticky;
     top: 0px;

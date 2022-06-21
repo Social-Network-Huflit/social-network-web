@@ -10,8 +10,7 @@ import { ProfileComponent } from './pages/home/components/profile/profile.compon
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/forgotpassword.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonButtonComponent } from './components/common-button/common-button.component';
 import { CodeInputModule } from 'angular-code-input';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -57,6 +56,16 @@ import { PostManagerComponent } from './pages/admin/post-manager/post-manager.co
 import { AdminWidgetComponent } from './components/admin-widget/admin-widget.component';
 import { FollowSkeletonComponent } from './components/skeletons/follow-skeleton/follow-skeleton.component';
 import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
+import { ChatItemComponent } from './pages/chat/chat-item/chat-item.component';
+import { HttpLinkModule } from 'apollo-angular-link-http';
+import { NotifierModule } from 'angular-notifier';
+import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword.component';
+import { ForgotPasswordSendEmailComponent } from './pages/forgotpassword/forgot-password-send-email/forgot-password-send-email.component';
+import { ForgotPasswordSendCodeComponent } from './pages/forgotpassword/forgot-password-send-code/forgot-password-send-code.component';
+import { ForgotPasswordChangePasswordComponent } from './pages/forgotpassword/forgot-password-change-password/forgot-password-change-password.component';
+import { ForgotPasswordSuccessComponent } from './pages/forgotpassword/forgot-password-success/forgot-password-success.component';
+import { CreateCollectionDialogComponent } from './components/dialogs/create-collection-dialog/create-collection-dialog.component';
+import { ChooseCollectionComponent } from './components/dialogs/choose-collection/choose-collection.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +75,6 @@ import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.compo
     HomeComponent,
     ProfileComponent,
     InputFieldComponent,
-
     ForgotPasswordComponent,
     CommonButtonComponent,
     FollowItemComponent,
@@ -104,7 +112,14 @@ import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.compo
     PostManagerComponent,
     AdminWidgetComponent,
     FollowSkeletonComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    ChatItemComponent,
+    ForgotPasswordSendEmailComponent,
+    ForgotPasswordSendCodeComponent,
+    ForgotPasswordChangePasswordComponent,
+    ForgotPasswordSuccessComponent,
+    CreateCollectionDialogComponent,
+    ChooseCollectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,7 +135,20 @@ import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.compo
     GraphQLModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    FormsModule
+    HttpLinkModule,
+    FormsModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'left',
+        },
+        vertical: {
+          position: 'bottom',
+          gap: 10,
+        },
+      },
+      theme: 'material',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

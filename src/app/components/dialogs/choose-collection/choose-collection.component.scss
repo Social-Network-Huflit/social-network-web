@@ -1,0 +1,16 @@
+@import "../../../../styles.scss";
+@import "../../../../assets/variables.scss";
+
+.collection-item {
+  margin-bottom: resize(13);
+
+  .flex {
+    gap: resize(13);
+
+    img {
+      width: resize(100);
+      height: resize(100);
+      border-radius: resize(10);
+    }
+  }
+}

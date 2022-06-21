@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword/forgotpassword.component';
+import { ForgotPasswordComponent } from './pages/forgotpassword/forgotpassword.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/home/components/profile/profile.component';
@@ -12,6 +12,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { UserManagerComponent } from './pages/admin/user-manager/user-manager.component';
 import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
 import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
+import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
 
 const routes: Routes = [
   {
@@ -45,8 +46,17 @@ const routes: Routes = [
   },
   {
     path: 'collection',
-    pathMatch: 'full',
     component: CollectionComponent,
+    children: [
+      {
+        path: '',
+        component: CollectionBodyComponent,
+      },
+      {
+        path: ':collection_id',
+        component: CollectionBodyComponent,
+      },
+    ],
   },
   {
     path: 'message',

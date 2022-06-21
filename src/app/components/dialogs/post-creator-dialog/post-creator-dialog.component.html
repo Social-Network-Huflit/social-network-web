@@ -6,9 +6,9 @@
     </div>
     <hr>
     <div class="user-info">
-        <img src="{{user.avatar}}" alt="">
+        <img src="{{user?.avatar}}" alt="">
         <div class="right">
-            <p class="name">{{user.name}}</p>
+            <p class="name">{{user?.name}}</p>
             <div class="post-access">
                 <embed src="../../../../assets/icons/world.svg" type="">
                 <p>Công khai</p>
@@ -17,13 +17,31 @@
         </div>
     </div>
     <form [formGroup]="formGroup" (ngSubmit)="onCreatePost()">
-        <textarea formControlName="caption" placeholder="Bạn đang nghĩ gì thế?"></textarea>
+        <textarea [ngClass]="{'has-image': images.length > 0 || videos.length > 0}" formControlName="caption"
+            placeholder="Bạn đang nghĩ gì thế?"></textarea>
+        <div class="images-container" *ngIf="images.length > 0">
+            <div class="img-wrapper" *ngFor="let image of images">
+                <img [src]="image.image" alt="">
+                <div class="close" (click)="removeImage(image)">
+                    <mat-icon>close</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="images-container" *ngIf="videos.length > 0">
+            <div class="img-wrapper" *ngFor="let video of videos">
+                <video [src]="video.video" alt="" controls></video>
+                <div class="close" (click)="removeImage(video)">
+                    <mat-icon>close</mat-icon>
+                </div>
+            </div>
+        </div>
         <div class="bottom">
             <div class="item">
                 <mat-icon class="tag">people</mat-icon>
                 <label for="">Gắn thẻ</label>
             </div>
-            <div class="item">
+            <input formControlName="files" multiple (change)="onChangeImage($event)" type="file" style="display: none;" #fileInput>
+            <div class="item" (click)="fileInput.click()">
                 <mat-icon class="images">image</mat-icon>
                 <label for="">Hình ảnh</label>
             </div>
@@ -32,6 +50,6 @@
                 <label for="">Cảm Xúc</label>
             </div>
         </div>
-        <button class="btn-post" type="submit">Đăng bài</button>
+        <button class="btn-post" type="submit" [disabled]="!formGroup.valid">Đăng bài</button>
     </form>
 </div>

@@ -26,10 +26,29 @@
       margin-top: resize(32);
       margin-bottom: resize(32);
       border-radius: resize(8);
+      height: resize(500);
+      object-fit: cover;
+
+      @include desktop-md {
+        height: resize(400);
+      }
+
+      @include desktop-sm {
+        height: resize(300);
+      }
+
+      @include mobile {
+        height: resize(200);
+      }
+    }
+    video {
+      margin-top: resize(32);
+      margin-bottom: resize(32);
+      border-radius: resize(8);
     }
     button {
       display: flex;
-      padding: resize(16);
+      padding: resize(10);
       background-color: rgb(217, 217, 217);
       opacity: 0.3;
       align-items: center;
@@ -39,7 +58,6 @@
     }
     button:hover {
       opacity: 0.8;
-      padding: resize(18);
     }
     mat-icon {
       font-weight: 600;

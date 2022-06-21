@@ -1,16 +1,17 @@
 <div class="body">
-    <p *ngIf="post.caption && post.caption.length >= 100 && cutContent.length >= 100">
-      {{ cutContent }}... <a (click)="showFullContent()">{{ readMore }}</a>
-    </p>
-    <p *ngIf="post.caption && post.caption.length < 100 || cutContent.length < 100">{{ post.caption }}</p>
+  <p *ngIf="post.caption && post.caption.length >= 100 && cutContent.length >= 100">
+    {{ cutContent }}... <a (click)="showFullContent()">{{ readMore }}</a>
+  </p>
+  <p *ngIf="post.caption && post.caption.length < 100 || cutContent.length < 100">{{ post.caption }}</p>
 
-    <div class="img-container" *ngIf="post.post_type === 'images'">
-      <img src="{{ listImg[indexImg] }}" alt="" />
-      <button class="left" *ngIf="indexImg > 0" (click)="prevImg()">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
-      <button class="right" *ngIf="indexImg < listImg.length - 1" (click)="nextImg()">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-    </div>
+  <div class="img-container" *ngIf="post.content_type === 'assets'">
+    <img *ngIf="post.assets[indexImg].asset_type === 'image'" src="{{ post.assets[indexImg].link }}" alt="" />
+    <video *ngIf="post.assets[indexImg].asset_type === 'video'" src="{{ post.assets[indexImg].link }}" alt="" controls></video>
+    <button class="left" *ngIf="indexImg > 0" (click)="prevImg()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button class="right" *ngIf="indexImg < post.assets.length - 1" (click)="nextImg()">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
   </div>
+</div>
