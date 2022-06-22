@@ -66,6 +66,9 @@ import { ForgotPasswordChangePasswordComponent } from './pages/forgotpassword/fo
 import { ForgotPasswordSuccessComponent } from './pages/forgotpassword/forgot-password-success/forgot-password-success.component';
 import { CreateCollectionDialogComponent } from './components/dialogs/create-collection-dialog/create-collection-dialog.component';
 import { ChooseCollectionComponent } from './components/dialogs/choose-collection/choose-collection.component';
+import { ListMessageComponent } from './pages/chat/list-message/list-message.component';
+import { NewMessageDialogComponent } from './components/dialogs/new-message-dialog/new-message-dialog.component';
+import { EditUserDialogComponent } from './components/dialogs/edit-user-dialog/edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +123,9 @@ import { ChooseCollectionComponent } from './components/dialogs/choose-collectio
     ForgotPasswordSuccessComponent,
     CreateCollectionDialogComponent,
     ChooseCollectionComponent,
+    ListMessageComponent,
+    NewMessageDialogComponent,
+    EditUserDialogComponent,
   ],
   imports: [
     BrowserModule,

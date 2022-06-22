@@ -13,6 +13,7 @@ import { UserManagerComponent } from './pages/admin/user-manager/user-manager.co
 import { PostManagerComponent } from './pages/admin/post-manager/post-manager.component';
 import { LoginAdminComponent } from './pages/admin/login-admin/login-admin.component';
 import { CollectionBodyComponent } from './pages/collection/collection-body/collection-body.component';
+import { ListMessageComponent } from './pages/chat/list-message/list-message.component';
 
 const routes: Routes = [
   {
@@ -61,7 +62,9 @@ const routes: Routes = [
   {
     path: 'message',
     component: ChatComponent,
-    pathMatch: 'full',
+    children: [
+      {path: ':room_id', component: ListMessageComponent}
+    ]
   },
   // ADMIN
   {

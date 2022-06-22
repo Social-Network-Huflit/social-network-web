@@ -12,6 +12,8 @@ export class InputFieldComponent implements OnInit {
   @Input() icon?: string;
   @Input() formGroup: FormGroup;
   @Input() type?: string;
+  @Input() disable?: boolean;
+  @Input() value?: string;
 
   constructor() {}
 

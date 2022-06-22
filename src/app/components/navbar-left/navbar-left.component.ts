@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChangePasswordComponent } from '../dialogs/change-password/change-password.component';
 import { GetMyUserGQL, User } from 'src/graphql/graphql';
 import { map } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-navbar-left',
@@ -12,15 +13,10 @@ import { map } from 'rxjs';
 export class NavbarLeftComponent implements OnInit {
   user?: User | null | undefined;
 
-  constructor(public dialog: MatDialog, private getMyUserGQL: GetMyUserGQL) {}
+  constructor(public dialog: MatDialog, private appService: AppService) {}
 
   ngOnInit(): void {
-    this.getMyUserGQL
-      .watch()
-      .valueChanges.pipe(
-        map((result) => result.data.getMyUser as User | null | undefined)
-      )
-      .subscribe((data) => (this.user = data));
+    this.appService.user$.subscribe((data) => (this.user = data as User));
   }
 
   openDialog(): void {

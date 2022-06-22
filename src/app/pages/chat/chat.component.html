@@ -1,105 +1,17 @@
 <app-header [classes]="['chat']"></app-header>
 <div class="chat-page-container">
   <div class="chatwindow-container">
-    <h2 class="title">Tin nhắn</h2>
-    <input-field placeholder="Tìm kiếm" icon="search"></input-field>
+    <div class="flex justify-between items-center">
+      <h2 class="title">Tin nhắn</h2>
+      <button (click)="openDialog()">+</button>
+    </div>
+    <!-- <input-field placeholder="Tìm kiếm" icon="search"></input-field> -->
     <div class="chat-container">
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
-      <app-chat-item></app-chat-item>
+      <app-chat-item *ngFor="let room of rooms | async" [room]="room"></app-chat-item>
     </div>
   </div>
 
-  <div class="chat-item-detail">
-    <div class="header-detail">
-      <img
-        src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-        alt=""
-        class="avatar"
-      />
-      <div class="right">
-        <a href="#" class="name">Duy Anh</a>
-        <div class="status">
-          <p>Online</p>
-          <div class="symbol-online"></div>
-        </div>
-      </div>
-    </div>
-    <div class="chat-log">
-      <div class="partner-chat">
-        <img
-          src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-          alt=""
-          class="avatar"
-        />
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-      <div class="your-chat">
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-      <div class="partner-chat">
-        <img
-          src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-          alt=""
-          class="avatar"
-        />
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-      <div class="your-chat">
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-      <div class="partner-chat">
-        <img
-          src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-          alt=""
-          class="avatar"
-        />
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-      <div class="your-chat">
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-      <div class="partner-chat">
-        <img
-          src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
-          alt=""
-          class="avatar"
-        />
-        <div class="content-chat">
-          <div class="chat-message">Ê tháng 10 làm lễ tốt nghiệp đấy</div>
-        </div>
-      </div>
-
-      <div class="input-content">
-        <mat-icon>image</mat-icon>
-        <input type="text" class="input-message" />
-        <mat-icon>send</mat-icon>
-      </div>
-    </div>
+  <div class="list-message">
+    <router-outlet></router-outlet>
   </div>
 </div>

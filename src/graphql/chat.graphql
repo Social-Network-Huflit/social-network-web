@@ -1,0 +1,32 @@
+subscription GetRooms {
+  getRooms {
+    ...roomInfo
+  }
+}
+
+subscription ReceiveMessage($room_id: ID!) {
+  receiveMessage(room_id: $room_id) {
+    ...messageInfo
+  }
+}
+
+query InitRoom {
+  initRoom {
+    ...roomInfo
+  }
+}
+
+mutation SendMessage($createMessageInput: CreateMessageInput!) {
+  sendMessage(createMessageInput: $createMessageInput) {
+    ...mutationResponse
+    chat_message {
+      ...messageInfo
+    }
+  }
+}
+
+query GetMessage($room_id: ID!) {
+  getMessage(room_id: $room_id) {
+    ...messageInfo
+  }
+}

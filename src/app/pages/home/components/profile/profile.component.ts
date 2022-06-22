@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Apollo, QueryRef } from 'apollo-angular';
+import { EditUserDialogComponent } from 'src/app/components/dialogs/edit-user-dialog/edit-user-dialog.component';
+import { NewMessageDialogComponent } from 'src/app/components/dialogs/new-message-dialog/new-message-dialog.component';
 import {
   GetMyUserDocument,
   GetMyUserGQL,
@@ -41,7 +44,7 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private getUserByIdGQL: GetUserByIdGQL,
     private getPostsByUserGQL: GetPostByUserIdGQL,
-    private router: Router
+    private router: Router,public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -83,5 +86,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  
+  openDialog(): void {
+    this.dialog.open(EditUserDialogComponent, {
+      width: '350px',
+    });
+  }
+  openChat(): void {
+    this.dialog.open(NewMessageDialogComponent, {
+      width: '350px',
+    });
+  }
 }

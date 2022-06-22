@@ -6,7 +6,8 @@
         <img class="avatar" [src]="user?.avatar" alt="" />
     </div>
     <div class="edit-btn">
-        <button class="bg-primary-color text-white" *ngIf="!user_id">Chỉnh sửa hồ sơ</button>
+        <button class="bg-primary-color text-white" *ngIf="!user_id" (click)="openDialog()">Chỉnh sửa hồ sơ</button>
+        <button class="bg-primary-color text-white" *ngIf="user_id" (click)="openChat()">Nhắn tin</button>
     </div>
     <div [ngClass]="{'information': true, 'mt-10': user_id}">
         <div class="mb-[5px] name text-xl">{{user?.name}}</div>

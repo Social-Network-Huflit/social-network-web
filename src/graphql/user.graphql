@@ -38,8 +38,14 @@ mutation RemoveHistory($history_id: ID!) {
   }
 }
 
-query GetSuggestionUser{
-  getSuggestionUser{
+query GetSuggestionUser {
+  getSuggestionUser {
     id
+  }
+}
+
+mutation EditUser($editUserInput: EditUserInput!) {
+  editUser(editUserInput: $editUserInput) {
+    ...mutationResponse
   }
 }

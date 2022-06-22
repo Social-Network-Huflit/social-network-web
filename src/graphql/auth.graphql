@@ -41,3 +41,11 @@ mutation ChangePassword($changePasswordInput: ChangePasswordInput!) {
     }
   }
 }
+
+mutation ChangeOldPassword($oldPassword: String!, $newPassword: String!) {
+  changeOldPassword(oldPassword: $oldPassword, newPassword: $newPassword) {
+    code
+    success
+    message
+  }
+}

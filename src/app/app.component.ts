@@ -13,6 +13,7 @@ export class AppComponent {
   constructor(private service: AppService) {}
 
   ngOnInit(): void {
+    this.service.init();
     this.service.showDrawer.subscribe((value) => (this.showDrawer = value));
   }
 

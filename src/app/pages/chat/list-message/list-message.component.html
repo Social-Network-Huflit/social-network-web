@@ -1,0 +1,40 @@
+<div class="chat-item-detail">
+    <div class="header-detail">
+        <img *ngIf="room | async as room" [src]="room.avatar" alt="" class="avatar" />
+        <div class="right">
+            <a *ngIf="room | async as room" href="#" class="name">{{room.name}}</a>
+            <div class="status">
+                <p>Online</p>
+                <div class="symbol-online"></div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-log">
+        <ng-container *ngFor="let message of messages | async">
+            <div class="chat-item partner-chat" *ngIf="!message.isSender">
+                <img src="https://external-preview.redd.it/bXgxZKcg6ky1wputU8bVsqSpsSFvm7TOjtwUObdtUfI.jpg?width=640&crop=smart&auto=webp&s=efc0c6f188caf3dcb4e67675be00f0e717ed2ad6"
+                    alt="" class="avatar" />
+                <div class="content-chat">
+                    <div class="chat-message">{{message.content}}</div>
+                </div>
+            </div>
+            <div class="chat-item your-chat" *ngIf="message.isSender">
+                <div class="content-chat">
+                    <div class="chat-message">{{message.content}}</div>
+                </div>
+            </div>
+        </ng-container>
+
+
+
+        <div class="input-content">
+            <mat-icon>image</mat-icon>
+            <form [formGroup]="formGroup" (ngSubmit)="onSendMgs()" style="flex:1;">
+                <input type="text" formControlName="content" class="input-message" placeholder="Tin nhắn" />
+                <button type="submit">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

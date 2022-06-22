@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 import { PostCreatorDialogComponent } from '../dialogs/post-creator-dialog/post-creator-dialog.component';
 import { GetMyUserGQL, GetMyUserQuery, User } from './../../../graphql/graphql';
 
@@ -14,18 +15,16 @@ export class PostCreatorComponent implements OnInit {
   formGroup: FormGroup;
   user?: User | undefined | null;
 
-  constructor(public dialog: MatDialog, private getMyUserGQL: GetMyUserGQL) {}
+  constructor(public dialog: MatDialog, private appService: AppService) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       content: new FormControl('', Validators.required),
     });
 
-    this.getMyUserGQL
-      .watch()
-      .valueChanges.pipe(map((result) => result.data.getMyUser as User | undefined | null))
+    this.appService.user$
       .subscribe((res) => {
-        this.user = res;
+        this.user = res as User;
       });
   }
 
